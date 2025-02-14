@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<!-- Component components/chead -->
+
+<!-- Component components/gtag -->
+<!-- supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+  try {
+    const SUPABASE_URL = "https://dahljrdecyiwfjgklnvz.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGxqcmRlY3lpd2ZqZ2tsbnZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjgyNjE3NzMsImV4cCI6MjA0MzgzNzc3M30.8-YlXqSXsYoPTaDlHMpTdqLxfvm89-8zk2HG2MCABRI";
+    window.ccSupaClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+  } catch (e) {
+    alert(
+      "Error Initializing. Please refresh. If this error persists, try a different domain." +
+        "\n\n" +
+        e.stack
+    );
+    console.log(e);
+  }
+</script>
+
+<!-- large.js -->
+<script src="/assets/scripts/helpers.js?i=8"></script>
+<script src="/assets/scripts/large.js?i=7"></script>
+<script src="/assets/scripts/stateHandler.js?i=6"></script>
+
+<!-- external (gtag) -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+<link rel = "icon" href = "/assets/images/logo.jpg" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1"
+/>
+<link rel="stylesheet" href="/assets/styles/home.css" />
+<link rel="stylesheet" href="/assets/styles/master.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<title>Profile | CCPorted</title>
+<script src="/assets/scripts/navigation.js"></script>
+
+<!-- Component components/adBlockDetect -->
+<script>
+  //  window.addEventListener("load", () => {
+    
+  //   log("Window loaded, running adblock check");
+    
+  //   // Create elements programmatically
+  //   function createOverlay(visibility = "none") {
+  //     const enabledEl = document.createElement("div");
+  //     enabledEl.classList.add("adb-enabled");
+      
+  //     const overlay = document.createElement("div");
+  //     overlay.classList.add("adb-enabled-overlay");
+      
+  //     const content = document.createElement("div");
+  //     content.classList.add("adb-enabled-content");
+      
+  //     const title = document.createElement("h2");
+  //     title.textContent = "Ad blocker detected";
+      
+  //     const message = document.createElement("p");
+  //     message.textContent = "Please disable your AdBlock to continue.";
+      
+  //     const continueBtn = document.createElement("button");
+  //     continueBtn.classList.add("adb-continue-btn");
+  //     continueBtn.textContent = "Continue without supporting (10s)";
+      
+  //     // Build DOM structure
+  //     content.appendChild(title);
+  //     content.appendChild(message);
+  //     content.appendChild(continueBtn);
+  //     overlay.appendChild(content);
+  //     enabledEl.appendChild(overlay);
+  //     enabledEl.style.display = visibility;
+      
+  //     // Add styles
+  //     const styles = document.createElement("style");
+  //     styles.textContent = `
+  //       .adb-enabled-overlay {
+  //         width: 100%;
+  //         height: 100%;
+  //         position: fixed;
+  //         top: 0;
+  //         left: 0;
+  //         color: white;
+  //         background-color: #ee3030;
+  //         z-index: 99999;
+  //         padding: 70px;
+  //       }
+  //       .adb-continue-btn {
+  //         cursor: pointer;
+  //         padding: 5px;
+  //         border: 1px solid white;
+  //         background-color: transparent;
+  //         color: white;
+  //         transition: 500ms;
+  //       }
+  //       .adb-continue-btn:hover {
+  //         background-color: white;
+  //         color: #ee3030;
+  //         transition: 500ms;
+  //       }
+  //       body {
+  //         margin-right: 150px;
+  //       }
+  //       header .r-side-nav {
+  //         padding-right: 150px !important;
+  //       }
+  //     `;
+  //     document.head.appendChild(styles);
+      
+  //     return { enabledEl, continueBtn };
+  //   }
+    
+  //   const { enabledEl, continueBtn } = createOverlay("none");
+  //   document.body.appendChild(enabledEl);
+  
+  //   function adBlockDetected() {
+  //     log("adBlockDetected()");
+  //     let ax = false;
+  //     enabledEl.style.display = "block";
+  
+  //     // Adblock delay countdown
+  //     let countdown = 10;
+  //     const countdownInterval = setInterval(function() {
+  //       countdown--;
+  //       continueBtn.textContent = `Continue without supporting (${countdown}s)`;
+  //       if (countdown === 0) {
+  //         clearInterval(countdownInterval);
+  //         continueBtn.textContent = "Continue without supporting";
+  //       }
+  //     }, 1000);
+  
+  //     continueBtn.addEventListener("click", (e) => {
+  //       if (countdown === 0) {
+  //         ax = true;
+  //         enabledEl.style.display = "none";
+  //       }
+  //     });
+  
+  //     // Check if the element still exists every 750ms
+  //     const checkInterval = setInterval(function() {
+  //       if (!document.body.contains(enabledEl)) {
+  //         clearInterval(checkInterval);
+  //         const { enabledEl: newEl } = createOverlay("block");
+  //         document.body.appendChild(newEl);
+  //       }
+  //     }, 750);
+  //   }
+  
+  //   function adBlockNotDetected() {
+  //     log("Blocks not detected");
+  //     enabledEl.style.display = "none";
+  //   }
+  
+  //   const REQUEST_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  //   const REQUEST_CONFIG = {
+  //     method: "HEAD",
+  //     mode: "no-cors",
+  //   };
+  
+  // const checkAdsBlocked = (callback) => {
+  //   fetch(REQUEST_URL, REQUEST_CONFIG)
+  //       .then((response) => {
+  //           callback(response.redirected);
+  //       })                                  
+  //       .catch(() => {
+  //           callback(true);
+  //       });
+  //   };
+  
+  //   checkAdsBlocked((adsBlocked)=>{
+  //       if(adsBlocked){
+  //           adBlockDetected();
+  //       }else{
+  //           adBlockNotDetected();
+  //       }
+  //   });
+  // });
+  </script>
+
+<!-- End component components/adBlockDetect -->
+
+
+<script>
+  window.adsEnabled = false;
+</script>
+
+<!-- End component components/chead -->
+
+    <link rel="stylesheet" href="/assets/styles/profile.css">
+</head>
+<body>
+    
+<!-- Component components/navigation -->
+<header>
+    <h1>CC Ported</h1>
+    <div class="r-side-nav">
+        <a href="https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk" target="_blank">Master Doc</a>
+        <a href="https://discord.gg/GDEFRBTT3Z" about="_blank">Discord</a>
+        <a href="/roms/" id="romLinks">Rom Library</a>
+        <a href="/weather/">Weather</a>
+        <!-- <a href="/status/">Status</a> -->
+        <a href="/chat/">Chat</a>
+        <a href="/login/" class = "loggedInReplacable">Login</a>
+        <a href="/signup/" class = "loggedInReplacable">Signup</a>
+        <div class = "loggedInAddable"></div>
+    </div>
+</header>
+
+<!-- End component components/navigation -->
+
+    <main class="container">
+        <div class="profile-section">
+            <div class="profile-header">
+                <div class="profile-edit-group">
+                    <label class="profile-picture-container" for="profile-picture-upload">
+                        <img src="/assets/images/profile_pic.png" id="profilePicture">
+                        <div class="upload-overlay">
+                            <span>Click or drag to upload</span>
+                        </div>
+                    </label>
+                    <input type = "file" id = "profile-picture-upload" accept="image/*"/>
+                    <div class="profile-info">
+                        <div class="info-group">
+                            <label for="displayName">Display Name</label>
+                            <input type="text" id="displayName" placeholder="Enter display name" autocomplete="off">
+                        </div>
+                        <div class="info-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" placeholder="Enter current password" autocomplete="off">
+                        </div>
+                        <div class="info-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" placeholder="Enter new password" autocomplete="off">
+                        </div>
+                        <button id="saveChanges">Save Changes</button>
+                    </div>
+                </div>
+                <div class="stats">
+                    <h2 class="stat-title">Stats</h2>
+                    <div class="stats-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievements-section">
+            <h2>Achievements</h2>
+            <div class="achievements-grid" id="achievementsContainer">
+                <!-- Achievements will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+    
+<!-- Component components/scripts -->
+<!-- <script src="/assets/scripts/ccported.js?v=1"></script> -->
+<!-- End component components/scripts -->
+
+    <script src="/assets/scripts/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+module.exports = require("npm:hasown@2.0.2/index.js");

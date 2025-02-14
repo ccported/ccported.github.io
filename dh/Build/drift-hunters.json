@@ -1,0 +1,14 @@
+{
+    "TOTAL_MEMORY": 1073741824,
+    "dataUrl": "drift-hunters.data.unityweb",
+    "asmCodeUrl": "drift-hunters.asm.code.unityweb",
+    "asmMemoryUrl": "drift-hunters.asm.memory.unityweb",
+    "asmFrameworkUrl": "drift-hunters.asm.framework.unityweb.js",
+    "backgroundUrl": "",
+    "splashScreenStyle": "Dark",
+    "backgroundColor": "#111111",
+    "totalFile": 6,
+    "size": 134902255,
+    "split_size": 22483710
+    }
+    

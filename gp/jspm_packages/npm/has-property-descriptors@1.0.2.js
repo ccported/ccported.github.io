@@ -1,0 +1,1 @@
+module.exports = require("npm:has-property-descriptors@1.0.2/index.js");

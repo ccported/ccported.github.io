@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruffle SWF Player</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        #drop-zone {
+            width: 100%;
+            height: 200px;
+            border: 3px dashed #666;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            background-color: white;
+            transition: border-color 0.3s ease;
+        }
+
+        #drop-zone.dragover {
+            border-color: #4CAF50;
+            background-color: #e8f5e9;
+        }
+
+        #player-container {
+            width: 100%;
+            min-height: 400px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .instructions {
+            color: #666;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ruffle SWF Player</h1>
+    <div class="instructions">
+        <p>Drag and drop your SWF file here to play it using Ruffle</p>
+    </div>
+    
+    <div id="drop-zone">
+        Drop SWF file here
+    </div>
+    
+    <div id="player-container"></div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const playerContainer = document.getElementById('player-container');
+
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        // Highlight drop zone when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            dropZone.classList.add('dragover');
+        }
+
+        function unhighlight(e) {
+            dropZone.classList.remove('dragover');
+        }
+
+        // Handle dropped files
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            const file = files[0];
+            if (file && file.name.toLowerCase().endsWith('.swf')) {
+                // Clear previous player
+                playerContainer.innerHTML = '';
+                
+                // Create container for Ruffle
+                const ruffleContainer = document.createElement('div');
+                playerContainer.appendChild(ruffleContainer);
+                
+                // Create object URL for the file
+                const url = URL.createObjectURL(file);
+                
+                // Create Ruffle player
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                player.style.width = '100%';
+                player.style.height = '400px';
+                ruffleContainer.appendChild(player);
+                
+                // Load the SWF
+                player.load(url).catch(console.error);
+                
+                // Clean up object URL when done
+                player.addEventListener('loadeddata', () => {
+                    URL.revokeObjectURL(url);
+                });
+            } else {
+                alert('Please drop a valid SWF file');
+            }
+        }
+    </script>
+</body>
+</html>

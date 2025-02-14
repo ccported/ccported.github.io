@@ -1,0 +1,1 @@
+module.exports = require("npm:function-bind@1.1.2/index");

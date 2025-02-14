@@ -1,0 +1,222 @@
+.profile-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-evenly;    
+}
+.profile-edit-group {
+    display: flex;
+    gap: 30px;
+    align-items: start;
+}
+.profile-picture-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.profile-picture-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.upload-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-picture-container:hover .upload-overlay {
+    opacity: 1;
+}
+
+.profile-info {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.info-group {
+    margin-bottom: 20px;
+}
+
+.info-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.info-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.info-group input:focus {
+    outline: none;
+    border-color: dodgerblue;
+}
+
+#saveChanges {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#saveChanges:hover {
+    background-color: #0066cc;
+}
+
+.achievements-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.achievements-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.achievement-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease;
+    border: 2px solid;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+}
+
+.achievement-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+}
+
+.achievement-info p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.drag-over {
+    border: 2px dashed dodgerblue;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+#profile-picture-upload{
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+.stats{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 400px;
+    height: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.stats-container{
+    width: 100%;
+}
+.stat{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 3px;
+}
+.stat-value{
+    font-style: italic;
+}
+.stat-title{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-section, .profile-header, .profile-edit-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-header{
+        width: 100%;
+    }
+    .stats{
+        max-width: none;
+        width: 100%;
+    }
+    .container{
+        margin-top: 100px;
+    }
+    .profile-info, .profile-edit-group{
+        width: 100%;
+    }
+    .profile-edit-group{
+        margin-bottom: 10px;
+    }
+    .profile-info{
+        max-width: none;
+    }  
+    .info-group input{
+        box-sizing: border-box;
+    }
+}

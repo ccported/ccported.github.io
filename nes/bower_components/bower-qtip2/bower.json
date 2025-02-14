@@ -1,0 +1,11 @@
+{
+  "name": "bower-qtip2",
+  "version": "2.1.1",
+  "description": "Bower component for qtip2",
+  "main": "./jquery.qtip.js",
+  "keywords": [
+    "qtip",
+    "qtip2",
+    "tooltip"
+  ]
+}

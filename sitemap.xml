@@ -1,0 +1,1165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+    <loc>https://ccported.github.io/signup/</loc>
+    <lastmod>2024-11-02T20:37:49.959Z</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/signup/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/signup/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/login/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/login/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/login/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/chat/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/chat/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/chat/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/profile/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/profile/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/profile/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/roms/</loc>
+    <lastmod>2024-11-26T04:36:39.052Z</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/roms/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/roms/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/cc/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/cc/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/cc/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/ci/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/ci/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/ci/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/dh/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/dh/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/dh/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/tf/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/tf/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/tf/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/nes/project/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/nes/project/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/nes/project/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sp/src/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sp/src/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sp/src/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sl/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sl/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sl/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/mc/1.8/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/mc/1.8/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/mc/1.8/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/mc/1.5.2/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/mc/1.5.2/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/mc/1.5.2/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/2048/n/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/2048/n/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/2048/n/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/2048/c/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/2048/c/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/2048/c/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/ctr/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/ctr/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/ctr/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/papas/freezeria/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/papas/freezeria/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/papas/freezeria/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/papas/pizzeria/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/papas/pizzeria/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/papas/pizzeria/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/papas/sushiria/</loc>
+    <lastmod>2025-02-14T05:07:33.873Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/papas/sushiria/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/papas/sushiria/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/pm/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/pm/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/pm/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/goi/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/goi/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/goi/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/ting/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/ting/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/ting/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/ib/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/ib/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/ib/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/ovo/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/ovo/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/ovo/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/ch/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/ch/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/ch/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/dj/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/dj/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/dj/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/gp/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/gp/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/gp/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/rb/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/rb/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/rb/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/br/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/br/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/br/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sh/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sh/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sh/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/fb/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/fb/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/fb/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/t/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/t/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/t/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/job/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/job/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/job/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sg/</loc>
+    <lastmod>2024-11-02T20:37:49.960Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sg/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sg/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sb/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sb/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sb/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/btd/4/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/btd/4/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/btd/4/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/btd/5/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/btd/5/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/btd/5/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/ttt/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/ttt/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/ttt/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sth/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sth/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sth/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/kh/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/kh/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/kh/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/emulator/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/learn_to_fly/1/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/learn_to_fly/1/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/learn_to_fly/1/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/learn_to_fly/2/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/learn_to_fly/2/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/learn_to_fly/2/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/learn_to_fly/3/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/learn_to_fly/3/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/learn_to_fly/3/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/duck_life/4/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/duck_life/4/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/duck_life/4/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/bloxorz/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/bloxorz/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/bloxorz/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/dg/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/dg/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/dg/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/is/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/is/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/is/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/gas/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/gas/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/gas/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sr/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sr/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sr/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/papas/bakeria/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/papas/bakeria/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/papas/bakeria/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/papas/pastaria/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/papas/pastaria/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/papas/pastaria/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/papas/wingeria/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/papas/wingeria/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/papas/wingeria/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/worlds_hardest_game/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/worlds_hardest_game/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/worlds_hardest_game/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/fnf/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/fnf/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/fnf/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/bb/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/bb/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/bb/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/rs/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/rs/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/rs/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/gh/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/gh/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/gh/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/dm/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/dm/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/dm/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/papas/tacomia/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/papas/tacomia/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/papas/tacomia/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/riddleschool/1/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/riddleschool/1/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/riddleschool/1/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/riddleschool/2/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/riddleschool/2/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/riddleschool/2/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/riddleschool/3/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/riddleschool/3/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/riddleschool/3/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/riddleschool/4/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/riddleschool/4/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/riddleschool/4/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/riddleschool/5/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/riddleschool/5/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/riddleschool/5/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/learn_to_fly/idle/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/learn_to_fly/idle/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/learn_to_fly/idle/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/dos/doom/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/dos/doom/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/emulator/dos/doom/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/dos/aoe2/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/dos/aoe2/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/emulator/dos/aoe2/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/dos/jazz_jackrabbit/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/dos/jazz_jackrabbit/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/emulator/dos/jazz_jackrabbit/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/skidoo-tt/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/skidoo-tt/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/skidoo-tt/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/dos/raptor_call_of_the_shadows/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/dos/raptor_call_of_the_shadows/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/emulator/dos/raptor_call_of_the_shadows/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/dos/cyber_puck/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/dos/cyber_puck/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/emulator/dos/cyber_puck/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/dos/quake2/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/dos/quake2/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/emulator/dos/quake2/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/pt/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/pt/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/pt/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sor/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sor/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sor/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/bl/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/bl/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/bl/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/happy_wheels/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/happy_wheels/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/happy_wheels/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/ttt/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/ttt/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/ttt/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/sc/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/sc/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/sc/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/nv/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/nv/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/nv/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/isu/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/isu/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/isu/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/id/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/id/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/id/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/the_impossible_quiz/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/the_impossible_quiz/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/the_impossible_quiz/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/flash/jacksmith/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/flash/jacksmith/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/flash/jacksmith/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/jj/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/jj/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/jj/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/fnaf/fnaf1/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/fnaf/fnaf1/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/fnaf/fnaf1/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/bz/</loc>
+    <lastmod>2025-02-14T05:07:33.874Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/bz/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.onrender.com/bz/"/>
+</url>
+</urlset>

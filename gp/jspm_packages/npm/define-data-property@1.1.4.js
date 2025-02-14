@@ -1,0 +1,1 @@
+module.exports = require("npm:define-data-property@1.1.4/index.js");

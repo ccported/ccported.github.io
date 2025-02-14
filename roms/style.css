@@ -1,0 +1,88 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1 {
+    text-align: center;
+    color: #333;
+    padding: 20px 0;
+    background-color: #fff;
+    margin: 0;
+    font-size: 48px;
+}
+h1, h2 {
+    color: #444;
+}
+#searchInput {
+    width: 300px;
+    min-width: 10vw;
+    height: 30px;
+    border-radius: 2px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+#searchInput:focus {
+    outline: none;
+    border: 1px solid dodgerblue;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+li div.name {
+    max-width: 50%;
+    word-wrap: break-word;
+}
+li div.links {
+    padding: 5px;
+}
+li div.links a {
+    text-decoration: underline;
+    color: dodgerblue;
+    margin: 0 5px;
+}
+a {
+    text-decoration: none;
+    color: dodgerblue;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:visited {
+    color: dodgerblue;
+}
+.hidden {
+    display: none;
+}
+.determiner > ul {
+    margin-left: 30px;
+}
+div.container {
+    width: 500px;
+}
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #666;
+}
+.error {
+    color: #dc3545;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+}

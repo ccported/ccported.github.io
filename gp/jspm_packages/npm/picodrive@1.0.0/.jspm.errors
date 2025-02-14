@@ -1,0 +1,6 @@
+MultipleErrors: C:/Users/mat/AppData/Local/.jspm/packages/npm/picodrive@1.0.0/retro.js:1:4: Unexpected reserved word var
+C:/Users/mat/AppData/Local/.jspm/packages/npm/picodrive@1.0.0/retro.js:1:8: Unexpected token vararg
+C:/Users/mat/AppData/Local/.jspm/packages/npm/picodrive@1.0.0/retro.js:1:25: Semi-colon expected
+C:/Users/mat/AppData/Local/.jspm/packages/npm/picodrive@1.0.0/retro.js:1:25: Unexpected token )
+C:/Users/mat/AppData/Local/.jspm/packages/npm/picodrive@1.0.0/retro.js:1:27: Semi-colon expected
+C:/Users/mat/AppData/Local/.jspm/packages/npm/picodrive@1.0.0/retro.js:5:11: Unexpected token }

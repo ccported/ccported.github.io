@@ -1,0 +1,38 @@
+{
+  "name": "jsziptools",
+  "main": "jsziptools.js",
+  "version": "2.4.7",
+  "homepage": "https://github.com/ukyo/jsziptools",
+  "authors": [
+    "ukyo <ukyo.web@gmail.com>"
+  ],
+  "description": "zip for browser",
+  "keywords": [
+    "zlib",
+    "gzip",
+    "zip"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "examples",
+    "src",
+    "vendor",
+    "Gruntfile.coffee",
+    "package.json",
+    "testem.json"
+  ],
+  "_release": "2.4.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.4.7",
+    "commit": "139f86691228feba61cb33afd1946fc566fa95e4"
+  },
+  "_source": "https://github.com/ukyo/jsziptools.git",
+  "_target": "~2.4.4",
+  "_originalSource": "jsziptools"
+}
