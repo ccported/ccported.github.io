@@ -1,0 +1,406 @@
+{
+  "atari2600": [
+    [
+      "Dig Dug (1983) (Atari).zip",
+      "Dig Dug (1983) (Atari)"
+    ],
+    [
+      "Space Invaders (USA).zip",
+      "Space Invaders (USA)"
+    ]
+  ],
+  "dos": [
+    [
+      "AOE.jsdos",
+      "AOE"
+    ],
+    [
+      "aoe2.jsdos",
+      "Aoe2"
+    ],
+    [
+      "bmenace.jsdos",
+      "Bmenace"
+    ],
+    [
+      "bstone.jsdos",
+      "Bstone"
+    ],
+    [
+      "cyber_puck.jsdos",
+      "Cyber Puck"
+    ],
+    [
+      "dn3d.jsdos",
+      "Dn3d"
+    ],
+    [
+      "doom.jsdos",
+      "Doom"
+    ],
+    [
+      "duke1.jsdos",
+      "Duke1"
+    ],
+    [
+      "duke2.jsdos",
+      "Duke2"
+    ],
+    [
+      "jazz_jackrabbit.jsdos",
+      "Jazz Jackrabbit"
+    ],
+    [
+      "keen1.jsdos",
+      "Keen1"
+    ],
+    [
+      "keen4.jsdos",
+      "Keen4"
+    ],
+    [
+      "quake2.jsdos",
+      "Quake2"
+    ],
+    [
+      "raptor_call_of_the_shadows.jsdos",
+      "Raptor Call Of The Shadows"
+    ],
+    [
+      "skyroads.jsdos",
+      "Skyroads"
+    ],
+    [
+      "w3d.jsdos",
+      "W3d"
+    ]
+  ],
+  "gb": [
+    [
+      "pocket_monsters.gb.zip",
+      "Pocket Monsters"
+    ],
+    [
+      "pokemon_blue_version.gb.zip",
+      "Pokemon Blue Version"
+    ],
+    [
+      "pokemon_crystal_version.gb.zip",
+      "Pokemon Crystal Version"
+    ],
+    [
+      "pokemon_gold_version.gb.zip",
+      "Pokemon Gold Version"
+    ],
+    [
+      "pokemon_red.gb.zip",
+      "Pokemon Red"
+    ],
+    [
+      "pokemon_silver_edition.gb.zip",
+      "Pokemon Silver Edition"
+    ],
+    [
+      "pokemon_yellow_version_special_pikachu_edition.gb.zip",
+      "Pokemon Yellow Version Special Pikachu Edition"
+    ]
+  ],
+  "gba": [
+    [
+      "Dragon Ball - Advance Adventure (Japan).zip",
+      "Dragon Ball - Advance Adventure (Japan)"
+    ],
+    [
+      "Dragon Ball - Advanced Adventure (Europe) (En,Fr,De,Es,It).zip",
+      "Dragon Ball - Advanced Adventure (Europe) (En,Fr,De,Es,It)"
+    ],
+    [
+      "Dragon Ball - Advanced Adventure (USA).zip",
+      "Dragon Ball - Advanced Adventure (USA)"
+    ],
+    [
+      "Dragon Ball Z - Supersonic Warriors (Europe) (En,Fr,De,Es,It).zip",
+      "Dragon Ball Z - Supersonic Warriors (Europe) (En,Fr,De,Es,It)"
+    ],
+    [
+      "Dragon Ball Z - Supersonic Warriors (USA).zip",
+      "Dragon Ball Z - Supersonic Warriors (USA)"
+    ],
+    [
+      "Grand Theft Auto (USA).zip",
+      "Grand Theft Auto (USA)"
+    ],
+    [
+      "Kirby & The Amazing Mirror (Europe) (En,Fr,De,Es,It).zip",
+      "Kirby & The Amazing Mirror (Europe) (En,Fr,De,Es,It)"
+    ],
+    [
+      "Kirby - Nightmare in Dream Land (Europe) (En,Fr,De,Es,It) (Virtual Console).zip",
+      "Kirby - Nightmare in Dream Land (Europe) (En,Fr,De,Es,It) (Virtual Console)"
+    ],
+    [
+      "Legend of Zelda, The - A Link to the Past and Four Swords (Europe) (En,Fr,De,Es,It).zip",
+      "Legend of Zelda, The - A Link to the Past and Four Swords (Europe) (En,Fr,De,Es,It)"
+    ],
+    [
+      "Legend of Zelda, The - The Minish Cap (Europe) (En,Fr,De,Es,It).zip",
+      "Legend of Zelda, The - The Minish Cap (Europe) (En,Fr,De,Es,It)"
+    ],
+    [
+      "Metroid - Zero Mission (Japan).zip",
+      "Metroid - Zero Mission (Japan)"
+    ],
+    [
+      "Metroid - Zero Mission (USA).zip",
+      "Metroid - Zero Mission (USA)"
+    ],
+    [
+      "Naruto - Ninja Council (USA).zip",
+      "Naruto - Ninja Council (USA)"
+    ],
+    [
+      "Naruto - Ninja Council 2 (USA).zip",
+      "Naruto - Ninja Council 2 (USA)"
+    ],
+    [
+      "Need for Speed - Underground (USA, Europe) (En,Fr,De,It).zip",
+      "Need for Speed - Underground (USA, Europe) (En,Fr,De,It)"
+    ],
+    [
+      "Need for Speed - Underground 2 (USA, Europe) (En,Fr,De,It).zip",
+      "Need for Speed - Underground 2 (USA, Europe) (En,Fr,De,It)"
+    ],
+    [
+      "Pokemon - Emerald Version (USA, Europe).zip",
+      "Pokemon - Emerald Version (USA, Europe)"
+    ],
+    [
+      "Pokemon - FireRed Version (USA, Europe) (Rev 1).zip",
+      "Pokemon - FireRed Version (USA, Europe) (Rev 1)"
+    ],
+    [
+      "Pokemon - Leaf Green (USA) (Pirate).zip",
+      "Pokemon - Leaf Green (USA) (Pirate)"
+    ],
+    [
+      "Pokemon - Ruby Version (USA, Europe).zip",
+      "Pokemon - Ruby Version (USA, Europe)"
+    ],
+    [
+      "Pokemon - Sapphire Version (USA, Europe).zip",
+      "Pokemon - Sapphire Version (USA, Europe)"
+    ],
+    [
+      "Sonic Advance and Sonic Battle (Europe) (En,Ja,Fr,De,Es+En,Ja,Fr,De,Es,It).zip",
+      "Sonic Advance and Sonic Battle (Europe) (En,Ja,Fr,De,Es+En,Ja,Fr,De,Es,It)"
+    ],
+    [
+      "Spider-Man (USA, Europe).zip",
+      "Spider-Man (USA, Europe)"
+    ],
+    [
+      "Spider-Man - Battle for New York (Europe) (En,Fr,De,Es,It).zip",
+      "Spider-Man - Battle for New York (Europe) (En,Fr,De,Es,It)"
+    ],
+    [
+      "Spider-Man and Spider-Man 2 (Europe) (En,Fr,De+En,Fr,De,Es,It).zip",
+      "Spider-Man and Spider-Man 2 (Europe) (En,Fr,De+En,Fr,De,Es,It)"
+    ],
+    [
+      "Super Mario Advance 2 - Super Mario World (USA, Australia).zip",
+      "Super Mario Advance 2 - Super Mario World (USA, Australia)"
+    ],
+    [
+      "Super Mario Bros. (USA, Europe).zip",
+      "Super Mario Bros"
+    ],
+    [
+      "Ultimate Spider-Man (USA).zip",
+      "Ultimate Spider-Man (USA)"
+    ],
+    [
+      "castlevania_(Europe)",
+      "Castlevania (Europe)"
+    ],
+    [
+      "mario_and_luigi_superstar_saga_(U)",
+      "Mario And Luigi Superstar Saga (U)"
+    ],
+    [
+      "metroid_fusion.gba.zip",
+      "Metroid Fusion"
+    ]
+  ],
+  "n64": [
+    [
+      "legend_of_zelda_the_ocarina_of_time.n64.zip",
+      "Legend Of Zelda The Ocarina Of Time"
+    ],
+    [
+      "super_mario_64_(USA)",
+      "Super Mario 64 (USA)"
+    ]
+  ],
+  "nds": [
+    [
+      "mario_and_luigi_-_bowser's_inside_story_(USA)_(En,Fr,Es)",
+      "Mario And Luigi - Bowser's Inside Story (USA) (En,Fr,Es)"
+    ],
+    [
+      "mario_and_luigi_-_partners_in_time_(USA)",
+      "Mario And Luigi - Partners In Time (USA)"
+    ],
+    [
+      "pokemon_HeartGold_version.nds.zip",
+      "Pokemon HeartGold Version"
+    ],
+    [
+      "pokemon_black_version.nds.zip",
+      "Pokemon Black Version"
+    ],
+    [
+      "pokemon_black_version_2.nds.zip",
+      "Pokemon Black Version 2"
+    ],
+    [
+      "pokemon_diamond_version.x.nds.zip",
+      "Pokemon Diamond Version"
+    ],
+    [
+      "pokemon_pearl_version.nds.zip",
+      "Pokemon Pearl Version"
+    ],
+    [
+      "pokemon_platinum_version.nds.zip",
+      "Pokemon Platinum Version"
+    ],
+    [
+      "pokemon_soul_silver.nds.zip",
+      "Pokemon Soul Silver"
+    ]
+  ],
+  "nes": [
+    [
+      "Galaga (J) [h1].zip",
+      "Galaga (J) [h1]"
+    ],
+    [
+      "Legend of Zelda, The (U) (PRG 0).nes.zip",
+      "Legend of Zelda, The (U) (PRG 0)"
+    ],
+    [
+      "Mike Tyson's Punch-Out!! (U) (PRG 0).nes.zip",
+      "Mike Tyson's Punch-Out!! (U) (PRG 0)"
+    ],
+    [
+      "RC Pro-Am 2 (U).nes.zip",
+      "RC Pro-Am 2 (U)"
+    ],
+    [
+      "Super Mario Bros (E).nes.zip",
+      "Super Mario Bros (E)"
+    ],
+    [
+      "Super Mario Bros 3 (U) (PRG 0).nes.zip",
+      "Super Mario Bros 3 (U) (PRG 0)"
+    ],
+    [
+      "Terminator 2 - Judgement Day (U).nes.zip",
+      "Terminator 2 - Judgement Day (U)"
+    ],
+    [
+      "Tetris 2 (U) [!].nes.zip",
+      "Tetris 2 (U) [!]"
+    ],
+    [
+      "Zelda 2 - The Adventure of Link (U).nes.zip",
+      "Zelda 2 - The Adventure of Link (U)"
+    ]
+  ],
+  "psx": [
+    [
+      "007_racing.ps.zip",
+      "007 Racing"
+    ],
+    [
+      "007_the_world_is_not_enough.ps.zip",
+      "007 The World Is Not Enough"
+    ],
+    [
+      "007_tomorrow_never_dies.ps.zip",
+      "007 Tomorrow Never Dies"
+    ],
+    [
+      "2002_FIFA_world_cup.ps.zip",
+      "2002 FIFA World Cup"
+    ],
+    [
+      "castlevania_-_symphony_of_the_night_(USA)",
+      "Castlevania - Symphony Of The Night (USA)"
+    ],
+    [
+      "mortal_kombat_3.ps.zip",
+      "Mortal Kombat 3"
+    ],
+    [
+      "mortal_kombat_4.ps.zip",
+      "Mortal Kombat 4"
+    ],
+    [
+      "mortal_kombat_special_forces.ps.zip",
+      "Mortal Kombat Special Forces"
+    ],
+    [
+      "moto_racer.ps.zip",
+      "Moto Racer"
+    ],
+    [
+      "moto_racer_2.ps.zip",
+      "Moto Racer 2"
+    ],
+    [
+      "moto_racer_world_tour.ps.zip",
+      "Moto Racer World Tour"
+    ]
+  ],
+  "snes": [
+    [
+      "Kirby Super Star (USA).zip",
+      "Kirby Super Star (USA)"
+    ],
+    [
+      "Kirby's Dream Course (Europe).zip",
+      "Kirby's Dream Course (Europe)"
+    ],
+    [
+      "Kirby's Dream Land 3 (USA).zip",
+      "Kirby's Dream Land 3 (USA)"
+    ],
+    [
+      "Legend of Zelda, The - A Link to the Past (Europe).zip",
+      "Legend of Zelda, The - A Link to the Past (Europe)"
+    ],
+    [
+      "earthBound_(USA)",
+      "EarthBound (USA)"
+    ],
+    [
+      "super_mario_world_(USA)",
+      "Super Mario World (USA)"
+    ],
+    [
+      "super_mario_world_2_-_yoshi's_island_(USA)_(Rev_1)",
+      "Super Mario World 2 - Yoshi's Island (USA) (Rev 1)"
+    ],
+    [
+      "super_metroid_(Europe)_(En,Fr,De)",
+      "Super Metroid (Europe) (En,Fr,De)"
+    ]
+  ],
+  "vb": [
+    [
+      "marios_tenis.vb.zip",
+      "Marios Tenis"
+    ]
+  ]
+}

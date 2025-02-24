@@ -1,0 +1,119 @@
+@keyframes meter-animation {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.cc.link-active {
+    text-decoration: underline;
+}
+.cc.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cc.popup-content {
+    width: 50%;
+    height: 50%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cc.popup-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.cc.popup-buttons button#nvmd {
+    background-color: #d32f2f;
+    margin-right: 5px;
+}
+
+.cc.popup-buttons button.conf {
+    margin-left: 5px;
+}
+
+.cc.popup-buttons button#nvmd:hover {
+    background-color: #f93939;
+    transition: 500ms;
+}
+
+.cc.popup-buttons button {
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.cc.popup-buttons button:hover {
+    transition: 500ms;
+}
+button.cc {
+    width: 100%;
+    padding: 10px;
+    background-color: #275d29;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+button.cc:hover {
+    background-color: #45a049;
+}
+input[type="email"].cc,
+input[type="password"].cc,
+input[type="text"].cc {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #275d29;
+    background-color: #ffffff;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.cc.channel-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #7d7d7d;
+}
+.cc.channels-list-mute{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.cc.mute-channel{
+    cursor: pointer;
+}
+

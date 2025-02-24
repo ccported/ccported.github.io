@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		
+<!-- Component components/gtag_events -->
+
+<script>
+    window.ccPorted = {
+        ...(window.ccPorted || {}),
+        gameID: (("iron_snout").length > 0) ? "iron_snout" : "ccported"
+    }
+    window.gameID = window.ccPorted.gameID;
+</script>
+
+
+<!-- Component components/gtag -->
+<!-- supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+  try {
+    const SUPABASE_URL = "https://dahljrdecyiwfjgklnvz.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGxqcmRlY3lpd2ZqZ2tsbnZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjgyNjE3NzMsImV4cCI6MjA0MzgzNzc3M30.8-YlXqSXsYoPTaDlHMpTdqLxfvm89-8zk2HG2MCABRI";
+    window.ccSupaClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+  } catch (e) {
+    alert(
+      "Error Initializing. Please refresh. If this error persists, try a different domain." +
+        "\n\n" +
+        e.stack
+    );
+    console.log(e);
+  }
+</script>
+
+<!-- large.js -->
+<script src="/assets/scripts/helpers.js?i=8"></script>
+<script src="/assets/scripts/large.js?i=7"></script>
+<script src="/assets/scripts/stateHandler.js?i=6"></script>
+
+<!-- external (gtag) -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+
+<!-- Component components/adBlockDetect -->
+<script>
+  //  window.addEventListener("load", () => {
+    
+  //   log("Window loaded, running adblock check");
+    
+  //   // Create elements programmatically
+  //   function createOverlay(visibility = "none") {
+  //     const enabledEl = document.createElement("div");
+  //     enabledEl.classList.add("adb-enabled");
+      
+  //     const overlay = document.createElement("div");
+  //     overlay.classList.add("adb-enabled-overlay");
+      
+  //     const content = document.createElement("div");
+  //     content.classList.add("adb-enabled-content");
+      
+  //     const title = document.createElement("h2");
+  //     title.textContent = "Ad blocker detected";
+      
+  //     const message = document.createElement("p");
+  //     message.textContent = "Please disable your AdBlock to continue.";
+      
+  //     const continueBtn = document.createElement("button");
+  //     continueBtn.classList.add("adb-continue-btn");
+  //     continueBtn.textContent = "Continue without supporting (10s)";
+      
+  //     // Build DOM structure
+  //     content.appendChild(title);
+  //     content.appendChild(message);
+  //     content.appendChild(continueBtn);
+  //     overlay.appendChild(content);
+  //     enabledEl.appendChild(overlay);
+  //     enabledEl.style.display = visibility;
+      
+  //     // Add styles
+  //     const styles = document.createElement("style");
+  //     styles.textContent = `
+  //       .adb-enabled-overlay {
+  //         width: 100%;
+  //         height: 100%;
+  //         position: fixed;
+  //         top: 0;
+  //         left: 0;
+  //         color: white;
+  //         background-color: #ee3030;
+  //         z-index: 99999;
+  //         padding: 70px;
+  //       }
+  //       .adb-continue-btn {
+  //         cursor: pointer;
+  //         padding: 5px;
+  //         border: 1px solid white;
+  //         background-color: transparent;
+  //         color: white;
+  //         transition: 500ms;
+  //       }
+  //       .adb-continue-btn:hover {
+  //         background-color: white;
+  //         color: #ee3030;
+  //         transition: 500ms;
+  //       }
+  //       body {
+  //         margin-right: 150px;
+  //       }
+  //       header .r-side-nav {
+  //         padding-right: 150px !important;
+  //       }
+  //     `;
+  //     document.head.appendChild(styles);
+      
+  //     return { enabledEl, continueBtn };
+  //   }
+    
+  //   const { enabledEl, continueBtn } = createOverlay("none");
+  //   document.body.appendChild(enabledEl);
+  
+  //   function adBlockDetected() {
+  //     log("adBlockDetected()");
+  //     let ax = false;
+  //     enabledEl.style.display = "block";
+  
+  //     // Adblock delay countdown
+  //     let countdown = 10;
+  //     const countdownInterval = setInterval(function() {
+  //       countdown--;
+  //       continueBtn.textContent = `Continue without supporting (${countdown}s)`;
+  //       if (countdown === 0) {
+  //         clearInterval(countdownInterval);
+  //         continueBtn.textContent = "Continue without supporting";
+  //       }
+  //     }, 1000);
+  
+  //     continueBtn.addEventListener("click", (e) => {
+  //       if (countdown === 0) {
+  //         ax = true;
+  //         enabledEl.style.display = "none";
+  //       }
+  //     });
+  
+  //     // Check if the element still exists every 750ms
+  //     const checkInterval = setInterval(function() {
+  //       if (!document.body.contains(enabledEl)) {
+  //         clearInterval(checkInterval);
+  //         const { enabledEl: newEl } = createOverlay("block");
+  //         document.body.appendChild(newEl);
+  //       }
+  //     }, 750);
+  //   }
+  
+  //   function adBlockNotDetected() {
+  //     log("Blocks not detected");
+  //     enabledEl.style.display = "none";
+  //   }
+  
+  //   const REQUEST_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  //   const REQUEST_CONFIG = {
+  //     method: "HEAD",
+  //     mode: "no-cors",
+  //   };
+  
+  // const checkAdsBlocked = (callback) => {
+  //   fetch(REQUEST_URL, REQUEST_CONFIG)
+  //       .then((response) => {
+  //           callback(response.redirected);
+  //       })                                  
+  //       .catch(() => {
+  //           callback(true);
+  //       });
+  //   };
+  
+  //   checkAdsBlocked((adsBlocked)=>{
+  //       if(adsBlocked){
+  //           adBlockDetected();
+  //       }else{
+  //           adBlockNotDetected();
+  //       }
+  //   });
+  // });
+  </script>
+
+<!-- End component components/adBlockDetect -->
+
+
+<script src="/gtag_events.js?v=004" data-gameid="iron_snout"></script>
+<!-- End component components/gtag_events -->
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta charset="utf-8"/>
+
+        <!-- Set the title bar of the page -->
+        <title>Iron Snout | Unblocked on CCPorted</title>
+		<meta name = "description" content="Iron Snout is a online fighting game created by SnoutUp where you play as a pig, and have to fight the wolves. Fight for your life after wave after wave of wolves. Unblocked and free to play on CCPorted.">
+		<script src="patch/js/poki-sdk.js"></script>
+        
+        <script>
+        (()=>{var e=function(e){var n=RegExp("[?&]"+e+"=([^&]*)").exec(window.location.search);return n&&decodeURIComponent(n[1].replace(/\+/g," "))},n="kids"===e("tag"),t=new(function(){function e(){var e=this;this.queue=[],this.init=function(n){return void 0===n&&(n={}),new Promise((function(t,o){e.enqueue("init",n,t,o)}))},this.rewardedBreak=function(){return new Promise((function(e){e(!1)}))},this.noArguments=function(n){return function(){e.enqueue(n)}},this.oneArgument=function(n){return function(t){e.enqueue(n,t)}},this.handleAutoResolvePromise=function(){return new Promise((function(e){e()}))},this.throwNotLoaded=function(){console.debug("PokiSDK is not loaded yet. Not all methods are available.")}}return e.prototype.enqueue=function(e,t,o,i){var r={fn:e,options:t,resolveFn:o,rejectFn:i};n?i&&i():this.queue.push(r)},e.prototype.dequeue=function(){for(var e=function(){var e=n.queue.shift(),t=e,o=t.fn,i=t.options;"function"==typeof window.PokiSDK[o]?(null==e?void 0:e.resolveFn)||(null==e?void 0:e.rejectFn)?window.PokiSDK[o](i).then((function(){for(var n=[],t=0;t<arguments.length;t++)n[t]=arguments[t];"function"==typeof e.resolveFn&&e.resolveFn.apply(e,n)})).catch((function(){for(var n=[],t=0;t<arguments.length;t++)n[t]=arguments[t];"function"==typeof e.rejectFn&&e.rejectFn.apply(e,n)})):void 0!==(null==e?void 0:e.fn)&&window.PokiSDK[o](i):console.error("Cannot execute "+e.fn)},n=this;this.queue.length>0;)e()},e}());window.PokiSDK={init:t.init,initWithVideoHB:t.init,customEvent:t.throwNotLoaded,commercialBreak:t.handleAutoResolvePromise,rewardedBreak:t.rewardedBreak,displayAd:t.throwNotLoaded,destroyAd:t.throwNotLoaded,getLeaderboard:t.handleAutoResolvePromise,getSharableURL:function(){return new Promise((function(e,n){return n()}))},getURLParam:function(n){return e("gd"+n)||e(n)||""}},["gameLoadingStart","gameLoadingFinished","gameInteractive","roundStart","roundEnd","muteAd"].forEach((function(e){window.PokiSDK[e]=t.noArguments(e)})),["setDebug","gameplayStart","gameplayStop","gameLoadingProgress","happyTime","setPlayerAge","logError","sendHighscore","setDebugTouchOverlayController"].forEach((function(e){window.PokiSDK[e]=t.oneArgument(e)}));var o,i=((o=window.pokiSDKVersion)||(o=e("ab")||"v2.266.0"),"patch/js/poki-sdk.js?"+(n?"kids":"core")+"-"+o+".js"),r=document.createElement("script");r.setAttribute("src",i),r.setAttribute("type","text/javascript"),r.setAttribute("crossOrigin","anonymous"),r.onload=function(){return t.dequeue()},document.head.appendChild(r)})();
+        </script>
+        
+        <!-- Ad Check -->
+        
+        <style>
+            html {
+                height: 100%;
+                width: 100%;
+            }
+            
+            body {
+              background: #e7846b;
+              color:#cccccc;
+              margin: 0px;
+              padding: 0px;
+              border: 0px;
+			  overflow:hidden;
+                
+              height:100%;
+                
+              background-image: url('html5game/wolf.gif');
+              background-repeat: no-repeat;
+              background-position: center 100px;
+            }
+            
+            canvas {
+				  image-rendering: optimizeSpeed;
+				  -webkit-interpolation-mode: nearest-neighbor;
+				  -ms-touch-action: none;
+				  margin: 0px;
+				  padding: 0px;
+				  border: 0px;
+				  display:none;
+            }
+			
+			#bar {
+				position:fixed;
+				width:50%;
+				left:0;
+				right:0;
+				margin:0 auto;
+				padding:2px;
+				height: 28px;
+				top:352px;
+				background:#5a3a32;
+				z-index:-9999;
+			}
+			
+	
+			
+			#fill {
+				position:relative;
+				width:1%;
+				background-color:#ffffff;
+				height:28px;
+				margin:0px;
+			}
+			
+			#fill img {
+				position:absolute;
+				z-index:1;
+				right:-32px;
+				top:-2px;
+			}
+		
+            			
+				
+			#canvas, canvas {
+				-webkit-tap-highlight-color: transparent;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+            
+            :-webkit-full-screen #canvas {
+                 width: 100%;
+                 height: 100%;
+            }
+			
+            div.gm4html5_div_class {
+              margin: 0px;
+              padding: 0px;
+              border: 0px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="gm4html5_div_class" id="gm4html5_div_id">
+            <!-- Create the canvas element the game draws to -->
+            <canvas id="canvas" width="1024" height="576">
+               <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
+			
+			<script type="text/javascript" src="html5game/IronSnout.js"></script>
+        </div>
+		<div id="bar"><div id="fill"><img id="axe" src="html5game/axe.png" alt=""/></div></div></div>		
+		
+		<script>
+		var sdk 		= PokiSDK;
+		var pokiDebug 	= false;
+        var canvas      = document.getElementById("canvas");
+		
+		var bar 		= document.getElementById("bar");
+		var fill 		= document.getElementById("fill");
+		var axe 		= document.getElementById("axe");
+		var fakeCent	= 1;	
+		var fails		= 0;
+		var angle 		= 45;
+		
+		function poki_log(t) {
+			console.log(t);
+		}
+            
+        function poki_debug() {
+            return pokiDebug;
+        }
+		
+		function poki_loading(progress) {
+			clearInterval(fakeLoading);
+			bar_update(progress * 100);
+			sdk.gameLoadingProgress({percentageDone: progress * 0.9});
+			
+			if (progress == 1) {
+				document.body.style.background = "#e7846b";
+				bar.style.display = "none";
+				
+				setTimeout(function () {
+					canvas.style.display = "block";
+				}, 500);
+			}
+		}
+		
+		function bar_update(progress) {
+			progress = Math.max(fakeCent, progress);
+			fill.style.width = progress + "%";
+		}
+		
+		setInterval(function() {
+			angle+=5;
+			axe.style.transform = "rotate(" + angle + "deg)";
+		}, 10);		
+		
+		
+		
+		
+		var fakeLoading = setInterval(function() {
+			if (fakeCent < 60) {
+				fakeCent += 2;
+				bar_update(fakeCent);
+			} else {
+				clearInterval(fakeLoading);
+			}
+		}, 100);		
+		
+		
+		function gamemaker_start() {
+			try {
+			  GameMaker_Init();
+			} catch(err) {
+				fails++;			
+				setTimeout(gamemaker_start, 5000);
+				if (fails == 1) throw(err);						
+			}
+		}
+
+
+		
+		window.onload = function() {
+			sdk.init().then(() => {
+                setTimeout(gamemaker_start,1);
+                sdk.setDebug(pokiDebug);   
+				sdk.gameLoadingStart();		
+			}).catch(() => {
+                gamemaker_start();
+			});
+        
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+            canvas.addEventListener('click', function(){
+                window.focus();
+            });               
+		}
+		
+		window.addEventListener('wheel', ev => ev.preventDefault(), { passive: false });
+		window.addEventListener('keydown', ev => {
+			if (['ArrowDown', 'ArrowUp', ' '].includes(ev.key)) {
+				ev.preventDefault();
+			}
+		});		
+		</script>
+    </body>
+</html>

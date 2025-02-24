@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	
+<!-- Component components/gtag_events -->
+
+<script>
+    window.ccPorted = {
+        ...(window.ccPorted || {}),
+        gameID: (("bloons_td_4").length > 0) ? "bloons_td_4" : "ccported"
+    }
+    window.gameID = window.ccPorted.gameID;
+</script>
+
+
+<!-- Component components/gtag -->
+<!-- supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+  try {
+    const SUPABASE_URL = "https://dahljrdecyiwfjgklnvz.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGxqcmRlY3lpd2ZqZ2tsbnZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjgyNjE3NzMsImV4cCI6MjA0MzgzNzc3M30.8-YlXqSXsYoPTaDlHMpTdqLxfvm89-8zk2HG2MCABRI";
+    window.ccSupaClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+  } catch (e) {
+    alert(
+      "Error Initializing. Please refresh. If this error persists, try a different domain." +
+        "\n\n" +
+        e.stack
+    );
+    console.log(e);
+  }
+</script>
+
+<!-- large.js -->
+<script src="/assets/scripts/helpers.js?i=8"></script>
+<script src="/assets/scripts/large.js?i=7"></script>
+<script src="/assets/scripts/stateHandler.js?i=6"></script>
+
+<!-- external (gtag) -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+
+<!-- Component components/adBlockDetect -->
+<script>
+  //  window.addEventListener("load", () => {
+    
+  //   log("Window loaded, running adblock check");
+    
+  //   // Create elements programmatically
+  //   function createOverlay(visibility = "none") {
+  //     const enabledEl = document.createElement("div");
+  //     enabledEl.classList.add("adb-enabled");
+      
+  //     const overlay = document.createElement("div");
+  //     overlay.classList.add("adb-enabled-overlay");
+      
+  //     const content = document.createElement("div");
+  //     content.classList.add("adb-enabled-content");
+      
+  //     const title = document.createElement("h2");
+  //     title.textContent = "Ad blocker detected";
+      
+  //     const message = document.createElement("p");
+  //     message.textContent = "Please disable your AdBlock to continue.";
+      
+  //     const continueBtn = document.createElement("button");
+  //     continueBtn.classList.add("adb-continue-btn");
+  //     continueBtn.textContent = "Continue without supporting (10s)";
+      
+  //     // Build DOM structure
+  //     content.appendChild(title);
+  //     content.appendChild(message);
+  //     content.appendChild(continueBtn);
+  //     overlay.appendChild(content);
+  //     enabledEl.appendChild(overlay);
+  //     enabledEl.style.display = visibility;
+      
+  //     // Add styles
+  //     const styles = document.createElement("style");
+  //     styles.textContent = `
+  //       .adb-enabled-overlay {
+  //         width: 100%;
+  //         height: 100%;
+  //         position: fixed;
+  //         top: 0;
+  //         left: 0;
+  //         color: white;
+  //         background-color: #ee3030;
+  //         z-index: 99999;
+  //         padding: 70px;
+  //       }
+  //       .adb-continue-btn {
+  //         cursor: pointer;
+  //         padding: 5px;
+  //         border: 1px solid white;
+  //         background-color: transparent;
+  //         color: white;
+  //         transition: 500ms;
+  //       }
+  //       .adb-continue-btn:hover {
+  //         background-color: white;
+  //         color: #ee3030;
+  //         transition: 500ms;
+  //       }
+  //       body {
+  //         margin-right: 150px;
+  //       }
+  //       header .r-side-nav {
+  //         padding-right: 150px !important;
+  //       }
+  //     `;
+  //     document.head.appendChild(styles);
+      
+  //     return { enabledEl, continueBtn };
+  //   }
+    
+  //   const { enabledEl, continueBtn } = createOverlay("none");
+  //   document.body.appendChild(enabledEl);
+  
+  //   function adBlockDetected() {
+  //     log("adBlockDetected()");
+  //     let ax = false;
+  //     enabledEl.style.display = "block";
+  
+  //     // Adblock delay countdown
+  //     let countdown = 10;
+  //     const countdownInterval = setInterval(function() {
+  //       countdown--;
+  //       continueBtn.textContent = `Continue without supporting (${countdown}s)`;
+  //       if (countdown === 0) {
+  //         clearInterval(countdownInterval);
+  //         continueBtn.textContent = "Continue without supporting";
+  //       }
+  //     }, 1000);
+  
+  //     continueBtn.addEventListener("click", (e) => {
+  //       if (countdown === 0) {
+  //         ax = true;
+  //         enabledEl.style.display = "none";
+  //       }
+  //     });
+  
+  //     // Check if the element still exists every 750ms
+  //     const checkInterval = setInterval(function() {
+  //       if (!document.body.contains(enabledEl)) {
+  //         clearInterval(checkInterval);
+  //         const { enabledEl: newEl } = createOverlay("block");
+  //         document.body.appendChild(newEl);
+  //       }
+  //     }, 750);
+  //   }
+  
+  //   function adBlockNotDetected() {
+  //     log("Blocks not detected");
+  //     enabledEl.style.display = "none";
+  //   }
+  
+  //   const REQUEST_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  //   const REQUEST_CONFIG = {
+  //     method: "HEAD",
+  //     mode: "no-cors",
+  //   };
+  
+  // const checkAdsBlocked = (callback) => {
+  //   fetch(REQUEST_URL, REQUEST_CONFIG)
+  //       .then((response) => {
+  //           callback(response.redirected);
+  //       })                                  
+  //       .catch(() => {
+  //           callback(true);
+  //       });
+  //   };
+  
+  //   checkAdsBlocked((adsBlocked)=>{
+  //       if(adsBlocked){
+  //           adBlockDetected();
+  //       }else{
+  //           adBlockNotDetected();
+  //       }
+  //   });
+  // });
+  </script>
+
+<!-- End component components/adBlockDetect -->
+
+
+<script src="/gtag_events.js?v=004" data-gameid="bloons_td_4"></script>
+<!-- End component components/gtag_events -->
+
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Bloons Tower Defense 4 | Unblocked on CCPorted</title>
+	<meta id="viewport" name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="description"
+		content="Bloons Tower Defense 4 is a fun tower defense game that builds on the previous games in the series.">
+	<!-- <link rel="stylesheet" type="text/css" href="https://swagapi.shockwave.com/dist/swag-api.css"> -->
+	<!-- <script type="text/javascript" src="https://swagapi.shockwave.com/dist/swag-api.js"></script> -->
+	<script type="text/javascript" src="./lib/clipboard.min.js"></script>
+	<script type="text/javascript" src="./lib/howler.min.js"></script>
+	<script type="text/javascript" src="./game.js"></script>
+	<script>
+		//window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, false);
+		if (typeof window.devicePixelRatio != 'undefined' && window.devicePixelRatio > 2) {
+			var meta = document.getElementById("viewport");
+			meta.setAttribute('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
+		}
+
+		function visibilityChange() {
+			var hidden = 'hidden'
+
+			// Standards:
+			if (hidden in document)
+				document.addEventListener('visibilitychange', onchange)
+			else if ((hidden = 'mozHidden') in document)
+				document.addEventListener('mozvisibilitychange', onchange)
+			else if ((hidden = 'webkitHidden') in document)
+				document.addEventListener('webkitvisibilitychange', onchange)
+			else if ((hidden = 'msHidden') in document)
+				document.addEventListener('msvisibilitychange', onchange)
+			// IE 9 and lower:
+			else if ('onfocusin' in document)
+				document.onfocusin = document.onfocusout = onchange
+			// All others:
+			else
+				window.onpageshow = window.onpagehide = window.onfocus = window.onblur = onchange
+
+			function onchange(evt) {
+				let v = false,
+					h = true,
+					evtMap = {
+						focus: v,
+						focusin: v,
+						pageshow: v,
+						blur: h,
+						focusout: h,
+						pagehide: h
+					}
+
+				evt = evt || window.event
+
+				let windowHidden = false
+				if (evt.type in evtMap) {
+					windowHidden = evtMap[evt.type]
+				} else {
+					windowHidden = this[hidden]
+				}
+
+				var howl = Howler;
+
+				if (howl) {
+					if (windowHidden) {
+						howl.mute(true)
+					} else {
+						howl.mute(false)
+					}
+				}
+			}
+
+			// set the initial state (but only if browser supports the Page Visibility API)
+			if (document[hidden] !== undefined)
+				onchange({
+					type: document[hidden] ? 'blur' : 'focus'
+				})
+		}
+
+		visibilityChange();
+	</script>
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		#openfl-content {}
+
+		canvas {
+			max-width: 100%;
+			display: block;
+			margin: auto;
+		}
+
+
+		@font-face {
+			font-family: 'Trebuchet MS';
+			src: url('assets/fonts/743_Trebuchet MS.woff2') format('woff2');
+			src: url('assets/fonts/743_Trebuchet MS.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Arial';
+			src: url('assets/fonts/1865_Arial.woff2') format('woff2');
+			src: url('assets/fonts/1865_Arial.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Arial Black';
+			src: url('assets/fonts/526_Arial Black.woff2') format('woff2');
+			src: url('assets/fonts/526_Arial Black.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Yikes!';
+			src: url('assets/fonts/849_Yikes!.woff2') format('woff2');
+			src: url('assets/fonts/849_Yikes!.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Cartoonist';
+			src: url('assets/fonts/1404_Cartoonist.woff2') format('woff2');
+			src: url('assets/fonts/1404_Cartoonist.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Tahoma';
+			src: url('assets/fonts/2103_Tahoma.woff2') format('woff2');
+			src: url('assets/fonts/2103_Tahoma.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Yikes!';
+			src: url('assets/fonts/164_Yikes!.woff2') format('woff2');
+			src: url('assets/fonts/164_Yikes!.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Visitor TT2 BRK';
+			src: url('assets/fonts/1546_Visitor TT2 BRK.woff2') format('woff2');
+			src: url('assets/fonts/1546_Visitor TT2 BRK.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Trebuchet MS';
+			src: url('assets/fonts/1582_Trebuchet MS.woff2') format('woff2');
+			src: url('assets/fonts/1582_Trebuchet MS.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Verdana';
+			src: url('assets/fonts/831_Verdana.woff2') format('woff2');
+			src: url('assets/fonts/831_Verdana.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'McBoing Boing';
+			src: url('assets/fonts/899_McBoing Boing.woff2') format('woff2');
+			src: url('assets/fonts/899_McBoing Boing.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Cartoonist';
+			src: url('assets/fonts/1455_Cartoonist.woff2') format('woff2');
+			src: url('assets/fonts/1455_Cartoonist.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'Tahoma';
+			src: url('assets/fonts/717_Tahoma.woff2') format('woff2');
+			src: url('assets/fonts/717_Tahoma.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+	</style>
+</head>
+<style>
+	body {
+		-webkit-touch-callout: none;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+
+	body * {
+		-webkit-touch-callout: none;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+</style>
+<script>window.addEventListener('keydown', function (e) { if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1 && e.target == document.body) { e.preventDefault(); } }, false);</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inobounce/0.2.0/inobounce.min.js"
+	integrity="sha512-6lLl4/TF28QKaWUwQzDbb0aQRsVWQ8O5hp7gtCzm/EYZTR04AGsxoL1LzjHFTd7s6IAgzRTGsNe+TU+EoHtBYg=="
+	crossorigin="anonymous"></script>
+
+<body>
+	<div id="root">
+		<div id="openfl-content"></div>
+	</div>
+	<script type="text/javascript">
+		lime.embed("openfl-content", 640, 640, "FFFFFF");
+	</script>
+</body>
+
+</html>

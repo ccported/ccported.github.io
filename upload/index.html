@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CCPorted Upload</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1030.0.min.js"></script>
+    <script src="amazon_cognito_auth.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.1.0/browser/oidc-client-ts.min.js"
+      integrity="sha512-J0UxiKspnGk7zI1BE1PWUIo3ramEimr1tnlsnyY9jSL9r0tiSRPscPuQmbBt7rNWrE8d6vNiJTsr4dVFJBYKcg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        margin-top: 15px;
+        padding: 10px;
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      Hello:
+      <pre id="email"></pre>
+    </div>
+    <details>
+      <summary>Add a Game</summary>
+      <h1>Add a Game</h1>
+      <h3>If the game is already in the system, add ID and hit load.</h3>
+      <label>Game ID:</label>
+      <input type="text" id="gameId" /><br />
+      <button id="load">Load</button>
+      <br />
+      <label>ZIP File:</label>
+      <input type="file" id="zipFile" /><br />
+
+      <label>Game Name:</label>
+      <input type="text" id="name" /><br />
+
+      <label>Description:</label>
+      <input type="text" id="description" /><br />
+
+      <label>Thumb Path:</label>
+      <input type="text" id="thumbPath" placeholder="/thumb.jpg" /><br />
+
+      <label>Upload Thumb:</label>
+      <input type="file" id="thumbFile" /><br />
+
+      <label>Is Proxy:</label>
+      <input type="checkbox" id="isProxy" /><br />
+
+      <label>Proxy Path:</label>
+      <input type="text" id="proxyPath" /><br />
+
+      <label>Tags (comma-separated):</label>
+      <input type="text" id="tags" /><br />
+
+      <button id="upload">Upload</button>
+    </details>
+    <details>
+      <summary>Add a ROM</summary>
+      <h1>Add a ROM</h1>
+      <label>ROM File:</label>
+      <input type="file" id="romFile" /><br />
+      <label>ROM Name:</label>
+      <input type="text" id="romName" /><br />
+      <label>ROM Type</label>
+      <select id="romType">
+        <option value="atari2600">Atari 2600</option>
+        <option value="dos">DOS File</option>
+        <option value="dreamcast">Dreamcast</option>
+        <option value="gb">Game Boy</option>
+        <option value="gba">Game Boy Advance</option>
+        <option value="gbc">Game Boy Color</option>
+        <option value="n64">Nintendo 64</option>
+        <option value="nds">Nintendo DS</option>
+        <option value="nes">Nintendo Entertainment System</option>
+        <option value="psx">PlayStation 1</option>
+        <option value="sega">Sega Genesis</option>
+        <option value="segaCD">Sega CD</option>
+        <option value="segaSaturn">Sega Saturn</option>
+        <option value="snes">Super Nintendo Entertainment System</option>
+        <option value="vb">Nintendo Virtual Boy</option>
+        <option value="other">Other...</option>
+      </select>
+      <label>Rom Type (other)</label>
+      <p style="font-size: smaller">If you specified "other" in the previous category, please specifiy it here. <a href="https://emulatorjs.org/docs4devs/cores">Look here</a> for a list of valid engines. (<code>nes</code> is a valid engine, <code>fceumm</code> is not)</a></p>
+      <input type="text" id="romCategory" /><br />
+      <button id="uploadRom">Upload</button>
+    </details>
+    <script type="module">
+      import { userManager } from "./auth.js";
+      window.user = null;
+      AWS.config.update({ region: "us-west-2" });
+      userManager
+        .signinCallback()
+        .then(function (user) {
+          console.log("User logged in", user);
+          window.user = user;
+          document.getElementById("email").textContent = user.profile?.email;
+          userLoggedIn(
+            "cognito-idp.us-west-2.amazonaws.com/us-west-2_euwC8WZao",
+            user.id_token
+          );
+        })
+        .catch(function (err) {
+          console.error(err);
+          window.location.href = "auth.html";
+        });
+      // configure AWS SDK with Cognito credentials
+      AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: "us-west-2:c4735e5d-feb3-4a42-a02b-a79244783abd",
+      });
+      async function loadData(filePath) {
+        const response = await fetch(filePath);
+        const json = await response.json();
+        return json;
+      }
+
+      // Called when an identity provider has a token for a logged in user
+      function userLoggedIn(providerName, token) {
+        AWS.config.credentials.params.Logins =
+          AWS.config.credentials.params.Logins || {};
+
+        // Use the correct Cognito Identity Provider format
+        const identityProvider = `cognito-idp.us-west-2.amazonaws.com/us-west-2_euwC8WZao`;
+
+        // Use id_token instead of access_token
+        AWS.config.credentials.params.Logins[identityProvider] = token;
+
+        // Expire credentials to force refresh
+        AWS.config.credentials.expired = true;
+
+        // Refresh credentials
+        AWS.config.credentials.refresh((err) => {
+          if (err) {
+            console.error("Error refreshing credentials: ", err);
+          } else {
+            console.log("AWS Credentials refreshed", AWS.config.credentials);
+          }
+        });
+      }
+
+      const s3 = new AWS.S3({
+        apiVersion: "2006-03-01",
+        region: "us-west-2",
+      });
+      async function uploadToS3() {
+        document.getElementById("upload").disabled = true;
+        const zipFile = document.getElementById("zipFile").files[0];
+        const thumbFile = document.getElementById("thumbFile").files[0];
+        const name = document.getElementById("name").value;
+        const description = document.getElementById("description").value;
+        const thumbPath =
+          document.getElementById("thumbPath").value || "/thumb.png";
+        const isProxy = document.getElementById("isProxy").checked;
+        const proxyPath = document.getElementById("proxyPath").value;
+        const tags = document.getElementById("tags").value.split(",");
+
+        if (!zipFile) {
+          alert("Please select a ZIP file.");
+          return;
+        }
+
+        const dataJson = {
+          name,
+          description,
+          thumb_path: thumbPath,
+          is_proxy: isProxy,
+          proxy_path: proxyPath,
+          tags,
+        };
+
+        const zip = await JSZip.loadAsync(zipFile);
+        zip.file("data.json", JSON.stringify(dataJson));
+
+        if (thumbFile) {
+          zip.file("thumb.jpg", thumbFile);
+        }
+
+        const blob = await zip.generateAsync({ type: "blob" });
+
+        const params = {
+          Bucket: "ccportedtempstore",
+          Key: `game_${Date.now().toString(16).substring(7)}_${Math.random()
+            .toString(16)
+            .substring(2)}.zip`,
+          Body: blob,
+          ContentType: "application/zip",
+          ACL: "public-read",
+        };
+
+        s3.upload(params, (err, data) => {
+          if (err) {
+            console.error("Error uploading to S3", err);
+            alert("Something went wrong. Please try again. (Check the console for more information, and DM me on discord with what it says)");
+          } else {
+            console.log("Uploaded to S3", data);
+            document.getElementById("upload").textContent = "Uploaded!";
+            setTimeout(() => {
+              document.getElementById("upload").disabled = false;
+              document.getElementById("upload").textContent = "Upload";
+            }, 2000);
+          }
+        });
+      }
+      document.getElementById("upload").addEventListener("click", uploadToS3);
+      document.getElementById("load").addEventListener("click", load);
+      async function load() {
+        const gameID = document.getElementById("gameId").value;
+        const json = await loadData("https://ccported.github.io/games.json");
+        const { games } = json;
+        const game = games.find((g) => {
+          if (g.name === gameID) {
+            return true;
+          }
+          const possibleLinkMatches = g.links.find((l) => {
+            if (l.link.endsWith(gameID + "/")) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+          if (possibleLinkMatches) {
+            return true;
+          }
+          return false;
+        });
+        if (game) {
+          document.getElementById("name").value = game.fName;
+          document.getElementById("description").value = game.description;
+          document.getElementById("isProxy").checked = false;
+          document.getElementById("proxyPath").value = "";
+          document.getElementById("tags").value = game.tags.join(",");
+        } else {
+          document.getElementById("name").value = "";
+          document.getElementById("description").value = "";
+          document.getElementById("thumbPath").placeholder = "/thumb.jpg";
+          document.getElementById("isProxy").checked = false;
+          document.getElementById("proxyPath").value = "";
+          document.getElementById("tags").value = "";
+        }
+      }
+      document.getElementById("zipFile").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const fileName = file.name;
+        const firstBit = fileName.split(".").slice(0, -1).join(".");
+        document.getElementById("gameId").value = firstBit;
+        load();
+      });
+      document.getElementById("romFile").addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        const fileName = file.name;
+        const firstBit = fileName.split(".").slice(0, -1).join(".");
+        document.getElementById("romName").value = firstBit;
+      });
+      function uploadROM(){
+        document.getElementById("uploadRom").disabled = true;
+        const romName = document.getElementById("romName").value;
+        const romType = document.getElementById("romType").value;
+        const romCategory = document.getElementById("romCategory").value;
+        let finalCategory = romType;
+        const romFile = document.getElementById("romFile").files[0];
+        if (!romFile) {
+          alert("Please select a ROM file.");
+          return;
+        }
+        if (romType === "other" && !romCategory) {
+          alert("Please specify a category for the ROM.");
+          return;
+        }
+        if(romType == "other"){
+          finalCategory = romCategory;
+        }
+        const params = {
+          Bucket: "ccportedroms",
+          Key: `${finalCategory}/${decapitalize(romName)}`,
+          Body: romFile,
+          ContentType: "application/octet-stream",
+          ACL: "public-read",
+        };
+        s3.upload(params, (err, data) => {
+          if (err) {
+            console.error("Error uploading to S3", err);
+            alert("Something went wrong. Please try again. (Check the console for more information, and DM me on discord with what it says)");
+          } else {
+            console.log("Uploaded to S3", data);
+            document.getElementById("uploadRom").textContent = "Uploaded!";
+            setTimeout(() => {
+              document.getElementById("uploadRom").disabled = false;
+              document.getElementById("uploadRom").textContent = "Upload";
+            }, 2000);
+          }
+        });
+      }
+      document.getElementById("uploadRom").addEventListener("click", uploadROM);
+      function capitalizeWords(str) {
+          return str.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+      }
+      function decapitalize(str) {
+          return str.split(" ").map(word => word.charAt(0).toLowerCase() + word.slice(1)).join('_');
+      }
+    </script>
+  </body>
+</html>

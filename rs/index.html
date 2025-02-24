@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+<!-- Component components/gtag_events -->
+
+<script>
+    window.ccPorted = {
+        ...(window.ccPorted || {}),
+        gameID: (("rooftop_snipers").length > 0) ? "rooftop_snipers" : "ccported"
+    }
+    window.gameID = window.ccPorted.gameID;
+</script>
+
+
+<!-- Component components/gtag -->
+<!-- supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+  try {
+    const SUPABASE_URL = "https://dahljrdecyiwfjgklnvz.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGxqcmRlY3lpd2ZqZ2tsbnZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjgyNjE3NzMsImV4cCI6MjA0MzgzNzc3M30.8-YlXqSXsYoPTaDlHMpTdqLxfvm89-8zk2HG2MCABRI";
+    window.ccSupaClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+  } catch (e) {
+    alert(
+      "Error Initializing. Please refresh. If this error persists, try a different domain." +
+        "\n\n" +
+        e.stack
+    );
+    console.log(e);
+  }
+</script>
+
+<!-- large.js -->
+<script src="/assets/scripts/helpers.js?i=8"></script>
+<script src="/assets/scripts/large.js?i=7"></script>
+<script src="/assets/scripts/stateHandler.js?i=6"></script>
+
+<!-- external (gtag) -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+
+<!-- Component components/adBlockDetect -->
+<script>
+  //  window.addEventListener("load", () => {
+    
+  //   log("Window loaded, running adblock check");
+    
+  //   // Create elements programmatically
+  //   function createOverlay(visibility = "none") {
+  //     const enabledEl = document.createElement("div");
+  //     enabledEl.classList.add("adb-enabled");
+      
+  //     const overlay = document.createElement("div");
+  //     overlay.classList.add("adb-enabled-overlay");
+      
+  //     const content = document.createElement("div");
+  //     content.classList.add("adb-enabled-content");
+      
+  //     const title = document.createElement("h2");
+  //     title.textContent = "Ad blocker detected";
+      
+  //     const message = document.createElement("p");
+  //     message.textContent = "Please disable your AdBlock to continue.";
+      
+  //     const continueBtn = document.createElement("button");
+  //     continueBtn.classList.add("adb-continue-btn");
+  //     continueBtn.textContent = "Continue without supporting (10s)";
+      
+  //     // Build DOM structure
+  //     content.appendChild(title);
+  //     content.appendChild(message);
+  //     content.appendChild(continueBtn);
+  //     overlay.appendChild(content);
+  //     enabledEl.appendChild(overlay);
+  //     enabledEl.style.display = visibility;
+      
+  //     // Add styles
+  //     const styles = document.createElement("style");
+  //     styles.textContent = `
+  //       .adb-enabled-overlay {
+  //         width: 100%;
+  //         height: 100%;
+  //         position: fixed;
+  //         top: 0;
+  //         left: 0;
+  //         color: white;
+  //         background-color: #ee3030;
+  //         z-index: 99999;
+  //         padding: 70px;
+  //       }
+  //       .adb-continue-btn {
+  //         cursor: pointer;
+  //         padding: 5px;
+  //         border: 1px solid white;
+  //         background-color: transparent;
+  //         color: white;
+  //         transition: 500ms;
+  //       }
+  //       .adb-continue-btn:hover {
+  //         background-color: white;
+  //         color: #ee3030;
+  //         transition: 500ms;
+  //       }
+  //       body {
+  //         margin-right: 150px;
+  //       }
+  //       header .r-side-nav {
+  //         padding-right: 150px !important;
+  //       }
+  //     `;
+  //     document.head.appendChild(styles);
+      
+  //     return { enabledEl, continueBtn };
+  //   }
+    
+  //   const { enabledEl, continueBtn } = createOverlay("none");
+  //   document.body.appendChild(enabledEl);
+  
+  //   function adBlockDetected() {
+  //     log("adBlockDetected()");
+  //     let ax = false;
+  //     enabledEl.style.display = "block";
+  
+  //     // Adblock delay countdown
+  //     let countdown = 10;
+  //     const countdownInterval = setInterval(function() {
+  //       countdown--;
+  //       continueBtn.textContent = `Continue without supporting (${countdown}s)`;
+  //       if (countdown === 0) {
+  //         clearInterval(countdownInterval);
+  //         continueBtn.textContent = "Continue without supporting";
+  //       }
+  //     }, 1000);
+  
+  //     continueBtn.addEventListener("click", (e) => {
+  //       if (countdown === 0) {
+  //         ax = true;
+  //         enabledEl.style.display = "none";
+  //       }
+  //     });
+  
+  //     // Check if the element still exists every 750ms
+  //     const checkInterval = setInterval(function() {
+  //       if (!document.body.contains(enabledEl)) {
+  //         clearInterval(checkInterval);
+  //         const { enabledEl: newEl } = createOverlay("block");
+  //         document.body.appendChild(newEl);
+  //       }
+  //     }, 750);
+  //   }
+  
+  //   function adBlockNotDetected() {
+  //     log("Blocks not detected");
+  //     enabledEl.style.display = "none";
+  //   }
+  
+  //   const REQUEST_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  //   const REQUEST_CONFIG = {
+  //     method: "HEAD",
+  //     mode: "no-cors",
+  //   };
+  
+  // const checkAdsBlocked = (callback) => {
+  //   fetch(REQUEST_URL, REQUEST_CONFIG)
+  //       .then((response) => {
+  //           callback(response.redirected);
+  //       })                                  
+  //       .catch(() => {
+  //           callback(true);
+  //       });
+  //   };
+  
+  //   checkAdsBlocked((adsBlocked)=>{
+  //       if(adsBlocked){
+  //           adBlockDetected();
+  //       }else{
+  //           adBlockNotDetected();
+  //       }
+  //   });
+  // });
+  </script>
+
+<!-- End component components/adBlockDetect -->
+
+
+<script src="/gtag_events.js?v=004" data-gameid="rooftop_snipers"></script>
+<!-- End component components/gtag_events -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Rooftop Snipers | Unblocked on CCPorted</title>
+    <meta name = "description" content = "Rooftop Snipers is a chaotic two-button two-player sniper game. Find a friend to play with, or practice by playing against the computer in this rage-inducing action game made by TwoPlayer Games! Unblocked and free to play on CCPorted!">
+
+    <script>
+      function UnityCallJs() {
+        console.log("unity call!");
+      }
+
+      function UnityCallEndgameJs() {
+        console.log("untiy call end game");
+      }
+
+      function UnityCallPlayJs() {
+        console.log("untiy call Play game");
+      }
+
+      function UnityCallLeaderboardJs() {
+        console.log("untiy call On Leaderboard");
+      }
+
+      function UnityCallAgainJs() {
+        console.log("unity call Again");
+      }
+
+      function UnityCallBackHomeJs() {
+        console.log("untiy call backHome");
+      }
+
+      function UnityCallChangeDayLeaderboardJs() {
+        console.log("untiy call change day leaderboard");
+      }
+
+      function UnityCallCloseLeaderboardJs() {
+        console.log("untiy call close leaderboard");
+      }
+    </script>
+    <style>
+      body {
+  margin: 0;
+  padding: 0;
+}
+.webgl-content * {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.webgl-content {
+  position: absolute;
+}
+.webgl-content,
+#gameContainer,
+#unityContainer,
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+.webgl-content .logo,
+.progress {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.webgl-content .logo {
+  background: url("progressLogo.Light.png") no-repeat center/contain;
+  width: 354px;
+  height: 130px;
+}
+.webgl-content .progress {
+  height: 18px;
+  width: 141px;
+  margin-top: 90px;
+}
+.webgl-content .progress .empty {
+  background: url("progressEmpty.Light.png") no-repeat right/cover;
+  float: right;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+.webgl-content .progress .full {
+  background: url("progressFull.Light.png") no-repeat left/cover;
+  float: left;
+  width: 0%;
+  height: 100%;
+  display: inline-block;
+}
+.webgl-content .logo.Dark {
+  background-image: url(progressLogo.Dark.png);
+}
+.webgl-content .progress.Dark .empty {
+  background-image: url(progressEmpty.Dark.png);
+}
+.webgl-content .progress.Dark .full {
+  background-image: url(progressFull.Dark.png);
+}
+.webgl-content .footer {
+  margin-top: 5px;
+  height: 38px;
+  line-height: 38px;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+  font-size: 18px;
+}
+.webgl-content .footer .webgl-logo,
+.title,
+.fullscreen {
+  height: 100%;
+  display: inline-block;
+  background: transparent center no-repeat;
+}
+.webgl-content .footer .webgl-logo {
+  background-image: url(webgl-logo.png);
+  width: 204px;
+  float: left;
+}
+.webgl-content .footer .title {
+  margin-right: 10px;
+  float: right;
+}
+.webgl-content .footer .fullscreen {
+  background-image: url(fullscreen.png);
+  width: 38px;
+  float: right;
+}
+    </style>
+  </head>
+  <body style="margin: 0 auto; overflow: hidden">
+  
+
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 100%; height: 100%; margin: 0;"></div>
+  </div>
+    
+  </body>
+  <script src="UnityLoader2019.js"></script>
+  <script>
+  
+    var gameInstance =  UnityLoader.instantiate("gameContainer", "rooftop-snipers.json");
+
+    function UnityProgress(gameInstance, progress) {
+      if (!gameInstance.Module) {
+        return;
+      }
+      // progressBarFull.style.width = 100 * progress + "%";
+      // if (progress === 1 && !gameInstance.removeTimeout) {
+      //   loadingBar.style.display = "none";
+      //   gameInstance.removeTimeout = setTimeout(function() {
+      //       loadingBar.style.display = "none";
+      //   }, 2000);
+      //   fullscreenButton.onclick = () => {
+      //     gameInstance.SetFullscreen(1);
+      //   };
+      // }
+    }
+  </script>
+
+</html>

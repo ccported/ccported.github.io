@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<!-- Component components/gtag_events -->
+
+<script>
+    window.ccPorted = {
+        ...(window.ccPorted || {}),
+        gameID: (("slow_roads").length > 0) ? "slow_roads" : "ccported"
+    }
+    window.gameID = window.ccPorted.gameID;
+</script>
+
+
+<!-- Component components/gtag -->
+<!-- supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+  try {
+    const SUPABASE_URL = "https://dahljrdecyiwfjgklnvz.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGxqcmRlY3lpd2ZqZ2tsbnZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjgyNjE3NzMsImV4cCI6MjA0MzgzNzc3M30.8-YlXqSXsYoPTaDlHMpTdqLxfvm89-8zk2HG2MCABRI";
+    window.ccSupaClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+  } catch (e) {
+    alert(
+      "Error Initializing. Please refresh. If this error persists, try a different domain." +
+        "\n\n" +
+        e.stack
+    );
+    console.log(e);
+  }
+</script>
+
+<!-- large.js -->
+<script src="/assets/scripts/helpers.js?i=8"></script>
+<script src="/assets/scripts/large.js?i=7"></script>
+<script src="/assets/scripts/stateHandler.js?i=6"></script>
+
+<!-- external (gtag) -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+
+<!-- Component components/adBlockDetect -->
+<script>
+  //  window.addEventListener("load", () => {
+    
+  //   log("Window loaded, running adblock check");
+    
+  //   // Create elements programmatically
+  //   function createOverlay(visibility = "none") {
+  //     const enabledEl = document.createElement("div");
+  //     enabledEl.classList.add("adb-enabled");
+      
+  //     const overlay = document.createElement("div");
+  //     overlay.classList.add("adb-enabled-overlay");
+      
+  //     const content = document.createElement("div");
+  //     content.classList.add("adb-enabled-content");
+      
+  //     const title = document.createElement("h2");
+  //     title.textContent = "Ad blocker detected";
+      
+  //     const message = document.createElement("p");
+  //     message.textContent = "Please disable your AdBlock to continue.";
+      
+  //     const continueBtn = document.createElement("button");
+  //     continueBtn.classList.add("adb-continue-btn");
+  //     continueBtn.textContent = "Continue without supporting (10s)";
+      
+  //     // Build DOM structure
+  //     content.appendChild(title);
+  //     content.appendChild(message);
+  //     content.appendChild(continueBtn);
+  //     overlay.appendChild(content);
+  //     enabledEl.appendChild(overlay);
+  //     enabledEl.style.display = visibility;
+      
+  //     // Add styles
+  //     const styles = document.createElement("style");
+  //     styles.textContent = `
+  //       .adb-enabled-overlay {
+  //         width: 100%;
+  //         height: 100%;
+  //         position: fixed;
+  //         top: 0;
+  //         left: 0;
+  //         color: white;
+  //         background-color: #ee3030;
+  //         z-index: 99999;
+  //         padding: 70px;
+  //       }
+  //       .adb-continue-btn {
+  //         cursor: pointer;
+  //         padding: 5px;
+  //         border: 1px solid white;
+  //         background-color: transparent;
+  //         color: white;
+  //         transition: 500ms;
+  //       }
+  //       .adb-continue-btn:hover {
+  //         background-color: white;
+  //         color: #ee3030;
+  //         transition: 500ms;
+  //       }
+  //       body {
+  //         margin-right: 150px;
+  //       }
+  //       header .r-side-nav {
+  //         padding-right: 150px !important;
+  //       }
+  //     `;
+  //     document.head.appendChild(styles);
+      
+  //     return { enabledEl, continueBtn };
+  //   }
+    
+  //   const { enabledEl, continueBtn } = createOverlay("none");
+  //   document.body.appendChild(enabledEl);
+  
+  //   function adBlockDetected() {
+  //     log("adBlockDetected()");
+  //     let ax = false;
+  //     enabledEl.style.display = "block";
+  
+  //     // Adblock delay countdown
+  //     let countdown = 10;
+  //     const countdownInterval = setInterval(function() {
+  //       countdown--;
+  //       continueBtn.textContent = `Continue without supporting (${countdown}s)`;
+  //       if (countdown === 0) {
+  //         clearInterval(countdownInterval);
+  //         continueBtn.textContent = "Continue without supporting";
+  //       }
+  //     }, 1000);
+  
+  //     continueBtn.addEventListener("click", (e) => {
+  //       if (countdown === 0) {
+  //         ax = true;
+  //         enabledEl.style.display = "none";
+  //       }
+  //     });
+  
+  //     // Check if the element still exists every 750ms
+  //     const checkInterval = setInterval(function() {
+  //       if (!document.body.contains(enabledEl)) {
+  //         clearInterval(checkInterval);
+  //         const { enabledEl: newEl } = createOverlay("block");
+  //         document.body.appendChild(newEl);
+  //       }
+  //     }, 750);
+  //   }
+  
+  //   function adBlockNotDetected() {
+  //     log("Blocks not detected");
+  //     enabledEl.style.display = "none";
+  //   }
+  
+  //   const REQUEST_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  //   const REQUEST_CONFIG = {
+  //     method: "HEAD",
+  //     mode: "no-cors",
+  //   };
+  
+  // const checkAdsBlocked = (callback) => {
+  //   fetch(REQUEST_URL, REQUEST_CONFIG)
+  //       .then((response) => {
+  //           callback(response.redirected);
+  //       })                                  
+  //       .catch(() => {
+  //           callback(true);
+  //       });
+  //   };
+  
+  //   checkAdsBlocked((adsBlocked)=>{
+  //       if(adsBlocked){
+  //           adBlockDetected();
+  //       }else{
+  //           adBlockNotDetected();
+  //       }
+  //   });
+  // });
+  </script>
+
+<!-- End component components/adBlockDetect -->
+
+
+<script src="/gtag_events.js?v=004" data-gameid="slow_roads"></script>
+<!-- End component components/gtag_events -->
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon_circle.svg" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>
+      s&#8202;l&#8202;o&#8202;w&nbsp;&nbsp;r&#8202;o&#8202;a&#8202;d&#8202;s | Unblocked on CCPorted
+    </title>
+    <meta name="title" content="s l o w  r o a d s" />
+    <meta name="description" content="endless driving zen in your browser. Unblocked and free to play on CCPorted." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://slowroads.io/" />
+    <meta property="og:title" content="s l o w  r o a d s" />
+    <meta
+      property="og:description"
+      content="endless driving zen in your browser"
+    />
+    <meta property="og:image" content="./img.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://slowroads.io/" />
+    <meta property="twitter:title" content="s l o w  r o a d s" />
+    <meta
+      property="twitter:description"
+      content="endless driving zen in your browser"
+    />
+    <script src="./alea.min.js"></script>
+    <link href="./static/css/main.8b77de6a.chunk.css" rel="stylesheet" />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script>
+      !(function (e) {
+        function r(r) {
+          for (
+            var n, a, i = r[0], c = r[1], l = r[2], f = 0, p = [];
+            f < i.length;
+            f++
+          )
+            (a = i[f]),
+              Object.prototype.hasOwnProperty.call(o, a) &&
+                o[a] &&
+                p.push(o[a][0]),
+              (o[a] = 0);
+          for (n in c)
+            Object.prototype.hasOwnProperty.call(c, n) && (e[n] = c[n]);
+          for (s && s(r); p.length; ) p.shift()();
+          return u.push.apply(u, l || []), t();
+        }
+        function t() {
+          for (var e, r = 0; r < u.length; r++) {
+            for (var t = u[r], n = !0, i = 1; i < t.length; i++) {
+              var c = t[i];
+              0 !== o[c] && (n = !1);
+            }
+            n && (u.splice(r--, 1), (e = a((a.s = t[0]))));
+          }
+          return e;
+        }
+        var n = {},
+          o = { 1: 0 },
+          u = [];
+        function a(r) {
+          if (n[r]) return n[r].exports;
+          var t = (n[r] = { i: r, l: !1, exports: {} });
+          return e[r].call(t.exports, t, t.exports, a), (t.l = !0), t.exports;
+        }
+        (a.e = function (e) {
+          var r = [],
+            t = o[e];
+          if (0 !== t)
+            if (t) r.push(t[2]);
+            else {
+              var n = new Promise(function (r, n) {
+                t = o[e] = [r, n];
+              });
+              r.push((t[2] = n));
+              var u,
+                i = document.createElement("script");
+              (i.charset = "utf-8"),
+                (i.timeout = 120),
+                a.nc && i.setAttribute("nonce", a.nc),
+                (i.src = (function (e) {
+                  return (
+                    a.p +
+                    "static/js/" +
+                    ({}[e] || e) +
+                    "." +
+                    { 3: "37460af1" }[e] +
+                    ".chunk.js"
+                  );
+                })(e));
+              var c = new Error();
+              u = function (r) {
+                (i.onerror = i.onload = null), clearTimeout(l);
+                var t = o[e];
+                if (0 !== t) {
+                  if (t) {
+                    var n = r && ("load" === r.type ? "missing" : r.type),
+                      u = r && r.target && r.target.src;
+                    (c.message =
+                      "Loading chunk " +
+                      e +
+                      " failed.\n(" +
+                      n +
+                      ": " +
+                      u +
+                      ")"),
+                      (c.name = "ChunkLoadError"),
+                      (c.type = n),
+                      (c.request = u),
+                      t[1](c);
+                  }
+                  o[e] = void 0;
+                }
+              };
+              var l = setTimeout(function () {
+                u({ type: "timeout", target: i });
+              }, 12e4);
+              (i.onerror = i.onload = u), document.head.appendChild(i);
+            }
+          return Promise.all(r);
+        }),
+          (a.m = e),
+          (a.c = n),
+          (a.d = function (e, r, t) {
+            a.o(e, r) ||
+              Object.defineProperty(e, r, { enumerable: !0, get: t });
+          }),
+          (a.r = function (e) {
+            "undefined" != typeof Symbol &&
+              Symbol.toStringTag &&
+              Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }),
+              Object.defineProperty(e, "__esModule", { value: !0 });
+          }),
+          (a.t = function (e, r) {
+            if ((1 & r && (e = a(e)), 8 & r)) return e;
+            if (4 & r && "object" == typeof e && e && e.__esModule) return e;
+            var t = Object.create(null);
+            if (
+              (a.r(t),
+              Object.defineProperty(t, "default", { enumerable: !0, value: e }),
+              2 & r && "string" != typeof e)
+            )
+              for (var n in e)
+                a.d(
+                  t,
+                  n,
+                  function (r) {
+                    return e[r];
+                  }.bind(null, n)
+                );
+            return t;
+          }),
+          (a.n = function (e) {
+            var r =
+              e && e.__esModule
+                ? function () {
+                    return e.default;
+                  }
+                : function () {
+                    return e;
+                  };
+            return a.d(r, "a", r), r;
+          }),
+          (a.o = function (e, r) {
+            return Object.prototype.hasOwnProperty.call(e, r);
+          }),
+          (a.p = "./"),
+          (a.oe = function (e) {
+            throw (console.error(e), e);
+          });
+        var i = (this["webpackJsonpslowroads.io"] =
+            this["webpackJsonpslowroads.io"] || []),
+          c = i.push.bind(i);
+        (i.push = r), (i = i.slice());
+        for (var l = 0; l < i.length; l++) r(i[l]);
+        var s = c;
+        t();
+      })([]);
+    </script>
+    <script src="./static/js/2.feea8a5f.chunk.js"></script>
+    <script src="./static/js/main.ca6b3355.chunk.js"></script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+@font-face {
+    font-family: jetpackia;
+    src: url('font/Jetpackia.ttf');
+}
+
+* {
+  touch-action: manipulation;
+}
+  
+body{
+    background-color: #000000;
+    margin: 0;
+}
+
+.fontLoader{
+    position: absolute;
+    left: -1000px;
+    visibility: hidden;
+}
+
+.bannerAds{
+    height: 100px !important;
+    /*background-color: yellow;*/
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#phaser-canvas{
+    margin: 0 auto;
+}
+
+body,#content{
+    /*position: fixed;*/
+    height: 100%;
+    /*height: 100vh !important;*/
+    max-height: 100vh !important;
+}
+
+#divAds, #tempads{
+    display: none;
+    /*background-color: green;*/
+}
+
+/*canvas{
+    width: 100%;
+    height: 100%;
+    display: block !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    max-height: 100vh !important;
+}*/
+
+ /*ROTATE SCREEN */
+.center {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1080px;
+    height: 1080px;
+    margin-top: -540px; /* Half the height */
+    margin-left: -480px; /* Half the width */
+}
+/*ROTATE SCREEN */
+
+/*================ START ADS ===================*/
+.softkey{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+.softkey>div{
+    padding: 5px;
+    font-size: 17px;
+    font-weight: 600;
+    display: inline-block;
+    color:#000000;
+}
+#softkey-left{
+    text-align: left;
+    float:left;
+}
+#softkey-right{
+    text-align: right;
+    float:right;   
+}
+.ads{
+    position: absolute !important;
+}
+#bannerAds_container{
+    top: 0;
+    height: 40px;
+    background-color:black;
+    display: list-item;
+}
+#ad-container{
+    height: 40px;
+    background-color: black !important;
+}
+.bannerAds{
+    height: 100px !important;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+#divAds, #tempads{
+    display: none;
+}
+/*================ END ADS ===================*/

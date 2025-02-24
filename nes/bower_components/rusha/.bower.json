@@ -1,0 +1,26 @@
+{
+  "name": "Rusha",
+  "version": "0.7.8",
+  "main": "rusha.js",
+  "scripts": [
+    "rusha.js"
+  ],
+  "ignore": [
+    "rusha.pp.js",
+    "examples/",
+    "package.json",
+    ".npmignore",
+    "Makefile",
+    "node_modules"
+  ],
+  "homepage": "https://github.com/srijs/rusha",
+  "_release": "0.7.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.7.8",
+    "commit": "0e57d196a2fffeeced969529cea10076aa4a6dc3"
+  },
+  "_source": "https://github.com/srijs/rusha.git",
+  "_target": "~0.7.7",
+  "_originalSource": "rusha"
+}

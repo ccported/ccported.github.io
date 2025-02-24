@@ -1,0 +1,34 @@
+body {
+  background-color: #1d292c;
+  font-family: Helvetica,arial,sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#application-canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#application-canvas.fill-mode-NONE {
+  margin: auto;
+}
+
+#application-canvas.fill-mode-KEEP_ASPECT {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+#application-canvas.fill-mode-FILL_WINDOW {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+canvas:focus {
+  outline: none;
+}

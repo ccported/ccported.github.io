@@ -1,0 +1,36 @@
+{
+  "extensions": {
+    "gb": "gambatte",
+    "gbc": "gambatte",
+    "smc": "snes9x-next",
+    "fig": "snes9x-next",
+    "sfc": "snes9x-next",
+    "swc": "snes9x-next",
+    "gba": "vba-next",
+    "nes": "quicknes",
+    "sms": "picodrive",
+    "gen": "picodrive",
+    "smd": "picodrive",
+    "md": "picodrive",
+    "32x": "picodrive",
+    "mgw": "gw",
+    "vec": "vecx"
+  },
+  "overlays": {
+    "gambatte": "./overlays/gamepads/gameboy/",
+    "vba-next": "./overlays/gamepads/gba/",
+    "snes9x-next": "./overlays/gamepads/snes/",
+    "nestopia": "./overlays/gamepads/nes/"
+  },
+  "keys": {
+    "90": "1",
+    "88": "0", 
+    "67": "8", 
+    "86": "9" ,
+    "37": "14",
+    "38": "12",
+    "39": "15",
+    "40": "13"
+  },
+  "urlPrefix": "https://crossorigin.me/"
+}

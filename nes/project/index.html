@@ -1,0 +1,619 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	
+<!-- Component components/gtag_events -->
+
+<script>
+    window.ccPorted = {
+        ...(window.ccPorted || {}),
+        gameID: (("nes_emulator").length > 0) ? "nes_emulator" : "ccported"
+    }
+    window.gameID = window.ccPorted.gameID;
+</script>
+
+
+<!-- Component components/gtag -->
+<!-- supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+  try {
+    const SUPABASE_URL = "https://dahljrdecyiwfjgklnvz.supabase.co";
+    const SUPABASE_ANON_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRhaGxqcmRlY3lpd2ZqZ2tsbnZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjgyNjE3NzMsImV4cCI6MjA0MzgzNzc3M30.8-YlXqSXsYoPTaDlHMpTdqLxfvm89-8zk2HG2MCABRI";
+    window.ccSupaClient = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+  } catch (e) {
+    alert(
+      "Error Initializing. Please refresh. If this error persists, try a different domain." +
+        "\n\n" +
+        e.stack
+    );
+    console.log(e);
+  }
+</script>
+
+<!-- large.js -->
+<script src="/assets/scripts/helpers.js?i=8"></script>
+<script src="/assets/scripts/large.js?i=7"></script>
+<script src="/assets/scripts/stateHandler.js?i=6"></script>
+
+<!-- external (gtag) -->
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+
+<!-- Component components/adBlockDetect -->
+<script>
+  //  window.addEventListener("load", () => {
+    
+  //   log("Window loaded, running adblock check");
+    
+  //   // Create elements programmatically
+  //   function createOverlay(visibility = "none") {
+  //     const enabledEl = document.createElement("div");
+  //     enabledEl.classList.add("adb-enabled");
+      
+  //     const overlay = document.createElement("div");
+  //     overlay.classList.add("adb-enabled-overlay");
+      
+  //     const content = document.createElement("div");
+  //     content.classList.add("adb-enabled-content");
+      
+  //     const title = document.createElement("h2");
+  //     title.textContent = "Ad blocker detected";
+      
+  //     const message = document.createElement("p");
+  //     message.textContent = "Please disable your AdBlock to continue.";
+      
+  //     const continueBtn = document.createElement("button");
+  //     continueBtn.classList.add("adb-continue-btn");
+  //     continueBtn.textContent = "Continue without supporting (10s)";
+      
+  //     // Build DOM structure
+  //     content.appendChild(title);
+  //     content.appendChild(message);
+  //     content.appendChild(continueBtn);
+  //     overlay.appendChild(content);
+  //     enabledEl.appendChild(overlay);
+  //     enabledEl.style.display = visibility;
+      
+  //     // Add styles
+  //     const styles = document.createElement("style");
+  //     styles.textContent = `
+  //       .adb-enabled-overlay {
+  //         width: 100%;
+  //         height: 100%;
+  //         position: fixed;
+  //         top: 0;
+  //         left: 0;
+  //         color: white;
+  //         background-color: #ee3030;
+  //         z-index: 99999;
+  //         padding: 70px;
+  //       }
+  //       .adb-continue-btn {
+  //         cursor: pointer;
+  //         padding: 5px;
+  //         border: 1px solid white;
+  //         background-color: transparent;
+  //         color: white;
+  //         transition: 500ms;
+  //       }
+  //       .adb-continue-btn:hover {
+  //         background-color: white;
+  //         color: #ee3030;
+  //         transition: 500ms;
+  //       }
+  //       body {
+  //         margin-right: 150px;
+  //       }
+  //       header .r-side-nav {
+  //         padding-right: 150px !important;
+  //       }
+  //     `;
+  //     document.head.appendChild(styles);
+      
+  //     return { enabledEl, continueBtn };
+  //   }
+    
+  //   const { enabledEl, continueBtn } = createOverlay("none");
+  //   document.body.appendChild(enabledEl);
+  
+  //   function adBlockDetected() {
+  //     log("adBlockDetected()");
+  //     let ax = false;
+  //     enabledEl.style.display = "block";
+  
+  //     // Adblock delay countdown
+  //     let countdown = 10;
+  //     const countdownInterval = setInterval(function() {
+  //       countdown--;
+  //       continueBtn.textContent = `Continue without supporting (${countdown}s)`;
+  //       if (countdown === 0) {
+  //         clearInterval(countdownInterval);
+  //         continueBtn.textContent = "Continue without supporting";
+  //       }
+  //     }, 1000);
+  
+  //     continueBtn.addEventListener("click", (e) => {
+  //       if (countdown === 0) {
+  //         ax = true;
+  //         enabledEl.style.display = "none";
+  //       }
+  //     });
+  
+  //     // Check if the element still exists every 750ms
+  //     const checkInterval = setInterval(function() {
+  //       if (!document.body.contains(enabledEl)) {
+  //         clearInterval(checkInterval);
+  //         const { enabledEl: newEl } = createOverlay("block");
+  //         document.body.appendChild(newEl);
+  //       }
+  //     }, 750);
+  //   }
+  
+  //   function adBlockNotDetected() {
+  //     log("Blocks not detected");
+  //     enabledEl.style.display = "none";
+  //   }
+  
+  //   const REQUEST_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  //   const REQUEST_CONFIG = {
+  //     method: "HEAD",
+  //     mode: "no-cors",
+  //   };
+  
+  // const checkAdsBlocked = (callback) => {
+  //   fetch(REQUEST_URL, REQUEST_CONFIG)
+  //       .then((response) => {
+  //           callback(response.redirected);
+  //       })                                  
+  //       .catch(() => {
+  //           callback(true);
+  //       });
+  //   };
+  
+  //   checkAdsBlocked((adsBlocked)=>{
+  //       if(adsBlocked){
+  //           adBlockDetected();
+  //       }else{
+  //           adBlockNotDetected();
+  //       }
+  //   });
+  // });
+  </script>
+
+<!-- End component components/adBlockDetect -->
+
+
+<script src="/gtag_events.js?v=004" data-gameid="nes_emulator"></script>
+<!-- End component components/gtag_events -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+	<title>WebNES | Unblocked on CCPorted</title>
+	<meta name = "description" content="An NES emulator to play classic NES games online."
+    <meta charset="utf-8"/>
+	<meta http-equiv="Cache-Control" content="no-store" /> <!-- stops chrome from caching -->
+	
+	<!-- build:css css/thirdparty.min.css -->	
+	<link rel="stylesheet" href="../bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="../bower_components/bower-qtip2/jquery.qtip.min.css">
+	<!-- endbuild -->
+	
+	<!-- build:css css/main.min.css -->	
+	<link rel="stylesheet" href="css/main.css">
+	<!-- endbuild -->
+
+</head>
+
+<!-- onunload="" prevents firefox caching javascript files -->
+<body onunload="" id="body">
+<div id="fb-root"></div>
+	<!-- facebook api -->
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0&appId=310800822454793";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div id="content" class="normal" style="width:100%; height:100%; display:inline-block">
+		<div id="infoPanel" class="infoPanel">
+			<h1>WebNES</h1>
+			<p>Drag a ROM file (can be zipped) onto the screen to load a game.</p>
+			<p>Find more roms at the <a href = "/roms">ROM Library</a></p>
+			<p>Keys:</p>
+			<ul>
+			<li>Z - A button</li>
+			<li>X - B button</li>
+			<li>C - Select button</li>
+			<li>V - Start button</li>
+			<li>Arrow keys - DPAD</li>
+			</ul>
+			<p>Developed and built by Pete Ward, 2014 [peteward44 at gmail dot com], ported by @SOJS</p>
+			<p>
+				<select type="text" list="gamesList" id="loadGameComboBox">
+					<datalist id="gamesList">
+						<option value="">Select a ROM file to load...</option>
+						<option value="roms/Mike Tyson's Punch-Out!! (U) (PRG 0).nes.zip">Mike Tyson's Punch-Out!!</option>
+						<option value="roms/RC Pro-Am 2 (U).nes.zip">RC Pro-Am 2</option>
+						<option value="roms/Super Mario Bros 3 (U) (PRG 0).nes.zip">Super Mario Bros 3</option>
+						<option value="roms/Super Mario Bros (E).nes.zip">Super Mario Bros</option>
+						<option value="roms/Terminator 2 - Judgement Day (U).nes.zip">Terminator 2 - Judgement Day</option>
+						<option value="roms/Tetris 2 (U) [!].nes.zip">Tetris 2</option>
+						<option value="roms/Zelda 2 - The Adventure of Link (U).nes.zip">Zelda 2: The Adventure of Link</option>
+						<option value="roms/Legend of Zelda, The (U) (PRG 0).nes.zip">The Legend of Zelda</option>
+
+
+						<option value="roms/Mega Man (U).nes.zip" disabled>Mega Man</option>
+						<option value="roms/Mega Man 2 (U).nes.zip" disabled>Mega Man 2</option>
+						<option value="roms/Mega Man 3 (U) [!].nes.zip" disabled>Mega Man 3</option>
+						<option value="roms/Mega Man 4 (U).nes.zip" disabled>Mega Man 4</option>
+						<option value="roms/Mega Man 5 (U).nes.zip" disabled>Mega Man 5</option>
+						<option value="roms/Mega Man 6 (U).nes.zip" disabled>Mega Man 6</option>
+						<option value="roms/Metroid (U).nes.zip" disabled>Metroid</option>
+						<option value="roms/Startropics 2 - Zoda's Revenge (U).nes.zip" disabled>Startropics 2 - Zoda's Revenge</option>
+						<option value="roms/Snake Rattle'n Roll (U).nes.zip" disabled>Snake Rattle'n Roll</option>
+						<option value="roms/Defender 2 (U).nes.zip" disabled>Defender 2</option>
+						<option value="roms/Slalom (U).nes.zip" disabled>Slalom</option>
+						<option value="roms/River City Ransom (U).nes.zip" disabled>River City Ransom</option>
+						<option value="roms/Prince of Persia (U).nes.zip" disabled>Prince of Persia</option>
+						<option value="roms/Marble Madness (U).nes.zip" disabled>Marble Madness</option>
+						<option value="roms/Ghosts'n Goblins (U).nes.zip" disabled>Ghosts 'n Goblins</option>
+						<option value="roms/Darkwing Duck (U).nes.zip" disabled>Darkwing Duck</option>
+						<option value="roms/Contra (U).nes.zip" disabled>Contra</option>
+						<option value="roms/Castlevania 3 - Dracula's Curse (U).nes.zip" disabled>Castlevania 3 - Dracula's Curse</option>
+						<option value="roms/Battletoads (U).nes.zip" disabled>Battletoads</option>
+						<option value="roms/Battletoads Double Dragon (U).nes.zip" disabled>Battletoads Double Dragon</option>
+						<option value="roms/Balloon Fight (E).nes.zip" disabled>Balloon Fight</option>
+						<option value="roms/1943 (U).nes.zip" disabled>1943</option>
+						<option value="roms/Teenage Mutant Ninja Turtles 3 (U).nes.zip" disabled>Teenage Mutant Ninja Turtles 3</option>
+						<option value="roms/TaleSpin (U).nes.zip" disabled>TaleSpin</option>
+						<option value="roms/Air Fortress (U).nes.zip" disabled>Air Fortress</option>
+						<option value="roms/Airwolf (U).nes.zip" disabled>Airwolf</option>
+						<option value="roms/Aladdin (E) [!].nes.zip" disabled>Aladdin</option>
+						<option value="roms/Bionic Commando (U).nes.zip" disabled>Bionic Commando</option>
+						<option value="roms/Bomberman 2 (U).nes.zip" disabled>Bomberman 2</option>
+						<option value="roms/Cobra Triangle (U).nes.zip" disabled>Cobra Triangle</option>
+						<option value="roms/Crystalis (U).nes.zip" disabled>Crystalis</option>
+						<option value="roms/Double Dragon 3 - The Sacred Stones (U).nes.zip" disabled>Double Dragon 3 - The Sacred Stones</option>
+						<option value="roms/Duck Tales 2 (U).nes.zip" disabled>Duck Tales 2</option>
+						<option value="roms/Fantastic Adventures of Dizzy, The (U).nes.zip" disabled>The Fantastic Adventures of Dizzy</option>
+						<option value="roms/Galaga (U).nes.zip" disabled>Galaga</option>
+						<option value="roms/Gradius (U).nes.zip" disabled>Gradius</option>
+						<option value="roms/Gun Nac (U).nes.zip" disabled>Gun Nac</option>
+						<option value="roms/Impossible Mission 2 (U).nes.zip" disabled>Impossible Mission 2</option>
+						<option value="roms/Ninja Gaiden (U).nes.zip" disabled>Ninja Gaiden</option>
+						<option value="roms/Ninja Gaiden 2 - The Dark Sword of Chaos (U).nes.zip" disabled>Ninja Gaiden 2 - The Dark Sword of Chaos</option>
+						<option value="roms/Ninja Gaiden 3 - The Ancient Ship of Doom (U).nes.zip" disabled>Ninja Gaiden 3 - The Ancient Ship of Doom</option>
+						<option value="roms/Pac-Man (Namco) (E) [!].nes.zip" disabled>Pac-Man (Namco)</option>
+						<option value="roms/Paperboy 2 (U).nes.zip" disabled>Paperboy 2</option>
+						<option value="roms/Astyanax (U).nes.zip" disabled>Astyanax</option>
+						<option value="roms/Bucky O'Hare (U) [!].nes.zip" disabled>Bucky O'Hare</option>
+						<option value="roms/Captain America and the Avengers (U).nes.zip" disabled>Captain America and the Avengers</option>
+						<option value="roms/Elite (E).nes.zip" disabled>Elite</option>
+						<option value="roms/Excitebike (E).nes.zip" disabled>Excitebike</option>
+						<option value="roms/Faxanadu (U).nes.zip" disabled>Faxanadu</option>
+						<option value="roms/Lemmings (U).nes.zip" disabled>Lemmings</option>
+						<option value="roms/Q-bert (U).nes.zip" disabled>Q-bert</option>
+						<option value="roms/Rampage (U).nes.zip" disabled>Rampage</option>
+					</datalist>
+				</select>
+			</p>
+			<div id="postProcessingDiv" style="display:none;">
+			<p>Post processing effects:</p>
+			<p>
+				<select type="text" list="shaderList" id="shaderListComboBox">
+					<datalist id="shaderList">
+						<option value="">None</option>
+						<option disabled>------------</option>
+<option value="v1.0/CRT.xml">CRT</option>
+<option value="v1.1/CRT-interlaced.xml">CRT-interlaced</option>
+<option value="v1.0/Curvature.xml">Curvature</option>
+<option value="v1.0/Dot 'n Bloom.xml">Dot 'n Bloom</option>
+<option value="v1.0/edge-detection.xml">edge-detection</option>
+<option value="v1.0/HDR-TV.xml">HDR-TV</option>
+<option value="v1.0/simplebloom.xml">simplebloom</option>
+<option value="v1.0/heavybloom.xml">heavybloom</option>
+<option value="v1.0/Phosphor-simple.xml">Phosphor-simple</option>
+<option value="v1.0/Pixellate-scanlines.xml">Pixellate-scanlines</option>
+<option value="v1.0/Pixellate.xml">Pixellate</option>
+<option value="v1.0/Themaister-Waterpaint-scanlines.xml">Themaister-Waterpaint-scanlines</option>
+<option value="v1.0/Themaister-Waterpaint.xml">Themaister-Waterpaint</option>
+<option value="v1.0/Themaister-scanlines.xml">Themaister-scanlines</option>
+<option value="v1.0/Bicubic (normal).xml">Bicubic (normal)</option>
+<option value="v1.0/5xBR Rounded.xml">5xBR Rounded</option>
+<option disabled>------------</option>
+<option value="v1.0/5xBR Semi-Rounded.xml">5xBR Semi-Rounded</option>
+<option value="v1.0/5xBR Squared.xml">5xBR Squared</option>
+<option value="v1.0/Bicubic (sharp).xml">Bicubic (sharp)</option>
+<option value="v1.0/Bicubic (sharper).xml">Bicubic (sharper)</option>
+<option value="v1.0/CRT-simple.xml">CRT-simple</option>
+<option value="v1.0/HQ2x.xml">HQ2x</option>
+<option value="v1.0/Lanczos (6tap).xml">Lanczos (6tap)</option>
+<option value="v1.0/Quilez.xml">Quilez</option>
+<option value="v1.0/SABR.xml">SABR</option>
+<option value="v1.0/Scale2x.xml">Scale2x</option>
+<option value="v1.0/Scale4xHQ.xml">Scale4xHQ</option>
+<option value="v1.0/scanline-3x.xml">scanline-3x</option>
+<option value="v1.0/scanline-4x.xml">scanline-4x</option>
+<option value="v1.1/4xBR.OpenGL.xml">4xBR.OpenGL</option>
+<option value="v1.1/Integer-Scale.OpenGL.xml">Integer-Scale.OpenGL</option>
+<option value="v1.1/SimpleTVBlur.OpenGL.xml">SimpleTVBlur.OpenGL</option>
+					</datalist>
+				</select>
+			</p>
+			</div>
+		</div>
+		<div id="socialMediaPanel" class="socialMediaPanel">
+			<div id="twitter">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://peteward44.github.io/WebNES/" data-text="WebNES - A superior NES emulator for the Web">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			</div>
+			<div>&nbsp;</div>
+			<div id="facebook">
+				<div class="fb-like" data-href="http://peteward44.github.io/WebNES" data-layout="button" data-action="recommend" data-show-faces="true" data-share="true"></div>
+			</div>
+			<div>&nbsp;</div>
+			<div id="google">
+				<!-- Place this tag where you want the +1 button to render. -->
+				<div class="g-plusone" data-size="medium" data-href="https://github.com/peteward44/WebNES"></div>
+
+				<!-- Place this tag after the last +1 button tag. -->
+				<script type="text/javascript">
+				  window.___gcfg = {lang: 'en-GB'};
+
+				  (function() {
+					var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+					po.src = 'https://apis.google.com/js/platform.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+				  })();
+				</script>
+			</div>
+		</div>
+		<div id="canvasWrapper" class="wrapper">
+		</div>
+		<div id="controlBar" class="controlBar">
+			<div id="debugBar" class="ui-widget-header ui-corner-all">
+				<button class="controlBarButton" id="debugControlBar_playOneFrameButton"></button>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="debugControlBar_gameSpeedButton"></button>
+				<!--<button class="controlBarButton" id="debugControlBar_getFrameHashButton"></button>-->
+				<div class="controlBarSeperator"></div>
+				<span id="debugControlBar_encoding">
+					<input type="radio" id="debugControlBar_encodingNTSC" name="debugControlBar_encoding" value="NTSC"><label for="debugControlBar_encodingNTSC">NTSC</label>
+					<input type="radio" id="debugControlBar_encodingPAL" name="debugControlBar_encoding" value="PAL"><label for="debugControlBar_encodingPAL">PAL</label>
+				</span>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="debugControlBar_selectTraceButton"></button>
+				<ul id="debugControlBar_traceMenu">
+					<li class="controlBarMenuButton" id="controlBar_cpuTraceParent"><input type="checkbox" id="controlBar_cpuTraceButton"><label for="controlBar_cpuTraceButton">CPU</label></li>
+					<li class="controlBarMenuButton" id="controlBar_cpuInstructionsTraceParent"><input type="checkbox" id="controlBar_cpuInstructionsTraceButton"><label for="controlBar_cpuInstructionsTraceButton">CPU Instructions</label></li>
+					<li class="controlBarMenuButton" id="controlBar_ppuTraceParent"><input type="checkbox" id="controlBar_ppuTraceButton"><label for="controlBar_ppuTraceButton">PPU</label></li>
+					<li class="controlBarMenuButton" id="controlBar_mapperTraceParent"><input type="checkbox" id="controlBar_mapperTraceButton"><label for="controlBar_mapperTraceButton">Mapper</label></li>
+					<li class="controlBarMenuButton" id="controlBar_allTraceParent"><input type="checkbox" id="controlBar_allTraceButton"><label for="controlBar_allTraceButton">All</label></li>
+				</ul>
+				<button class="controlBarButton" id="debugControlBar_traceButton"></button>
+			</div>
+			<div id="normalBar" class="ui-widget-header ui-corner-all">
+				<button class="controlBarButton" id="controlBar_loadRomButton"></button>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="controlBar_resetButton"></button>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="controlBar_playButton"></button>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="controlBar_soundButton"></button>
+				<button class="controlBarButton" id="controlBar_screenshotButton"></button>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="controlBar_quickSaveButton"></button>
+				<button class="controlBarButton" id="controlBar_quickLoadButton"></button>
+				<div class="controlBarSeperator"></div>
+				<input class="controlBarButton" type="checkbox" id="controlBar_debugButton"><label for="controlBar_debugButton"></label>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="controlBar_keyboardRemap"></button>
+				<div class="controlBarSeperator"></div>
+				<button class="controlBarButton" id="controlBar_gameGenieButton"></button>
+				<button class="controlBarButton" id="controlBar_errorDisplay"></button>
+			</div>
+		</div>
+		<div id="controlBar_volumeSlider"></div>
+		<div id="controlBar_alertMessage"></div>
+		<div id="debugControlBar_gameSpeedSlider"></div>
+		<div id="loadStateDialog">
+			<div id="loadStateDialog_contents"></div>
+		</div>
+		<div id="debugWindow" class="debugWindow">
+<!-- 			<div class="cpuInstructions">
+			</div>
+			<div class="logWindow">
+			</div>
+			<div class="paletteDisplay">
+			</div>
+			<div class="spriteDisplay">
+			</div> -->
+		</div>
+		<div id="gameGenieDialog" class="gameGenieDialog">
+			<div id="gameGenieDialog_contents"></div>
+		</div>
+		<div id="keyboardRemapperDialog" class="gameGenieDialog">
+			<div id="keyboardRemapperDialog_contents">
+				<map name="controllermap1">
+					<area shape="rect" coords="50, 40, 74, 60" alt="UP" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'UP' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="50, 77, 74, 97" alt="DOWN" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'DOWN' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="34, 56, 54, 80" alt="LEFT" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'LEFT' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="72, 56, 91, 80" alt="RIGHT" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'RIGHT' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="110, 72, 137, 89" alt="SELECT" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'SELECT' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="137, 72, 165, 89" alt="START" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'START' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="182, 66, 210, 94" alt="B" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'B' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="219, 66, 248, 94" alt="A" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 0, 'A' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+				</map>
+				<map name="controllermap2">
+					<area shape="rect" coords="50, 40, 74, 60" alt="UP" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'UP' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="50, 77, 74, 97" alt="DOWN" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'DOWN' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="34, 56, 54, 80" alt="LEFT" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'LEFT' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="72, 56, 91, 80" alt="RIGHT" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'RIGHT' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="110, 72, 137, 89" alt="SELECT" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'SELECT' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="137, 72, 165, 89" alt="START" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'START' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="182, 66, 210, 94" alt="B" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'B' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+					<area shape="rect" coords="219, 66, 248, 94" alt="A" onclick="Gui.keyboardRemapperDialog_onsetkeyclick( 1, 'A' );" data-maphilight='{"strokeColor":"ff2a00","strokeWidth":1,"fillColor":"ff0000","fillOpacity":0.4}'/>
+				</map>
+				<div>
+					<h1>Player 1</h2>
+					<img class="keyboardMap" src="images/nescontroller.jpg" alt="" usemap="#controllermap1"/>
+				</div>
+				<div>
+					<h1>Player 2</h2>
+					<img class="keyboardMap" src="images/nescontroller.jpg" alt="" usemap="#controllermap2"/>
+				</div>
+			</div>
+			<div id="keyboardRemapperSetKeyDialog">
+				<div id="keyboardRemapperSetKeyDialog_existingKeysContents">
+				</div>
+				<div id="keyboardRemapperSetKeyDialog_contents">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- build:js js/nes.components.min.js -->
+	<script type="text/javascript" src="js/polyfills/arrayPolyfills.js"></script>
+	<script type="text/javascript" src="js/polyfills/typedarrays.js"></script>
+	<script type="text/javascript" src="js/polyfills/setImmediatePolyfill.js"></script>
+	<script type="text/javascript" src="js/utils/typedArrayBoundsCheck.js"></script>
+	
+	<script type="text/javascript" src="../bower_components/gl-matrix/dist/gl-matrix-min.js"></script>
+	<script type="text/javascript" src="../bower_components/canvas-toBlob.js/canvas-toBlob.js"></script>
+	<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../bower_components/bower-qtip2/jquery.qtip.min.js"></script>
+	<script type="text/javascript" src="../bower_components/jsziptools/jsziptools.js"></script>
+	<script type="text/javascript" src="jszip.min.js"></script>
+	<script type="text/javascript" src="../bower_components/FileSaver/FileSaver.js"></script>
+	<script type="text/javascript" src="../bower_components/rusha/rusha.min.js"></script>
+	<script type="text/javascript" src="../bower_components/fpsmeter/dist/fpsmeter.min.js"></script>
+	<script type="text/javascript" src="../bower_components/maphilight/jquery.maphilight.min.js"></script>
+	<!-- endbuild -->
+		
+	<!-- build:js js/nes.min.js -->	
+	<script type="text/javascript" src="js/polyfills/fastSetImmediate.js"></script>
+	<script type="text/javascript" src="js/gui/logWindow.js"></script>
+	
+	<script type="text/javascript" src="js/utils/event.js"></script>
+	<script type="text/javascript" src="js/utils/romLoader.js"></script>
+	<script type="text/javascript" src="js/utils/decompress7z.js"></script>
+	<script type="text/javascript" src="js/utils/serialisation.js"></script>
+
+	<script type="text/javascript" src="js/interface/webGlUtils.js"></script>
+	<script type="text/javascript" src="js/interface/canvasRenderSurface.js"></script>
+	<script type="text/javascript" src="js/interface/webGlRenderSurface.js"></script>
+	<script type="text/javascript" src="js/interface/dragDrop.js"></script>
+	<script type="text/javascript" src="js/interface/input.js"></script>
+	<script type="text/javascript" src="js/interface/saveLoadState.js"></script>
+	<script type="text/javascript" src="js/interface/trace.js"></script>
+	<script type="text/javascript" src="js/interface/webAudioRenderer.js"></script>
+	
+	<script type="text/javascript" src="js/gui/canvasParent.js"></script>
+	<script type="text/javascript" src="js/gui/controlBarElements.js"></script>
+	<script type="text/javascript" src="js/gui/controlBar.js"></script>
+	<script type="text/javascript" src="js/gui/loadStateDialog.js"></script>
+	<script type="text/javascript" src="js/gui/gameGenieDialog.js"></script>
+	<script type="text/javascript" src="js/gui/spriteDisplayWindow.js"></script>
+	<script type="text/javascript" src="js/gui/paletteDisplayWindow.js"></script>
+	<script type="text/javascript" src="js/gui/cpuInstructionsWindow.js"></script>
+	<script type="text/javascript" src="js/gui/keyboardRemapper.js"></script>
+	
+	<script type="text/javascript" src="js/nes/consts.js"></script>
+	<script type="text/javascript" src="js/nes/synchroniser.js"></script>
+	<script type="text/javascript" src="js/nes/controller.js"></script>
+	<script type="text/javascript" src="js/nes/memory.js"></script>
+	<script type="text/javascript" src="js/nes/cpu6502_instructions_fast.js"></script>
+	<script type="text/javascript" src="js/nes/cpu6502_instructions_fast_switch.js"></script>
+	<script type="text/javascript" src="js/nes/cpu6502_instructions_trace.js"></script>
+	<script type="text/javascript" src="js/nes/cpu6502_instructions_formatString.js"></script>
+	<script type="text/javascript" src="js/nes/cpu6502.js"></script>
+	
+	<!-- Blargg apu port -->
+	<script type="text/javascript" src="js/nes/apulib/Wave_Writer.js"></script>
+	<script type="text/javascript" src="js/nes/apulib/Blip_Buffer.js"></script>
+	<script type="text/javascript" src="js/nes/apulib/Blip_Synth.js"></script>
+	<script type="text/javascript" src="js/nes/apulib/Nes_Oscs.js"></script>
+	<script type="text/javascript" src="js/nes/apulib/Nes_Apu.js"></script>	
+	<script type="text/javascript" src="js/nes/apu_legacy.js"></script>
+	
+	<!-- new apu -->
+	<script type="text/javascript" src="js/nes/apu/frameCounter.js"></script>
+	<script type="text/javascript" src="js/nes/apu/outputBuffer.js"></script>
+	<script type="text/javascript" src="js/nes/apu/envelope.js"></script>
+	<script type="text/javascript" src="js/nes/apu/squareWave.js"></script>
+	<script type="text/javascript" src="js/nes/apu.js"></script>
+
+	<script type="text/javascript" src="js/test/squareWaveTester.js"></script>
+	
+	<script type="text/javascript" src="js/nes/ppu_renderBg.js"></script>
+	<script type="text/javascript" src="js/nes/ppu_renderSprites.js"></script>
+	<script type="text/javascript" src="js/nes/ppu.js"></script>
+	
+	<script type="text/javascript" src="js/nes/mappers/basemapper.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper0.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper1.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper2.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper3.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper4.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper5.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper6.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper7.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper8.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper9.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper11.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper13.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper15.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper17.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper34.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper41.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper64.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper65.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper66.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper71.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper78.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper79.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper180.js"></script>
+	<script type="text/javascript" src="js/nes/mappers/mapper206.js"></script>
+	
+	<script type="text/javascript" src="js/nes/dbLookup.js"></script>
+	<script type="text/javascript" src="js/nes/gameGenie.js"></script>
+		
+	<script type="text/javascript" src="js/nes/cartridge.js"></script>
+	<script type="text/javascript" src="js/nes/renderbuffer.js"></script>
+	<script type="text/javascript" src="js/nes/mainboard.js"></script>
+
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/saveStateManager.js"></script>
+	<script type="text/javascript" src="js/browserStart.js"></script>
+	<!-- endbuild -->
+
+
+
+</body>
+</html>

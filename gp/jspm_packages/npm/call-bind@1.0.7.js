@@ -1,0 +1,1 @@
+module.exports = require("npm:call-bind@1.0.7/index.js");

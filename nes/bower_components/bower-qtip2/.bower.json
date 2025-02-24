@@ -1,0 +1,21 @@
+{
+  "name": "bower-qtip2",
+  "version": "2.1.1",
+  "description": "Bower component for qtip2",
+  "main": "./jquery.qtip.js",
+  "keywords": [
+    "qtip",
+    "qtip2",
+    "tooltip"
+  ],
+  "homepage": "https://github.com/arrayjam/bower-qtip2",
+  "_release": "2.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.1",
+    "commit": "32e8760e57e8a4ecf711cbf69f618c09ad141b13"
+  },
+  "_source": "https://github.com/arrayjam/bower-qtip2.git",
+  "_target": "~2.1.1",
+  "_originalSource": "bower-qtip2"
+}
