@@ -1,0 +1,29 @@
+<!-- Monumetric Header In-screen D: 728x90 T: 728x90 M: 320x50,320x100  START -->
+
+<div id="mmt-69c365b5-46df-472b-90ea-d129b60dc172"></div><script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || [];$MMT.cmd.push(function(){ $MMT.display.slots.push(["69c365b5-46df-472b-90ea-d129b60dc172"]); })</script>
+
+<!-- Monumetric Header In-screen D: 728x90 T: 728x90 M: 320x50,320x100  ENDS -->
+
+
+
+<!-- Monumetric Sticky Sidebar D: 300x250,160x600,300x600 T: 300x250,160x600,300x600  START -->
+
+<div id="mmt-69fd2258-841e-496e-b471-7fee303347da"></div><script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || [];$MMT.cmd.push(function(){ $MMT.display.slots.push(["69fd2258-841e-496e-b471-7fee303347da"]); })</script>
+
+<!-- Monumetric Sticky Sidebar D: 300x250,160x600,300x600 T: 300x250,160x600,300x600  ENDS -->
+
+
+
+<!-- Monumetric Footer In-screen D: 728x90 T: 728x90 M: 320x50,320x100  START -->
+
+<div id="mmt-c2522ff2-7549-433b-a689-0cd63517722c"></div><script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || [];$MMT.cmd.push(function(){ $MMT.display.slots.push(["c2522ff2-7549-433b-a689-0cd63517722c"]); })</script>
+
+<!-- Monumetric Footer In-screen D: 728x90 T: 728x90 M: 320x50,320x100  ENDS -->
+
+
+
+<!-- Monumetric In-Content Repeatable D: 728x90,300x250,320x50,320x100,468x60 T: 728x90,300x250,320x50,320x100,468x60 M: 300x250,320x50,320x100  START -->
+
+<div id="mmt-c024666e-e810-47df-833e-b260321b4d84"></div><script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || [];$MMT.cmd.push(function(){ $MMT.display.slots.push(["c024666e-e810-47df-833e-b260321b4d84"]); })</script>
+
+<!-- Monumetric In-Content Repeatable D: 728x90,300x250,320x50,320x100,468x60 T: 728x90,300x250,320x50,320x100,468x60 M: 300x250,320x50,320x100  ENDS -->
