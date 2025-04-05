@@ -1,0 +1,127 @@
+body.dark {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+
+body.dark header h1 {
+  color: #eee;
+  background-color: #000000;
+}
+
+body.dark header h1 a {
+  color: #eee !important;
+}
+
+body.dark header {
+  background-color: #000000;
+}
+
+body.dark header.shadow {
+  box-shadow: 0px 0px 10px #333;
+}
+
+
+body.dark .card.grid {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .card.grid:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+body.dark .card.grid .card-content {
+  color: #fff;
+}
+
+body.dark .card.rows .card-content {
+  color: white;
+}
+
+body.dark .card-links a {
+  color: #fff;
+}
+
+body.dark .card-links a:visited {
+  color: #fff;
+}
+
+body.dark .card-tags .tag {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark .card.grid .star-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+body.dark #searchBox {
+  border: 1px solid #ccc;
+}
+
+body.dark #searchBox:focus {
+  border: 1px solid dodgerblue;
+}
+
+body.dark a {
+  color: dodgerblue;
+}
+
+body.dark a:visited {
+  color: dodgerblue;
+}
+
+body.dark .popup {
+  color: white;
+}
+
+body.dark .popup-content #gameRequestInput {
+  border: 1px solid #333;
+}
+
+body.dark .popup-buttons button#nvmd {
+  background-color: red;
+  border: 1px solid red;
+}
+
+body.dark .popup-buttons button {
+  background-color: dodgerblue;
+  color: #fff;
+  border: 1px solid dodgerblue;
+}
+
+
+body.dark button#sort,
+body.dark button#pickforme {
+  color: #eee;
+  border: 1px solid #ccc;
+  background-color: inherit;
+}
+
+
+body.dark .toggle-btn {
+  border: 1px solid #ccc;
+}
+
+body.dark .toggle-btn:hover {
+  background: #333;
+}
+
+
+body.dark .dot {
+  background-color: #ccc;
+}
+
+
+body.dark .inxxx.grid {
+  background-color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .inxxx.rows {
+  background-color: #000;
+}

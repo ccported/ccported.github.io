@@ -1,0 +1,38 @@
+.gameStatusRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+.status{
+    border-radius: 8px;
+    padding: 3px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+
+.rows > :nth-child(2n){
+    background-color: #f2f2f2;
+}
+.desc{
+    font-style: italic;
+    width: 50%;
+    text-align: left;
+
+}
+.left{
+    width: 25%;
+    justify-self: flex-start;
+}
+.right{
+    width: 25%;
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.right .status{
+    width: fit-content;
+    height: fit-content;
+}

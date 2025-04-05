@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.699.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}

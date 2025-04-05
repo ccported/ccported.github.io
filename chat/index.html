@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chat with other people on CCPorted.">
+    
+<!-- Component components/chead -->
+
+<!-- Component components/gtag -->
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+</script>
+
+<script src="/assets/scripts/helpers.js?i=8"></script>
+<script src="/assets/scripts/large.js?i=7"></script>
+<script src="/assets/scripts/stateHandler.js?i=6"></script>
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+<link rel = "icon" href = "/assets/images/logo.jpg" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1"
+/>
+<link rel="stylesheet" href="/assets/styles/home.css" />
+<link rel="stylesheet" href="/assets/styles/master.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<title>Chat | CCPorted</title>
+<script src="/assets/scripts/navigation.js"></script>
+
+<script>
+  window.adsEnabled = false;
+</script>
+<!-- End component components/chead -->
+
+    <meta name = "robots" content = "noindex, nofollow">
+    <link rel="stylesheet" href="/assets/styles/chat.css">
+    <script src="/assets/scripts/badFilter.js"></script>
+    <script src="/assets/scripts/badWordList.js"></script>
+    <script src="/assets/scripts/filterXSS.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>CC Ported Chat | <span id = "chat_name"></span></h1>
+    </header>
+    <div class="sidebar l-side-nav">
+        <div class="arrow">→</div>
+        <div class="sidebar-content">
+            <div class = "nonButtons">
+            <h2>Channels</h2>
+            <ul id="channel-list">
+            </ul>
+            </div>
+            <div class="actionButtons">
+                <button id="create-channel-btn">Create Channel</button>
+                <button id="add-channel-btn">Join Channel</button>
+            </div>
+            <div class = "bottomActions actionButtons">
+                <button onclick="window.location.assign('/')">Home</button>
+                <button id="logout-btn">Logout</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <div id="chat-messages">
+                <div class = "empty-message"></div>
+            </div>
+            <form id="message-form">
+                <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="/assets/scripts/chat.js"></script>
+</body>
+
+</html>
