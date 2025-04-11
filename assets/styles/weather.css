@@ -1,0 +1,73 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.w-container {
+    margin-top: 100px;
+    display: grid;
+    gap: 20px;
+    min-width: 70% !important;
+    padding: 15p;
+}
+
+.current-weather {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.forecast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.forecast-day {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.weather-icon {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #666;
+}
+
+.error {
+    background: #fee;
+    color: #c00;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.temperature {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+.conditions {
+    color: #666;
+    margin: 10px 0;
+}
+
+.date {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+}

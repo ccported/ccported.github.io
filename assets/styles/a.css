@@ -1,0 +1,30 @@
+.adb-enabled-overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: #ee3030;
+    z-index:99999;
+    padding: 70px;
+}
+.adb-continue-btn{
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    transition: 500ms;
+}
+.adb-continue-btn:hover{
+    background-color:white;
+    color: #ee3030;
+    transition: 500ms;
+}
+body{
+    margin-right: 150px;
+}
+header .r-side-nav{
+    padding-right: 150px !important;
+}
