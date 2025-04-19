@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+    <loc>https://ccported.github.io/</loc>
+    <lastmod>2024-10-09T04:10:30+00:00</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.click/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/roms/</loc>
+    <lastmod>2024-11-26T04:36:39.052Z</lastmod>
+    <priority>1</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/roms/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.click/roms/"/>
+</url>
+
+<url>
+    <loc>https://ccported.github.io/emulator/</loc>
+    <lastmod>2024-11-26T04:36:39.053Z</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link 
+        rel="alternate"
+        hreflang="x-default"
+        href="https://ccported.github.io/emulator/"/>
+    <xhtml:link 
+        rel="alternate"
+        href="https://ccported.click/emulator/"/>
+</url>
+</urlset>
