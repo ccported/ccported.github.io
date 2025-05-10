@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        (() => {
+            window.gameID = "game_a1a3_7ed8bf533bbdd";
+            window.ccPorted = {
+                gameID: "game_a1a3_7ed8bf533bbdd"
+            }
+        })()
+    </script>
+    <script src="/big_game_script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"
+        integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Tetris | Unblocked on CCPorted</title>
+    <meta name="description" content="The original Tetris game, free and available to play online.">
+    <link rel="stylesheet" type="text/css" href="tetris.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div class="game-info">
+            <div class="next-piece">
+                <h2>Next</h2>
+                <canvas id="nextPieceCanvas"></canvas>
+            </div>
+            <div class="score-board">
+                <h2>Score</h2>
+                <div id="score">0</div>
+            </div>
+            <div class="score-board">
+                <h2>Level</h2>
+                <div class="level" id="level">1</div>
+            </div>
+            <div class="controls">
+                <h2>Controls</h2>
+                <p>Left/Right : Move</p>
+                <p>Down : Soft Drop</p>
+                <p>Space : Hard Drop</p>
+                <p>Up : Rotate</p>
+                <p>P: Pause</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="tetris.js?i=4"></script>
+</body>
+
+</html>

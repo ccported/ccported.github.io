@@ -1,0 +1,189 @@
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1502.0/aws-sdk.min.js" defer></script>
+    
+<!-- Component components/chead -->
+<script src = "/assets/scripts/monuloader.js"></script>
+
+<!-- Component components/gtag -->
+<script type="text/javascript">!(function(o,_name){o[_name]=o[_name]||function $(){($.q=$.q||[]).push(arguments)},o[_name].v=o[_name].v||2,o[_name].s="1";!(function(t,o,n,c){function a(n,c){try{a=t.localStorage,(n=JSON.parse(a.getItem("_aQS02N0Y2OENDQUZGRjZFN0Q4QzNCREY1NjAtMQ")).lgk||[])&&(c=t[o].pubads())&&n.forEach((function(t){t&&t[0]&&c.setTargeting(t[0],t[1]||"")}))}catch(f){}var a}try{(c=t[o]=t[o]||{}).cmd=c.cmd||[],typeof c.pubads===n?a():typeof c.cmd.unshift===n?c.cmd.unshift(a):c.cmd.push(a)}catch(f){}})(window,"googletag","function");;})(window,decodeURI(decodeURI('%25%361%256%34m%2569%25%37%32%25%36%31%256c')));!(function(t,c,o,$){o=t.createElement(c),t=t.getElementsByTagName(c)[0],o.async=1,o.src="https://bidpapers.com/bundles/d70a86a36af13633ffc768_1612b01ee8ab91502bf2e4bc.v2.js",($=0)&&$(o),t.parentNode.insertBefore(o,t)})(document,"script");</script>
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+</script>
+
+<script src="/assets/scripts/helpers.js"></script>
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+<link rel = "icon" href = "/assets/images/logo.jpg" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1"
+/>
+<link rel="stylesheet" href="/assets/styles/home.css" />
+<link rel="stylesheet" href="/assets/styles/master.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<title>Game loading...</title>
+<script src="/assets/scripts/navigation.js"></script>
+<!-- End component components/chead -->
+
+    <style>
+        .server-toggle-wheel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            z-index: 9999;
+            display: none;
+            width: 340px;
+            padding-left: 50px;
+            padding-right: 50px;
+            height: 450px;
+            perspective: 1000px;
+            box-sizing: border-box;
+            /* overflow: hidden; */
+        }
+
+        .server-toggle-wheel p {
+            font-size: 9pt;
+            color: #ccc;
+
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .wheel {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+
+        .server-item {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            backface-visibility: hidden;
+            padding: 5px;
+            opacity: 0.4;
+        }
+
+        .server-item.selected {
+            opacity: 1;
+            background-color: #555;
+        }
+
+        .server-info-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex-grow: 1;
+        }
+
+        .server-name {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .server-address {
+            font-size: 12px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+        }
+    </style>
+    <script>
+        window.ccPorted = {
+            ...(window.ccPorted || {}),
+            config: {
+                stateSyncEnabled: false
+            }
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe>Loading....</iframe>
+    <script src = "server-toggle.js"></script>
+    <script src = "play.js"></script>
+    <!-- Monumetric Footer In-screen D: 728x90 T: 728x90 M: 320x50,320x100  START -->
+
+    <div id="mmt-c2522ff2-7549-433b-a689-0cd63517722c"></div>
+    <script type="text/javascript"
+        data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || []; $MMT.cmd.push(function () { $MMT.display.slots.push(["c2522ff2-7549-433b-a689-0cd63517722c"]); })</script>
+
+    <!-- Monumetric Footer In-screen D: 728x90 T: 728x90 M: 320x50,320x100  ENDS -->
+
+</body>
+
+</html>

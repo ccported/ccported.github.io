@@ -1,0 +1,151 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 300px;
+}
+h1 {
+    text-align: center;
+    color: #111;
+    padding: 20px 0;
+    background-color: #fff;
+    margin: 0;
+    font-size: 48px;
+}
+h1, h2 {
+    color: #444;
+}
+#searchInput {
+    width: 300px;
+    min-width: 10vw;
+    height: 30px;
+    border-radius: 2px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+#searchInput:focus {
+    outline: none;
+    border: 1px solid dodgerblue;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    display: flex;
+    padding: 3px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+li div.name {
+    max-width: 50%;
+    word-wrap: break-word;
+}
+li div.links {
+    padding: 5px;
+}
+li div.links a {
+    text-decoration: underline;
+    color: dodgerblue;
+    margin: 0 5px;
+}
+a {
+    text-decoration: none;
+    color: dodgerblue;
+}
+a:hover {
+    text-decoration: underline;
+}
+a:visited {
+    color: dodgerblue;
+}
+.hidden {
+    display: none;
+}
+.determiner > ul {
+    margin-left: 30px;
+}
+div.container {
+    width: 500px;
+}
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #666;
+}
+.error {
+    color: #dc3545;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+body.dark {
+    background-color: #111;
+    color: #fff;
+}
+body.dark h1 {
+    background-color: #111;
+    color: #fff;
+}
+body.dark h2 {
+    color: #f0f0f0;
+}
+body.dark #searchInput {
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #eee;
+}
+body.dark li {
+    border-bottom: none;
+}
+body.dark li div.links a {
+    color: #f0f0f0;
+}
+body.dark .determiner li:nth-child(odd) {
+    background-color: #222;
+    border-radius: 3px;
+}
+body.dark a {
+    color: #f0f0f0;
+}
+body.dark a:hover {
+    color: #fff;
+}
+body.dark a:visited {
+    color: #f0f0f0;
+}
+body.dark .error {
+    color: #f0f0f0;
+}
+body.dark .loading {
+    color: #f0f0f0;
+}
+
+.loading-bar{
+    width: 200px;
+    height: 20px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+
+}
+.loading-bar-fill{
+    width: 0;
+    height: 100%;
+    background-color: #000000;
+    transition: width 0.4s ease-in-out;
+}
