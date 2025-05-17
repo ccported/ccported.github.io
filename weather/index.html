@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+<!-- Component components/chead -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // Register the service worker from the root path
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(registration => {
+          console.log('Game service worker registered:', registration);
+        })
+        .catch(error => {
+          console.error('Service worker registration failed:', error);
+        });
+    });
+  }
+</script>
+<script src="/assets/scripts/monuloader.js"></script>
+
+<!-- Component components/gtag -->
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+</script>
+
+<script src="/assets/scripts/helpers.js"></script>
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+<link rel="icon" href="/assets/images/logo.jpg" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="/assets/styles/home.css" />
+<link rel="stylesheet" href="/assets/styles/master.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Weather | CCPorted</title>
+<script src="/assets/scripts/navigation.js"></script>
+<!-- End component components/chead -->
+
+    <link rel="stylesheet" href="/assets/styles/weather.css" />
+  </head>
+  <body>
+    
+<!-- Component components/navigation -->
+<header>
+    <h1>CC Ported</h1>
+    <div class="r-side-nav">
+        <a href="https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk" target="_blank">Master Doc</a>
+        <a href="https://discord.gg/GDEFRBTT3Z" about="_blank">Discord</a>
+        <a href="/roms/" id="romLinks">Rom Library</a>
+        <a href="/weather/">Weather</a>
+        <a href="/login/" class = "loggedInReplacable">Login</a>
+        <div class = "loggedInAddable"></div>
+    </div>
+</header>
+
+<!-- End component components/navigation -->
+
+    <div class="w-container">
+      <div class="current-weather" id="current">
+        <div class = "l">
+        <h2>Current Weather</h2>
+        <div class="loading">Loading current conditions...</div>
+        </div>
+        <div class = "r">
+          <div id="weather-chart-container"></div>
+        </div>
+      </div>
+
+      <div class="forecast" id="forecast">
+        <div class="loading">Loading forecast...</div>
+      </div>
+    </div>
+    <script src="/assets/scripts/weather.js"></script>
+  </body>
+</html>
