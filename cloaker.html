@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+<style>
+body {
+    text-align: center;
+    color: white;
+    background-color: #202020;
+    font-family: sans-serif;
+    background-color: black;
+}
+
+input[type="text"] {
+    background: rgb(119,221,119);
+    height: 50px;
+    width: 400px;
+    font-size: 20px;
+    color: black;
+    border: none;
+    padding-left: 10px;
+}
+
+input[type="text"]::placeholder {
+    color: black;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+</style>
+</head>
+<body>
+<br>
+<center>
+    <h1>about:blank cloaker</h1>
+    <br><br>
+    <input type="text" id="urlInput" placeholder="Enter URL" required>
+    <br><br>
+    <button style="background: rgb(119,221,119);height:200px;width:400px;font-size:40px;">Bypass</button>
+</center>
+<script>
+    var win;
+
+    document.querySelector('button').onclick = function() {
+        var urlInput = document.getElementById('urlInput');
+        var url = urlInput.value;
+
+        if (!url.startsWith("https://")) {
+            url = "https://" + url;
+        }
+
+        if (url) {
+            if (win) {
+                win.focus();
+            } else {
+                win = window.open();
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = url;
+                win.document.body.appendChild(iframe);
+            }
+            document.querySelector('button').style.background = '#FF6D6A';
+            document.querySelector('button').innerHTML = "Local-Page Opened!";
+        }
+    };
+</script>
+</body>
+</html>
