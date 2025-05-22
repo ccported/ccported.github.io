@@ -16,7 +16,8 @@ async function adsEnabled() {
         const res = await fetch("/ahosts.txt");
         const text = await res.text();
         const hosts = text.split('\n');
-        window.ccPorted.aHosts = hosts.map(h => h.trim());
+        window.ccPorted.aHosts = hosts.map(h => h.split(",")[0].trim());
+        window.ccPorted.aHostIDs = hosts.map(h => h.split(",")[1].trim());
         if (window.ccPorted.aHosts.includes(window.location.hostname)) {
             window.ccPorted.aHost = true;
             return !isAdBlockEnabled;
@@ -40,7 +41,7 @@ async function loadAds() {
     window.ccPorted.adsEnabled = await adsEnabled();
     if (window.ccPorted.adsEnabled) {   
         const script = document.createElement('script');
-        script.src = '//monu.delivery/site/e/4/500442-526a-41af-9981-22db9286cd37.js';
+        script.src = '//monu.delivery/site/' + window.ccPorted.aHostIDs[window.ccPorted.aHosts.indexOf(window.location.hostname)];
         script.setAttribute('data-cfasync', 'false');
         script.setAttribute('defer', 'defer');
         script.onload = () => {

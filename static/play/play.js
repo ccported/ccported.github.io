@@ -4,6 +4,13 @@
     iframe.height = window.innerHeight;
     iframe.allowFullscreen = true;
 
+    // Handler for bare-mux port requests from service worker
+    window.addEventListener('message', (event) => {
+        if (event.data && event.data.type === 'getPort') {
+            event.data.port.postMessage({ type: 'pong' });
+        }
+    });
+
     const searchParams = new URLSearchParams(window.location.search);
     const gameID = searchParams.get('id');
     const serverID = searchParams.get('server');
@@ -11,10 +18,18 @@
     const serversText = await serverList.text();
     const servers = serversText.split('\n');
     if (typeof serverID != "undefined") {
-        iframe.src = `https://${servers[serverID].split(",")[0]}/${servers[serverID].split(",")[2]}${gameID}/index.html`;
+        const host = servers[serverID].split(",")[0];
+        const path = servers[serverID].split(",")[2];
+        const gameUrl = `https://${host}/${path}${gameID}/index.html`;
+        iframe.src = gameUrl;
+
     } else {
         const serverID = Math.floor(Math.random() * servers.length);
-        iframe.src = `https://${servers[serverID].split(",")[0]}/${servers[serverID].split(",")[2]}${gameID}/index.html`;
+        const host = servers[serverID].split(",")[0];
+        const path = servers[serverID].split(",")[2];
+        const gameUrl = `https://${host}/${path}${gameID}/index.html`;
+        // const uvUrl = __uv$config.encodeUrl(gameUrl);
+        iframe.src = gameUrl;//__uv$config.prefix + uvUrl;
     }
     const req = await fetch("/servers.txt");
     const serversList = await req.text();
@@ -135,27 +150,30 @@
                 document.title = item.fName;
                 if (item.proxy) {
                     // check if on proxy host
+                    // const uvUrl = __uv$config.encodeUrl(item.proxyPath);
+                    // iframe.src = __uv$config.prefix + uvUrl;
+                    
                     (async () => {
-                        const proxyHosts = await fetch("/phosts.txt");
-                        const proxyHostsText = await proxyHosts.text();
-                        const proxyHostsList = proxyHostsText.split("\n");
-                        const proxyHost = proxyHostsList.find((host) => {
-                            return host.split(',')[0].trim() == window.location.hostname;
-                        });
-                        if (proxyHost) {
-                            // on proxy host
-                            console.log("Proxy host detected");
-                            const host = proxyHost.split(",")[0].trim();
-                            const sub = proxyHost.split(",")[1].trim();
-                            const protocol = proxyHost.split(",")[2].trim();
-                            const domain = `${protocol}://${(sub.length > 0) ? sub + "." : ""}${host}?url=${item.proxyPath}`
-                            iframe.src = `${domain}`;
-                            window.serverToggle.enabled = false;
-                        } else {
-                            // not on proxy host
-                            console.log("Not a proxy host");
-                            iframe.src = `https://${item.proxy}${gameID}/index.html`;
-                        }
+                        // const proxyHosts = await fetch("/phosts.txt");
+                        // const proxyHostsText = await proxyHosts.text();
+                        // const proxyHostsList = proxyHostsText.split("\n");
+                        // const proxyHost = proxyHostsList.find((host) => {
+                        //     return host.split(',')[0].trim() == window.location.hostname;
+                        // });
+                        // if (proxyHost) {
+                        //     // on proxy host
+                        //     console.log("Proxy host detected");
+                        //     const host = proxyHost.split(",")[0].trim();
+                        //     const sub = proxyHost.split(",")[1].trim();
+                        //     const protocol = proxyHost.split(",")[2].trim();
+                        //     const domain = `${protocol}://${(sub.length > 0) ? sub + "." : ""}${host}?url=${item.proxyPath}`
+                        //     iframe.src = `${domain}`;
+                        //     window.serverToggle.enabled = false;
+                        // } else {
+                        //     // not on proxy host
+                        //     console.log("Not a proxy host");
+                        //     iframe.src = `https://${item.proxy}${gameID}/index.html`;
+                        // }
                     })()
                 }
                 // add favicon

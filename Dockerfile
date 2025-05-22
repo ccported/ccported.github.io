@@ -1,64 +1,39 @@
-# Build stage for static site
-FROM node:20.16.0-slim AS builder
+FROM oven/bun:latest
 
-WORKDIR /build
+# Install git and AWS CLI
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install htmlc and other build dependencies
-RUN npm install -g @sojs_coder/htmlc@1.3.5
+# Install AWS CLI
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && ./aws/install \
+    && rm -rf awscliv2.zip aws
 
-# Copy only package files first to leverage cache
-COPY server/package.json ./server/
-COPY static/roms/package*.json ./static/roms/
-COPY package*.json ./
+WORKDIR /app
 
-# Install dependencies
-RUN cd server && npm install
-RUN cd static/roms && npm install
-RUN npm install
+# Copy package.json and install dependencies
+COPY package.json ./
+COPY bun.lockb ./
+RUN bun install
 
-# Copy source files
-COPY . .
+# Copy server files
+COPY server.js ./
+COPY start.sh ./
+RUN chmod +x start.sh
 
-# Build static site
-RUN node generate_sitemap.js
-RUN cd static/roms && node build.js
-RUN htmlc static --out=build
-RUN node modify_gitattr.js && \
-    cp .gitattributes build/.gitattributes
+# Create directories for mounted volumes
+RUN mkdir -p games emdata
 
-# Production stage
-FROM node:20.16.0-slim
-
-WORKDIR /usr/local/ccported
-
-# Install nginx and clean up in one layer
-RUN apt-get update && \
-    apt-get install -y nginx && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm /etc/nginx/sites-enabled/default
-
-# Copy nginx config
-COPY server/nginx.conf /etc/nginx/sites-enabled/
-
-# Copy built static files
-COPY --from=builder /build/build /usr/share/nginx/html/
-
-# Create IS_HOSTED.txt
-RUN echo "===is_hosted===" > /usr/share/nginx/html/IS_HOSTED.txt
-
-# Copy only the necessary server files
-COPY server/package.json ./
-RUN npm install --production
-
-COPY server/client.js ./
-COPY server/index.js ./
-
-# Set environment variables
-ENV node_env=production \
-    port=3000
+# Copy build directory
+COPY build ./build
 
 # Expose ports
-EXPOSE 80 3000
+EXPOSE 3000
+EXPOSE 8080
 
-# Start nginx and node
-CMD sh -c "service nginx start && node index.js"
+# Set the entrypoint
+ENTRYPOINT ["./start.sh"]

@@ -5,12 +5,15 @@
   "main": "generate_sitemap.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "htmlc "
+    "dev": "htmlc ",
+    "start": "bun run server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sojs_coder/htmlc": "^1.3.5"
+    "@sojs_coder/htmlc": "^1.3.5",
+    "@tomphttp/bare-server-node": "^2.0.5",
+    "bun": "latest"
   }
 }

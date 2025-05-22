@@ -1,3 +1,5 @@
 .env
 build
 found_files.log
+node_modules
+package-lock.json
