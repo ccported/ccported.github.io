@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    
+<!-- Component components/chead -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // Register the service worker from the root path
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(registration => {
+          console.log('Game service worker registered:', registration);
+        })
+        .catch(error => {
+          console.error('Service worker registration failed:', error);
+        });
+    });
+  }
+</script>
+<script src="/assets/scripts/monuloader.js"></script>
+
+<!-- Component components/gtag -->
+<script>
+  window.ccPorted = {
+    version: "431.2025-02-05T03:54:35.853Z",
+    ...(window.ccPorted || {})
+  };
+</script>
+
+<script src="/assets/scripts/helpers.js"></script>
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-DJDL65P9Y4"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-DJDL65P9Y4");
+  window.gtag = gtag;
+</script>
+
+<!-- End component components/gtag -->
+
+<link rel="icon" href="/assets/images/logo.jpg" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="/assets/styles/home.css" />
+<link rel="stylesheet" href="/assets/styles/master.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title></title>
+<script src="/assets/scripts/navigation.js"></script>
+<!-- End component components/chead -->
+
+<style>
+body {
+    text-align: center;
+    color: white;
+    background-color: #202020;
+    font-family: sans-serif;
+    background-color: black;
+}
+
+input[type="text"] {
+    background: rgb(119,221,119);
+    height: 50px;
+    width: 400px;
+    font-size: 20px;
+    color: black;
+    border: none;
+    padding-left: 10px;
+}
+
+input[type="text"]::placeholder {
+    color: black;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+</style>
+</head>
+<body>
+<br>
+<center>
+    <h1>about:blank cloaker</h1>
+    <br><br>
+    <input type="text" id="urlInput" placeholder="Enter URL" required>
+    <br><br>
+    <button style="background: rgb(119,221,119);height:200px;width:400px;font-size:40px;">Bypass</button>
+</center>
+<script>
+    var win;
+
+    document.querySelector('button').onclick = function() {
+        var urlInput = document.getElementById('urlInput');
+        var url = urlInput.value;
+
+        if (!url.startsWith("https://")) {
+            url = "https://" + url;
+        }
+
+        if (url) {
+            if (win) {
+                win.focus();
+            } else {
+                win = window.open();
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = url;
+                win.document.body.appendChild(iframe);
+            }
+            document.querySelector('button').style.background = '#FF6D6A';
+            document.querySelector('button').innerHTML = "Local-Page Opened!";
+        }
+    };
+</script>
+</body>
+</html>
