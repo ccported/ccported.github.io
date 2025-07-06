@@ -1,0 +1,362 @@
+.classic.dark {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+
+.classic.dark header h1 {
+  color: #eee;
+  background-color: #000000;
+}
+
+.classic.dark header h1 a {
+  color: #eee !important;
+}
+
+.classic.dark header {
+  background-color: #000000;
+}
+
+.classic.dark header.shadow {
+  box-shadow: 0px 0px 10px #333;
+}
+
+
+.classic.dark .card.grid {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.classic.dark .card.grid:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.classic.dark .card.grid .card-content {
+  color: #fff;
+}
+
+.classic.dark .card.rows .card-content {
+  color: white;
+}
+
+.classic.dark .card-links a {
+  color: #fff;
+}
+
+.classic.dark .card-links a:visited {
+  color: #fff;
+}
+
+.classic.dark .card-tags .tag {
+  background-color: #333;
+  color: #fff;
+}
+
+.classic.dark .card.grid .star-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.classic.dark .card.grid .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px black;
+}
+
+.classic.dark #searchBox {
+  border: 1px solid #ccc;
+}
+
+.classic.dark #searchBox:focus {
+  border: 1px solid dodgerblue;
+}
+
+.classic.dark a {
+  color: dodgerblue;
+}
+
+.classic.dark a:visited {
+  color: dodgerblue;
+}
+
+.classic.dark .popup {
+  color: white;
+}
+
+.classic.dark .popup-content #gameRequestInput {
+  border: 1px solid #333;
+}
+
+.classic.dark .popup-buttons button#nvmd {
+  background-color: red;
+  border: 1px solid red;
+}
+
+.classic.dark .popup-buttons button {
+  background-color: dodgerblue;
+  color: #fff;
+  border: 1px solid dodgerblue;
+}
+
+
+.classic.dark button#sort,
+.classic.dark button#pickforme {
+  color: #eee;
+  border: 1px solid #ccc;
+  background-color: inherit;
+}
+
+
+.classic.dark .toggle-btn {
+  border: 1px solid #ccc;
+}
+
+.classic.dark .toggle-btn:hover {
+  background: #333;
+}
+
+
+.classic.dark .dot {
+  background-color: #ccc;
+}
+
+
+.classic.dark .inxxx.grid {
+  background-color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.classic.dark .inxxx.rows {
+  background-color: #000;
+}
+
+.classic.dark .r-side-nav {
+  background-color: #111;
+}
+
+.classic.dark .r-side-nav a {
+  color: #eee;
+}
+
+.classic.dark .hamburger span {
+  background: #eee;
+}
+
+.classic.dark .dont-see {
+  color: #eee;
+}
+
+.classic.dark .card.rows {
+  background-color: #333;
+}
+
+.classic.dark .card.rows .card-content {
+  color: #eee;
+}
+
+.classic.dark .card.rows .star-icon {
+  color: #eee;
+}
+
+.classic.dark .card.rows .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px black;
+}
+
+.classic.dark .card.rows .card-links a {
+  color: #eee;
+}
+
+.classic.dark .card.rows .card-links a:visited {
+  color: #eee;
+}
+
+.classic.dark .card.rows .card-tags .tag {
+  background-color: #555;
+  color: #eee;
+}
+
+.classic.dark .card.rows:hover {
+  background-color: #444;
+}
+
+.classic.dark .card.rows:hover .card-bg {
+  filter: brightness(0.8);
+}
+
+.classic.dark .card.rows:hover .card-content {
+  color: #fff;
+}
+
+.classic.dark .card.rows:hover .star-icon {
+  color: #fff;
+}
+
+.classic.dark .card.rows:hover .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px black;
+}
+
+.classic.dark .card.rows:hover .card-links a {
+  color: #fff;
+}
+
+.classic.dark .card.rows:hover .card-links a:visited {
+  color: #fff;
+}
+
+.classic.dark .card.rows:hover .card-tags .tag {
+  background-color: #666;
+  color: #fff;
+}
+
+.classic.dark .profile-section {
+    background-color: #222;
+}
+.classic.dark .achievements-section {
+    background-color: #222;
+}
+.classic.dark .profile-info label {
+    color: #ddd;
+}
+.classic.dark .profile-info input {
+    background-color: #444;
+    color: #ddd;
+}
+.classic.dark .profile-info input:focus {
+    border-color: #666;
+}
+.classic.dark .profile-info input {
+    border-color: #555;
+}
+.classic.dark .profile-section {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+.classic.dark .achievement-card {
+    background-color: #444;
+    border-color: #555;
+}
+.classic.dark .achievement-icon {
+    background-color: #555;
+}
+.classic.dark .achievement-info h3 {
+    color: #ddd;
+}
+.classic.dark .achievement-info p {
+    color: #999;
+}
+.classic.dark .profile-section {
+    color: #ddd;
+}
+.classic.dark .profile-section h2 {
+    color: #ddd;
+}
+.classic.dark .profile-section h3 {
+    color: #ddd;
+}
+.classic.dark .profile-section h4 {
+    color: #ddd;
+}
+.classic.dark .profile-section p {
+    color: #ddd;
+}
+.classic.dark .profile-section label {
+    color: #ddd;
+}
+.classic.dark .profile-section input {
+    color: #ddd;
+}
+.classic.dark .stats{
+    color: #ddd;
+}
+.classic.dark .stat{
+    color: #ddd;
+}
+
+.classic.dark .current-weather {
+    background: #111;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.classic.dark #weather-chart-container {
+    background-color: #000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.classic.dark .forecast-day {
+    background: #111;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.classic.dark .temperature {
+    color: #eee;
+}
+.classic.dark .conditions {
+    color: #ccc;
+}
+.classic.dark .date {
+    color: #eee;
+}
+
+.classic.dark h1 {
+    color: #eee;
+    background-color: #111;
+}
+.classic.dark h2 {
+    color: #f0f0f0;
+}
+.classic.dark #searchInput {
+    background-color: #111;
+    color: #fff;
+    border: 1px solid #eee;
+}
+.classic.dark #searchInput:focus {
+    border: 1px solid #eee;
+}
+.classic.dark li {
+    border-bottom: none;
+}
+.classic.dark li div.links a {
+    color: #f0f0f0;
+}
+.classic.dark a {
+    color: #f0f0f0;
+}
+.classic.dark a:hover {
+    color: #fff;
+}
+.classic.dark a:visited {
+    color: #f0f0f0;
+}
+.classic.dark .loading {
+    color: #f0f0f0;
+}
+.classic.dark .error {
+    color: #f0f0f0;
+}
+.classic.dark .loading-bar {
+    background-color: #111;
+    border: 1px solid #eee;
+}
+.classic.dark .loading-bar-fill {
+    background-color: #eee;
+}
+
+.classic.dark body h1 {
+    color: white;
+}
+.classic.dark input[type="text"] {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+}
+.classic.dark input[type="text"]::placeholder {
+    color: #bbb;
+}
+.classic.dark input[type="text"]:focus {
+    border-color: dodgerblue;
+}
+.classic.dark button {
+    background: dodgerblue;
+    color: white;
+}
+.classic.dark button:hover {
+    background: #0066cc;
+}

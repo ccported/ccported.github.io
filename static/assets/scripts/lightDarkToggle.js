@@ -1,10 +1,18 @@
-const theme = localStorage.getItem("[ns_ccported]_theme") || "light";
-const lightDarkToggle = document.querySelector(".cc.lightDarkToggle .cc.checkbox");
-if(theme == "dark"){
-    document.body.classList.add("dark");
-    lightDarkToggle.checked = true;
-}
-checkbox.addEventListener("change", (e) => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("[ns_ccported]_theme", document.body.classList.contains("dark") ? "dark" : "light");
-})
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeSelect = document.getElementById('theme-select');
+    const body = document.body;
+    const setTheme = (theme) => {
+        body.classList.remove('classic', 'future', 'vintage', 'ocean');
+        body.classList.add(theme);
+        localStorage.setItem('theme', theme);
+        themeSelect.value = theme;
+    };
+
+    themeSelect.addEventListener('change', () => {
+        setTheme(themeSelect.value);
+    });
+
+    const savedTheme = localStorage.getItem('theme') || 'vintage';
+    setTheme(savedTheme);
+});

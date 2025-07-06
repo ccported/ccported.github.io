@@ -1,0 +1,215 @@
+
+/* Theme 2: Vintage */
+body.vintage {
+    background-color: #f5e8d0;
+    color: #4a4a4a;
+    font-family: 'Playfair Display', serif;
+}
+
+.vintage header {
+    background-color: rgba(245, 232, 208, 0.8);
+    border-bottom: 1px solid #8b4513;
+}
+
+.vintage header h1 a {
+    color: #8b4513 !important;
+}
+
+.vintage .card.grid {
+    background-color: #fffaf0;
+    border: 1px solid #8b4513;
+    box-shadow: 5px 5px 0px #8b4513;
+    transition: all 0.3s ease;
+}
+
+.vintage .card.grid:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0px #8b4513;
+}
+
+.vintage .card.grid .card-content {
+    color: #4a4a4a;
+}
+
+.vintage #searchBox {
+    background-color: #fffaf0;
+    border: 1px solid #8b4513;
+    color: #4a4a4a;
+}
+
+.vintage #searchBox:focus {
+    border-color: #8b4513;
+}
+
+.vintage button, .vintage .toggle-btn {
+    background-color: #8b4513;
+    border: 1px solid #8b4513;
+    color: #f5e8d0;
+}
+
+.vintage button:hover, .vintage .toggle-btn:hover {
+    background-color: #a0522d;
+}
+
+.vintage .r-side-nav a {
+  color: #8b4513;
+}
+
+.vintage .hamburger span {
+  background: #8b4513;
+}
+
+.vintage .profile-section {
+    background-color: #fffaf0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.vintage .achievements-section {
+    background-color: #fffaf0;
+}
+.vintage .profile-info label {
+    color: #8b4513;
+}
+.vintage .profile-info input {
+    background-color: #f5e8d0;
+    color: #4a4a4a;
+    border: 1px solid #8b4513;
+}
+.vintage .profile-info input:focus {
+    border-color: #8b4513;
+}
+.vintage #saveChanges {
+    background-color: #8b4513;
+    color: #f5e8d0;
+}
+.vintage #saveChanges:hover {
+    background-color: #a0522d;
+}
+.vintage .achievement-card {
+    background-color: #f5e8d0;
+    border: 2px solid #8b4513;
+}
+.vintage .achievement-icon {
+    background-color: #8b4513;
+}
+.vintage .achievement-info h3 {
+    color: #4a4a4a;
+}
+.vintage .achievement-info p {
+    color: #6b6b6b;
+}
+.vintage .stats {
+    color: #4a4a4a;
+}
+.vintage .stat {
+    color: #4a4a4a;
+}
+.vintage .stat-title {
+    border-bottom: 1px solid #8b4513;
+}
+
+.vintage .current-weather {
+    background: #fffaf0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.vintage #weather-chart-container {
+    background-color: #f5e8d0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.vintage .forecast-day {
+    background: #fffaf0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.vintage .temperature {
+    color: #8b4513;
+}
+.vintage .conditions {
+    color: #4a4a4a;
+}
+.vintage .date {
+    color: #8b4513;
+}
+
+.vintage h1 {
+    color: #8b4513;
+    background-color: #f5e8d0;
+}
+.vintage h2 {
+    color: #4a4a4a;
+}
+.vintage #searchInput {
+    background-color: #fffaf0;
+    border: 1px solid #8b4513;
+    color: #4a4a4a;
+}
+.vintage #searchInput:focus {
+    border: 1px solid #8b4513;
+}
+.vintage li {
+    border-bottom: 1px solid #8b4513;
+}
+.vintage li div.links a {
+    color: #8b4513;
+}
+.vintage a {
+    color: #8b4513;
+}
+.vintage a:hover {
+    color: #a0522d;
+}
+.vintage a:visited {
+    color: #8b4513;
+}
+.vintage .loading {
+    color: #4a4a4a;
+}
+.vintage .error {
+    color: #dc3545;
+}
+.vintage .loading-bar {
+    background-color: #f5e8d0;
+    border: 1px solid #8b4513;
+}
+.vintage .loading-bar-fill {
+    background-color: #8b4513;
+}
+
+.vintage .toggle-btn {
+  background: #8b4513;
+}
+.vintage .toggle-btn:hover {
+  background: #a0522d;
+}
+.vintage .dot {
+  background-color: #f5e8d0;
+}
+
+.vintage .card.grid .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px #8b4513;
+}
+.vintage .card.rows .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px #8b4513;
+}
+
+.vintage body h1 {
+    color: #8b4513;
+}
+.vintage input[type="text"] {
+    background: #fffaf0;
+    color: #4a4a4a;
+    border: 1px solid #8b4513;
+}
+.vintage input[type="text"]::placeholder {
+    color: #6b6b6b;
+}
+.vintage input[type="text"]:focus {
+    border-color: #8b4513;
+}
+.vintage button {
+    background: #8b4513;
+    color: #f5e8d0;
+}
+.vintage button:hover {
+    background: #a0522d;
+}

@@ -1,0 +1,220 @@
+
+/* Theme 1: Futuristic */
+body.future {
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.future header {
+    background-color: rgba(13, 13, 13, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #00ffcc;
+}
+
+.future header h1 a {
+    color: #00ffcc !important;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+.future .card.grid {
+    background-color: #1a1a1a;
+    border: 1px solid #00ffcc;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+    transition: all 0.3s ease;
+}
+
+.future .card.grid:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 255, 204, 0.4);
+}
+
+.future .card.grid .card-content {
+    color: #e0e0e0;
+}
+
+.future #searchBox {
+    background-color: #1a1a1a;
+    border: 1px solid #00ffcc;
+    color: #e0e0e0;
+}
+
+.future #searchBox:focus {
+    border-color: #00ffcc;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
+
+.future button, .future .toggle-btn {
+    background-color: transparent;
+    border: 1px solid #00ffcc;
+    color: #00ffcc;
+    transition: all 0.3s ease;
+}
+
+.future button:hover, .future .toggle-btn:hover {
+    background-color: #00ffcc;
+    color: #0d0d0d;
+}
+
+.future .r-side-nav a {
+  color: #00ffcc;
+}
+
+.future .hamburger span {
+  background: #00ffcc;
+}
+
+.future .profile-section {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+.future .achievements-section {
+    background-color: #1a1a1a;
+}
+.future .profile-info label {
+    color: #00ffcc;
+}
+.future .profile-info input {
+    background-color: #0d0d0d;
+    color: #e0e0e0;
+    border: 1px solid #00ffcc;
+}
+.future .profile-info input:focus {
+    border-color: #00ffcc;
+}
+.future #saveChanges {
+    background-color: #00ffcc;
+    color: #0d0d0d;
+}
+.future #saveChanges:hover {
+    background-color: #00e6b8;
+}
+.future .achievement-card {
+    background-color: #0d0d0d;
+    border: 2px solid #00ffcc;
+}
+.future .achievement-icon {
+    background-color: #00ffcc;
+}
+.future .achievement-info h3 {
+    color: #e0e0e0;
+}
+.future .achievement-info p {
+    color: #a0a0a0;
+}
+.future .stats {
+    color: #e0e0e0;
+}
+.future .stat {
+    color: #e0e0e0;
+}
+.future .stat-title {
+    border-bottom: 1px solid #00ffcc;
+}
+
+.future .current-weather {
+    background: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.future #weather-chart-container {
+    background-color: #0d0d0d;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.future .forecast-day {
+    background: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.future .temperature {
+    color: #00ffcc;
+}
+.future .conditions {
+    color: #e0e0e0;
+}
+.future .date {
+    color: #00ffcc;
+}
+
+.future h1 {
+    color: #00ffcc;
+    background-color: #0d0d0d;
+}
+.future h2 {
+    color: #e0e0e0;
+}
+.future #searchInput {
+    background-color: #1a1a1a;
+    border: 1px solid #00ffcc;
+    color: #e0e0e0;
+}
+.future #searchInput:focus {
+    border: 1px solid #00ffcc;
+}
+.future li {
+    border-bottom: 1px solid #00ffcc;
+}
+.future li div.links a {
+    color: #00ffcc;
+}
+.future a {
+    color: #00ffcc;
+}
+.future a:hover {
+    color: #00e6b8;
+}
+.future a:visited {
+    color: #00ffcc;
+}
+.future .loading {
+    color: #e0e0e0;
+}
+.future .error {
+    color: #ff0000;
+}
+.future .loading-bar {
+    background-color: #0d0d0d;
+    border: 1px solid #00ffcc;
+}
+.future .loading-bar-fill {
+    background-color: #00ffcc;
+}
+
+.future .toggle-btn {
+  background: #00ffcc;
+}
+.future .toggle-btn:hover {
+  background: #00e6b8;
+}
+.future .dot {
+  background-color: #0d0d0d;
+}
+
+.future .card.grid .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px #00ffcc;
+}
+.future .card.rows .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+.future body h1 {
+    color: #00ffcc;
+}
+.future input[type="text"] {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border: 1px solid #00ffcc;
+}
+.future input[type="text"]::placeholder {
+    color: #a0a0a0;
+}
+.future input[type="text"]:focus {
+    border-color: #00ffcc;
+}
+.future button {
+    background: #00ffcc;
+    color: #0d0d0d;
+}
+.future button:hover {
+    background: #00e6b8;
+}

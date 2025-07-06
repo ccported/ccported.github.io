@@ -1,0 +1,217 @@
+
+/* Theme 3: Oceanic */
+body.ocean {
+    background: linear-gradient(to bottom, #a2d2ff, #bde0fe);
+    color: #003049;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.ocean header {
+    background-color: rgba(162, 210, 255, 0.8);
+    border-bottom: 1px solid #0077b6;
+}
+
+.ocean header h1 a {
+    color: #003049 !important;
+}
+
+.ocean .card.grid {
+    background-color: #ffffff;
+    border: 1px solid #0077b6;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.2);
+    transition: all 0.3s ease;
+}
+
+.ocean .card.grid:hover {
+    transform: scale(1.05);
+}
+
+.ocean .card.grid .card-content {
+    color: #003049;
+}
+
+.ocean #searchBox {
+    background-color: #ffffff;
+    border: 1px solid #0077b6;
+    color: #003049;
+    border-radius: 20px;
+}
+
+.ocean #searchBox:focus {
+    border-color: #0077b6;
+}
+
+.ocean button, .ocean .toggle-btn {
+    background-color: #0077b6;
+    border: 1px solid #0077b6;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.ocean button:hover, .ocean .toggle-btn:hover {
+    background-color: #005f8d;
+}
+
+.ocean .r-side-nav a {
+  color: #0077b6;
+}
+
+.ocean .hamburger span {
+  background: #0077b6;
+}
+
+.ocean .profile-section {
+    background-color: #e0f2f7;
+    box-shadow: 0 4px 8px rgba(0, 119, 182, 0.2);
+}
+.ocean .achievements-section {
+    background-color: #e0f2f7;
+}
+.ocean .profile-info label {
+    color: #0077b6;
+}
+.ocean .profile-info input {
+    background-color: #ffffff;
+    color: #003049;
+    border: 1px solid #0077b6;
+}
+.ocean .profile-info input:focus {
+    border-color: #0077b6;
+}
+.ocean #saveChanges {
+    background-color: #0077b6;
+    color: #ffffff;
+}
+.ocean #saveChanges:hover {
+    background-color: #005f8d;
+}
+.ocean .achievement-card {
+    background-color: #ffffff;
+    border: 2px solid #0077b6;
+}
+.ocean .achievement-icon {
+    background-color: #0077b6;
+}
+.ocean .achievement-info h3 {
+    color: #003049;
+}
+.ocean .achievement-info p {
+    color: #004b6d;
+}
+.ocean .stats {
+    color: #003049;
+}
+.ocean .stat {
+    color: #003049;
+}
+.ocean .stat-title {
+    border-bottom: 1px solid #0077b6;
+}
+
+.ocean .current-weather {
+    background: #e0f2f7;
+    box-shadow: 0 2px 4px rgba(0, 119, 182, 0.2);
+}
+.ocean #weather-chart-container {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.1);
+}
+.ocean .forecast-day {
+    background: #e0f2f7;
+    box-shadow: 0 2px 4px rgba(0, 119, 182, 0.2);
+}
+.ocean .temperature {
+    color: #0077b6;
+}
+.ocean .conditions {
+    color: #003049;
+}
+.ocean .date {
+    color: #0077b6;
+}
+
+.ocean h1 {
+    color: #0077b6;
+    background-color: #a2d2ff;
+}
+.ocean h2 {
+    color: #003049;
+}
+.ocean #searchInput {
+    background-color: #ffffff;
+    border: 1px solid #0077b6;
+    color: #003049;
+}
+.ocean #searchInput:focus {
+    border: 1px solid #0077b6;
+}
+.ocean li {
+    border-bottom: 1px solid #0077b6;
+}
+.ocean li div.links a {
+    color: #0077b6;
+}
+.ocean a {
+    color: #0077b6;
+}
+.ocean a:hover {
+    color: #005f8d;
+}
+.ocean a:visited {
+    color: #0077b6;
+}
+.ocean .loading {
+    color: #003049;
+}
+.ocean .error {
+    color: #ff0000;
+}
+.ocean .loading-bar {
+    background-color: #a2d2ff;
+    border: 1px solid #0077b6;
+}
+.ocean .loading-bar-fill {
+    background-color: #0077b6;
+}
+
+.ocean .toggle-btn {
+  background: #0077b6;
+}
+.ocean .toggle-btn:hover {
+  background: #005f8d;
+}
+.ocean .dot {
+  background-color: #ffffff;
+}
+
+.ocean .card.grid .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px #0077b6;
+}
+.ocean .card.rows .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px #0077b6;
+}
+
+.ocean body h1 {
+    color: #0077b6;
+}
+.ocean input[type="text"] {
+    background: #ffffff;
+    color: #003049;
+    border: 1px solid #0077b6;
+}
+.ocean input[type="text"]::placeholder {
+    color: #004b6d;
+}
+.ocean input[type="text"]:focus {
+    border-color: #0077b6;
+}
+.ocean button {
+    background: #0077b6;
+    color: #ffffff;
+}
+.ocean button:hover {
+    background: #005f8d;
+}
