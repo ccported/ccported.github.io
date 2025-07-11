@@ -1,0 +1,195 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game loading...</title>
+    <script type="text/javascript" src="//monu.delivery/site/e/4/500442-526a-41af-9981-22db9286cd37.js" data-cfasync="false"></script>
+    <script>
+        window.ccPorted = {
+            config: {
+                stateSyncEnabled: false
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1502.0/aws-sdk.min.js"></script>
+    <script src="/assets/scripts/helpers.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe>Loading....</iframe>
+    <script>
+        (async () => {
+            const iframe = document.querySelector("iframe");
+            iframe.width = window.innerWidth;
+            iframe.height = window.innerHeight;
+            iframe.allowFullscreen = true;
+
+            const searchParams = new URLSearchParams(window.location.search);
+            const gameID = searchParams.get('id');
+            const serverID = searchParams.get('server');
+            const serverList = await fetch('/servers.txt');
+            const serversText = await serverList.text();
+            const servers = serversText.split('\n');
+            // if (serverID) {
+            //     iframe.src = `https://${servers[serverID]}/games/${gameID}/index.html`;
+            // } else {
+            //     iframe.src = `https://${servers[Math.floor(Math.random() * servers.length)]}/games/${gameID}/index.html`;
+            // }
+            iframe.src = "/testgames/test-tetris-leaderboard/index.html";
+            iframe.addEventListener("load", (e) => {
+                const w = iframe.contentWindow;
+                log(`Iframe loaded. User logged in: ${(typeof window.ccPorted.user != undefined && window.ccPorted.user != null)}`);
+                if (window.ccPorted.user) {
+                    log("User logged in, sending tokens");
+                    console.log(window.ccPorted.getUserTokens());
+                    w.postMessage({
+                        action: "SET_TOKENS",
+                        content: window.ccPorted.getUserTokens()
+                    });
+                }
+            });
+            // Set up secure message handling from iframes
+            window.addEventListener("message", async (event) => {
+                // Check origin - replace with your actual iframe origin(s)
+                try {
+                    console.log(event);
+                    const req = await fetch("/servers.txt");
+                    const serversList = await req.text();
+                    const allowedOrigins = serversList.split("\n").map((domain) => {
+                        return `https://${domain}`
+                    });
+                    console.log(allowedOrigins);
+                    if (!allowedOrigins.includes(event.origin)) {
+                        console.warn(`Rejected message from unauthorized origin: ${event.origin}`);
+                        return;
+                    }
+
+                    const data = event.data;
+
+                    if (data.action === "GET_TOKENS") {
+                        // Prepare response with the same requestId
+                        const response = {
+                            requestId: data.requestId
+                        };
+
+                        if (window.ccPorted?.user) {
+                            console.log("User logged in, sending tokens");
+
+                            // Get user tokens with error handling
+                            try {
+                                const tokens = window.ccPorted.getUserTokens();
+                                response.action = "SET_TOKENS";
+                                response.content = tokens;
+                            } catch (error) {
+                                console.error("Error getting user tokens:", error);
+                                response.action = "ERROR";
+                                response.error = "Failed to get user tokens";
+                            }
+                        } else {
+                            // try waiting for a user 
+                            await window.ccPorted.userPromise;
+                            if (window.ccPorted.user) {
+                                try {
+                                    const tokens = window.ccPorted.getUserTokens();
+                                    response.action = "SET_TOKENS";
+                                    response.content = tokens;
+                                } catch (error) {
+                                    console.error("Error getting user tokens:", error);
+                                    response.action = "ERROR";
+                                    response.error = "Failed to get user tokens";
+                                }
+                            } else {
+                                response.action = "NO_USER";
+                            }
+                        }
+
+                        // Send response back to the exact source iframe
+                        console.log(response, event.origin);
+                        event.source.postMessage(response, event.origin);
+                    } else {
+                        // Handle unknown action
+                        event.source.postMessage({
+                            action: "UNKNOWN_ACTION",
+                            requestId: data.requestId
+                        }, event.origin);
+                    }
+                } catch (e) {
+                    event.source.postMessage({
+                        action: "ERROR",
+                        error: e.message,
+                        requestId: event.data.requestId
+                    })
+                }
+            });
+            AWS.config.region = 'us-west-2';
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                IdentityPoolId: 'us-west-2:cb7ff0d0-87c6-43c8-a9e4-dece8bd1b8c7'
+            });
+
+            const dynamodb = new AWS.DynamoDB.DocumentClient();
+
+            function requestGameData() {
+                dynamodb.get({
+                    TableName: 'games_list',
+                    Key: {
+                        gameID
+                    }
+                }, (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                    const item = data.Item;
+                    if (item) {
+                        document.title = item.fName;
+                        // add favicon
+                        // var link = document.querySelector("link[rel~='icon']");
+                        // if (!link) {
+                        //     link = document.createElement('link');
+                        //     link.rel = 'icon';
+                        //     document.head.appendChild(link);
+                        // }
+                        // changeFavicon(`https://d1yh00vn2fvto7.cloudfront.net/games/${gameID}${item.thumbPath}`);
+                        setDescription(item.description + " Play now on CCPorted!");
+                    }
+                });
+            }
+            function setDescription(description) {
+                const meta = document.querySelector("meta[name='description']") || document.createElement("meta");
+                meta.name = "description";
+                meta.content = description;
+                if (!document.querySelector("meta[name='description']")) {
+                    document.head.appendChild(meta);
+                }
+            }
+            function changeFavicon(src) {
+                var link = document.createElement('link'),
+                    oldLink = document.getElementById('dynamic-favicon');
+                link.id = 'dynamic-favicon';
+                link.rel = 'icon';
+                link.href = src;
+                if (oldLink) {
+                    document.head.removeChild(oldLink);
+                }
+                document.head.appendChild(link);
+            }
+            // requestGameData();
+        })();
+
+    </script>
+</body>
+
+</html>

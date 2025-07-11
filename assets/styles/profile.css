@@ -1,0 +1,30 @@
+@media screen and (max-width: 768px) {
+    .profile-section, .profile-header, .profile-edit-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-header{
+        width: 100%;
+    }
+    .stats{
+        max-width: none;
+        width: 100%;
+    }
+    .container{
+        margin-top: 100px;
+    }
+    .profile-info, .profile-edit-group{
+        width: 100%;
+    }
+    .profile-edit-group{
+        margin-bottom: 10px;
+    }
+    .profile-info{
+        max-width: none;
+    }  
+    .info-group input{
+        box-sizing: border-box;
+    }
+}
