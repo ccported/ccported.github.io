@@ -1,0 +1,6 @@
+ccgstatic.com,Charlie,games/
+ccportedgames.s3.us-west-2.amazonaws.com,Bell,
+d1yh00vn2fvto7.cloudfront.net,Olympic,games/
+d1cp3xh9gda0oe.cloudfront.net,Shafiyoon,games/
+d1vqjbyryjpk97.cloudfront.net,Racecar,games/
+ccported.click,Ellay,games/
