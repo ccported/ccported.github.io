@@ -1,0 +1,589 @@
+<html lang="en">
+
+<head>
+    <script
+        type="text/javascript">!(function (o, _name) { o[_name] = o[_name] || function $() { ($.q = $.q || []).push(arguments) }, o[_name].v = o[_name].v || 2, o[_name].s = "1"; !(function (t, o, n, c) { function a(n, c) { try { a = t.localStorage, (n = JSON.parse(a.getItem("_aQS02N0Y2OENDQUZGRjZFN0Q4QzNCREY1NjAtMQ")).lgk || []) && (c = t[o].pubads()) && n.forEach((function (t) { t && t[0] && c.setTargeting(t[0], t[1] || "") })) } catch (f) { } var a } try { (c = t[o] = t[o] || {}).cmd = c.cmd || [], typeof c.pubads === n ? a() : typeof c.cmd.unshift === n ? c.cmd.unshift(a) : c.cmd.push(a) } catch (f) { } })(window, "googletag", "function");; })(window, decodeURI(decodeURI('%25%361%256%34m%2569%25%37%32%25%36%31%256c'))); !(function (t, c, o, $) { o = t.createElement(c), t = t.getElementsByTagName(c)[0], o.async = 1, o.src = "https://bidpapers.com/bundles/d70a86a36af13633ffc768_1612b01ee8ab91502bf2e4bc.v2.js", ($ = 0) && $(o), t.parentNode.insertBefore(o, t) })(document, "script");</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game loading...</title>
+    <script type="text/javascript" src="//monu.delivery/site/e/4/500442-526a-41af-9981-22db9286cd37.js"
+        data-cfasync="false"></script>
+    <style>
+        .server-toggle-wheel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            z-index: 9999;
+            display: none;
+            width: 340px;
+            padding-left: 50px;
+            padding-right: 50px;
+            height: 450px;
+            perspective: 1000px;
+            box-sizing: border-box;
+            /* overflow: hidden; */
+        }
+
+        .server-toggle-wheel p {
+            font-size: 9pt;
+            color: #ccc;
+
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .wheel {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+            transition: transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+
+        .server-item {
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            backface-visibility: hidden;
+            padding: 5px;
+            opacity: 0.4;
+        }
+
+        .server-item.selected {
+            opacity: 1;
+            background-color: #555;
+        }
+
+        .server-info-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex-grow: 1;
+        }
+
+        .server-name {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .server-address {
+            font-size: 12px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .server-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+        }
+    </style>
+    <script>
+        window.ccPorted = {
+            config: {
+                stateSyncEnabled: false
+            }
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1502.0/aws-sdk.min.js"></script>
+    <script src="/assets/scripts/helpers.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe>Loading....</iframe>
+    <script>
+
+        class ServerToggle {
+            constructor(currentServer, switchCallback) {
+                this.servers = [];
+                this.currentServerIndex = 0;
+                this.initialServerIndex = currentServer;
+                this.uiVisible = false;
+                this.uiElement = null;
+                this.wheelElement = null;
+                this.serverStatusCache = {};
+                this.itemHeight = 60; // Height of each server item
+                this.visibleItems = 5; // Number of visible items in the wheel
+                this.switchCallback = switchCallback;
+
+                this.init();
+            }
+
+            async init() {
+                await this.loadServers();
+                this.createUI();
+                this.setupKeyboardListeners();
+                for (var i = 0; i < this.initialServerIndex; i++) {
+                    this.nextServer(true);
+                }
+            }
+            async getServerText() {
+                try {
+                    console.log("FETCH")
+                    const res = await fetch("/servers.txt");
+                    if (!res.ok) {
+                        return "Failed to load,error";
+                    }
+                    const text = await res.text();
+                    return text;
+                } catch (e) {
+                    return "Failed to load,error"
+                }
+            }
+            async loadServers() {
+                const serversText = await this.getServerText();
+
+                this.servers = serversText.split('\n').map((line, i) => {
+                    const [address, friendlyName, path] = line.split(',');
+                    return {
+                        address,
+                        friendlyName,
+                        index: i,
+                        path: path.trim(),
+                        isLive: null // Will be populated when checked
+                    };
+                });
+
+                // Check status of all servers initially
+                await Promise.all(this.servers.map(server => this.checkServerStatus(server)));
+            }
+
+            async checkServerStatus(server) {
+                try {
+                    const res = await fetch(`https://${server.address}/blocked_res.txt`);
+                    if (res.ok) {
+                        const text = await res.text();
+                        if (text.indexOf("===NOT_BLOCKED===") !== -1) {
+                            server.isLive = true;
+                        } else {
+                            server.isLive = false;
+                        }
+                    } else {
+                        server.isLive = false;
+                    }
+                    // Cache the result
+                    this.serverStatusCache[server.address] = {
+                        isLive: server.isLive,
+                        timestamp: Date.now()
+                    };
+
+                    // Update UI if it's visible
+                    if (this.uiVisible) {
+                        this.updateUI();
+                    }
+
+
+                    return server.isLive;
+                } catch (error) {
+                    console.error(`Error checking server status for ${server.address}:`, error);
+                    server.isLive = false;
+                    return false;
+                }
+            }
+
+            createUI() {
+                // Create UI container
+                this.uiElement = document.createElement('div');
+                this.uiElement.className = 'server-toggle-wheel';
+                document.body.appendChild(this.uiElement);
+
+                const h2 = document.createElement("h2");
+                h2.appendChild(document.createTextNode("Server Toggle"));
+                this.uiElement.appendChild(h2);
+
+                const instruction = document.createElement("p");
+                instruction.innerHTML = "User CTRL + [ and ] to cylce between servers.";
+                this.uiElement.appendChild(instruction);
+
+                // Create wheel container
+                const wheelContainer = document.createElement('div');
+                wheelContainer.className = 'wheel-container';
+                this.uiElement.appendChild(wheelContainer);
+
+
+                // Create wheel element
+                this.wheelElement = document.createElement('div');
+                this.wheelElement.className = 'wheel';
+                wheelContainer.appendChild(this.wheelElement);
+            }
+
+            updateUI() {
+                if (!this.wheelElement) return;
+
+                // Clear current wheel
+                this.wheelElement.innerHTML = '';
+
+                const totalServers = this.servers.length;
+
+                // Create server items
+                this.servers.forEach((server, index) => {
+                    const serverElement = document.createElement('div');
+                    serverElement.className = `server-item ${index === this.currentServerIndex ? 'selected' : ''}`;
+
+                    // Calculate position in the wheel
+                    const angleDelta = index - this.currentServerIndex;
+                    const angleInRadians = (angleDelta * Math.PI) / 8; // Adjust divisor for curvature
+
+                    // Calculate the Y position
+                    const y = angleDelta * this.itemHeight;
+
+                    // Calculate the Z translation and rotation based on the angle
+                    const z = 100 * Math.cos(angleInRadians);
+                    const rotationX = -angleInRadians * (180 / Math.PI); // Convert to degrees
+
+                    // Apply transforms
+                    serverElement.style.transform = `translateY(${y}px) translateZ(${z}px) rotateX(${rotationX}deg)`;
+                    serverElement.style.top = `calc(50% - ${this.itemHeight / 2}px)`;
+
+                    // Adjust opacity based on distance from center
+                    const opacity = Math.max(0.2, 1 - Math.abs(angleDelta) * 0.2);
+                    serverElement.style.opacity = opacity;
+
+                    // Server info container (name and address)
+                    const serverInfoContainer = document.createElement('div');
+                    serverInfoContainer.className = 'server-info-container';
+
+                    // Server name
+                    const nameElement = document.createElement('div');
+                    nameElement.className = 'server-name';
+                    nameElement.textContent = server.friendlyName;
+
+                    // Add name and address to the info container
+                    serverInfoContainer.appendChild(nameElement);
+
+                    // Status indicator
+                    const statusElement = document.createElement('div');
+                    statusElement.className = 'server-status';
+                    const statusColor = server.isLive
+                        ? '#4CAF50' // Green
+                        : '#F44336'; // Red
+                    serverInfoContainer.style.color = statusColor;
+                    // Append elements
+                    serverElement.appendChild(serverInfoContainer);
+
+
+                    this.wheelElement.appendChild(serverElement);
+                });
+
+                // Position the wheel
+                this.updateWheelPosition();
+
+                // Refresh all server statuses
+                this.servers.forEach(server => {
+                    // Only refresh if the cached status is older than 30 seconds
+                    const cached = this.serverStatusCache[server.address];
+                    if (!cached || (Date.now() - cached.timestamp > 30000)) {
+                        this.checkServerStatus(server);
+                    }
+                });
+            }
+
+            updateWheelPosition() {
+                if (!this.wheelElement) return;
+
+                // No need to set the transform here - each item has its own transform
+                // based on its position relative to the current index
+            }
+
+            showUI() {
+                if (!this.uiElement) return;
+
+                this.uiVisible = true;
+                this.uiElement.style.display = 'block';
+                this.updateUI();
+            }
+
+            hideUI() {
+                if (!this.uiElement) return;
+
+                this.uiVisible = false;
+                this.uiElement.style.display = 'none';
+            }
+
+            nextServer(hideUI = false) {
+                this.currentServerIndex = (this.currentServerIndex + 1) % this.servers.length;
+                if (!hideUI) this.showUI();
+            }
+
+            prevServer() {
+                this.currentServerIndex = (this.currentServerIndex - 1 + this.servers.length) % this.servers.length;
+                this.showUI();
+            }
+
+            setupKeyboardListeners() {
+                // Track if Ctrl key is pressed
+                let ctrlPressed = false;
+
+                document.addEventListener('keydown', (event) => {
+                    // Check if Ctrl key is pressed
+                    if (event.key === 'Control') {
+                        ctrlPressed = true;
+                    }
+
+                    if (ctrlPressed) {
+                        if (event.key === ']') {
+                            event.preventDefault();
+                            this.nextServer();
+                        } else if (event.key === '[') {
+                            event.preventDefault();
+                            this.prevServer();
+                        }
+                    }
+                });
+
+                // Hide UI when Ctrl key is released
+                document.addEventListener('keyup', (event) => {
+                    if (event.key === 'Control') {
+                        ctrlPressed = false;
+                        this.hideUI();
+                        this.switchCallback(this.getCurrentServer())
+                    }
+                });
+            }
+
+            getCurrentServer() {
+                return this.servers[this.currentServerIndex];
+            }
+
+            static updateCurrentServerDisplay() {
+                const currentServer = this.getCurrentServer();
+                const currentServerInfoElement = document.getElementById('current-server-info');
+
+                if (currentServerInfoElement && currentServer) {
+                    currentServerInfoElement.innerHTML = `
+            <div><strong>Name:</strong> ${currentServer.friendlyName}</div>
+            <div><strong>Address:</strong> ${currentServer.address}</div>
+            <div class="status ${currentServer.isLive ? 'live' : 'offline'}">
+              Status: ${currentServer.isLive ? '✓ Online' : '✗ Offline'}
+            </div>
+          `;
+                }
+            }
+        }
+    </script>
+    <script>
+        (async () => {
+            const iframe = document.querySelector("iframe");
+            iframe.width = window.innerWidth;
+            iframe.height = window.innerHeight;
+            iframe.allowFullscreen = true;
+
+            const searchParams = new URLSearchParams(window.location.search);
+            const gameID = searchParams.get('id');
+            const serverID = searchParams.get('server');
+            const serverList = await fetch('/servers.txt');
+            const serversText = await serverList.text();
+            const servers = serversText.split('\n');
+            if (typeof serverID != "undefined") {
+                iframe.src = `http://localhost:8080/testgames/test-leaderboard-bz/index.html`;
+            } else {
+                const serverID = Math.floor(Math.random() * servers.length);
+                iframe.src = `http://localhost:8080/testgames/test-leaderboard-bz/index.html`;
+            }
+            const req = await fetch("/servers.txt");
+            const serversList = await req.text();
+            const allowedOrigins = serversList.split("\n").map((entry) => {
+                const domain = entry.split(",")[0]
+                if (domain.indexOf("localhost") > -1) {
+                    return `http://${domain.trim()}`
+                }
+                return `https://${domain.trim()}`
+            });
+            iframe.addEventListener("load", (e) => {
+                const w = iframe.contentWindow;
+                log(`Iframe loaded. User logged in: ${(typeof window.ccPorted.user != undefined && window.ccPorted.user != null)}`);
+                if (window.ccPorted.user) {
+                    log("User logged in, sending tokens");
+                    console.log(window.ccPorted.getUserTokens());
+                    w.postMessage({
+                        action: "SET_TOKENS",
+                        content: window.ccPorted.getUserTokens()
+                    });
+                }
+            });
+            // Set up secure message handling from iframes
+            window.addEventListener("message", async (event) => {
+                try {
+                    console.log(event);
+                    if (!event.data.fromInternal) return;
+                    if (!["http://localhost:8080", ...allowedOrigins].includes(event.origin)) {
+                        console.warn(`Rejected message from unauthorized origin: ${event.origin}`);
+                        return;
+                    }
+
+                    const data = event.data;
+
+                    if (data.action === "GET_TOKENS") {
+                        // Prepare response with the same requestId
+                        const response = {
+                            requestId: data.requestId
+                        };
+
+                        if (window.ccPorted?.user) {
+                            console.log("User logged in, sending tokens");
+
+                            // Get user tokens with error handling
+                            try {
+                                const tokens = window.ccPorted.getUserTokens();
+                                response.action = "SET_TOKENS";
+                                response.content = tokens;
+                            } catch (error) {
+                                console.error("Error getting user tokens:", error);
+                                response.action = "ERROR";
+                                response.error = "Failed to get user tokens";
+                            }
+                        } else {
+                            // try waiting for a user 
+                            await window.ccPorted.userPromise;
+                            if (window.ccPorted.user) {
+                                try {
+                                    const tokens = window.ccPorted.getUserTokens();
+                                    response.action = "SET_TOKENS";
+                                    response.content = tokens;
+                                } catch (error) {
+                                    console.error("Error getting user tokens:", error);
+                                    response.action = "ERROR";
+                                    response.error = "Failed to get user tokens";
+                                }
+                            } else {
+                                response.action = "NO_USER";
+                            }
+                        }
+
+                        // Send response back to the exact source iframe
+                        console.log(response, event.origin);
+                        event.source.postMessage(response, event.origin);
+                    } else if (data.action === "SWITCH_SERVER") {
+                        console.log("OVERALL XXX", data)
+                        updateIframe(data.server);
+                    } else {
+                        // Handle unknown action
+                        event.source.postMessage({
+                            action: "UNKNOWN_ACTION",
+                            requestId: data.requestId
+                        }, event.origin);
+                    }
+                } catch (e) {
+                    event.source.postMessage({
+                        action: "ERROR",
+                        error: e.message,
+                        requestId: event.data.requestId
+                    })
+                }
+            });
+            async function requestGameData() {
+                await window.ccPorted.userPromise;
+                const dynamodb = window.ccPorted.documentClient;
+                dynamodb.get({
+                    TableName: 'games_list',
+                    Key: {
+                        gameID
+                    }
+                }, (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                    const item = data.Item;
+                    if (item) {
+                        document.title = item.fName;
+                        // add favicon
+                        // var link = document.querySelector("link[rel~='icon']");
+                        // if (!link) {
+                        //     link = document.createElement('link');
+                        //     link.rel = 'icon';
+                        //     document.head.appendChild(link);
+                        // }
+                        // changeFavicon(`https://d1yh00vn2fvto7.cloudfront.net/games/${gameID}${item.thumbPath}`);
+                        setDescription(item.description + " Play now on CCPorted!");
+                    }
+                });
+            }
+            function setDescription(description) {
+                const meta = document.querySelector("meta[name='description']") || document.createElement("meta");
+                meta.name = "description";
+                meta.content = description;
+                if (!document.querySelector("meta[name='description']")) {
+                    document.head.appendChild(meta);
+                }
+            }
+            function changeFavicon(src) {
+                var link = document.createElement('link'),
+                    oldLink = document.getElementById('dynamic-favicon');
+                link.id = 'dynamic-favicon';
+                link.rel = 'icon';
+                link.href = src;
+                if (oldLink) {
+                    document.head.removeChild(oldLink);
+                }
+                document.head.appendChild(link);
+            }
+            requestGameData();
+
+            function updateIframe(server) {
+                console.log("UPDATING TO", server)
+                if (server.index == serverID) return;
+                iframe.src = `http://localhost:8080/testgames/test-leaderboard-bz/index.html`;
+                let query = new URLSearchParams(window.location.search);
+                query.set("server", server.index);
+                var url = new URL(window.location.href);
+                url.search = query.toString();
+                window.history.pushState({}, '', url);
+            }
+            // Initialize the server toggle
+            const serverToggle = new ServerToggle((typeof serverID != "undefined") ? serverID : false || Math.floor(Math.random() * servers.length), updateIframe);
+
+            // Export for potential use in other modules
+            window.serverToggle = serverToggle;
+        })();
+
+    </script>
+    <!-- Monumetric Footer In-screen D: 728x90 T: 728x90 M: 320x50,320x100  START -->
+
+    <div id="mmt-c2522ff2-7549-433b-a689-0cd63517722c"></div>
+    <script type="text/javascript"
+        data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || []; $MMT.cmd.push(function () { $MMT.display.slots.push(["c2522ff2-7549-433b-a689-0cd63517722c"]); })</script>
+
+    <!-- Monumetric Footer In-screen D: 728x90 T: 728x90 M: 320x50,320x100  ENDS -->
+
+</body>
+
+</html>

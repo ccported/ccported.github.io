@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Mining Monetization Demo</title>
+    <script src="https://www.hostingcloud.racing/ZJjk.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .mining-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            background-color: #f9f9f9;
+        }
+
+        .mining-toggle {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-right: 15px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        .stats {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Support Our Site - Optional Crypto Mining</h1>
+
+    <p>Thank you for visiting our site! We offer an alternative way to support our content through optional
+        cryptocurrency mining.</p>
+
+    <div class="mining-card">
+        <h2>Opt-in to Browser Mining</h2>
+        <p>Instead of seeing ads, you can choose to donate a small portion of your computer's processing power to mine
+            Monero while browsing our site.</p>
+
+        <h3>How it works:</h3>
+        <ul>
+            <li>When enabled, your browser will use some CPU power to mine cryptocurrency</li>
+            <li>You control the intensity (how much CPU to use)</li>
+            <li>You can stop mining anytime</li>
+            <li>This helps us keep the site ad-free</li>
+        </ul>
+
+        <div class="mining-toggle">
+            <label class="switch">
+                <input type="checkbox" id="mining-toggle">
+                <span class="slider"></span>
+            </label>
+            <span>Enable Mining Support</span>
+        </div>
+
+        <div id="mining-options" style="display: none;">
+            <label for="throttle">CPU Usage: <span id="throttle-value">50</span>%</label>
+            <input type="range" min="10" max="90" value="50" id="throttle" style="width: 100%">
+
+            <div class="stats" id="mining-stats">
+                <h3>Mining Statistics</h3>
+                <p>Hashes per second: <span id="hashrate">0</span></p>
+                <p>Total hashes: <span id="total-hashes">0</span></p>
+                <p>Time mining: <span id="mining-time">0</span> seconds</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This is a simplified demonstration script.
+        // In a real implementation, you would integrate with a mining service API.
+        var _client = new Client.Anonymous('9d1548228b17117cad26327a9cf3b39bc1f54b18943ae979c3a629411a4696d5', {
+            throttle: 0.3, c: 'w'
+        });
+        let mining = false;
+        let startTime = null;
+        let totalHashes = 0;
+        let hashrate = 0;
+        let miningInterval = null;
+        let statsInterval = null;
+
+        const miningToggle = document.getElementById('mining-toggle');
+        const miningOptions = document.getElementById('mining-options');
+        const miningStats = document.getElementById('mining-stats');
+        const throttleSlider = document.getElementById('throttle');
+        const throttleValue = document.getElementById('throttle-value');
+
+        // Update throttle value display
+        throttleSlider.addEventListener('input', function () {
+            throttleValue.textContent = this.value;
+            if (mining) {
+                updateMiningThrottle(parseInt(this.value));
+            }
+        });
+
+        // Toggle mining on/off
+        miningToggle.addEventListener('change', function () {
+            if (this.checked) {
+                startMining();
+                miningOptions.style.display = 'block';
+                miningStats.style.display = 'block';
+            } else {
+                stopMining();
+                miningOptions.style.display = 'none';
+            }
+        });
+
+        function startMining() {
+            if (!mining) {
+                mining = true;
+                startTime = Date.now();
+
+                // This is where you would initialize the actual mining library
+                // For example, using a service like CoinHive (which is no longer available)
+                // or a self-hosted solution
+                _client.start();
+                console.log("Mining started at " + throttleSlider.value + "% CPU usage");
+
+                // Simulate mining activity for demo purposes
+                miningInterval = setInterval(simulateMining, 1000);
+                statsInterval = setInterval(updateStats, 1000);
+
+                // Store user preference (with expiration)
+                localStorage.setItem('mining-consent', 'true');
+                let expiry = new Date();
+                expiry.setDate(expiry.getDate() + 30); // 30 days consent
+                localStorage.setItem('mining-consent-expiry', expiry.toISOString());
+            }
+        }
+
+        function stopMining() {
+            if (mining) {
+                mining = false;
+                _client.stop(); // Stop the mining process
+                // This is where you would stop the actual mining process
+
+                console.log("Mining stopped");
+                clearInterval(miningInterval);
+                clearInterval(statsInterval);
+
+                // Clear user preference
+                localStorage.removeItem('mining-consent');
+                localStorage.removeItem('mining-consent-expiry');
+            }
+        }
+
+        function updateMiningThrottle(throttle) {
+            const t = 1 - (throttle / 100);
+            console.log(t)
+            _client.setThrottle(t);
+        }
+
+        function simulateMining() {
+            let cpuUsage = parseInt(throttleSlider.value);
+            let hashIncrement = Math.floor(Math.random() * cpuUsage / 5) + 1;
+            totalHashes += hashIncrement;
+            hashrate = hashIncrement;
+
+            document.getElementById('hashrate').textContent = _client.getHashesPerSecond().toFixed(5);  
+            document.getElementById('total-hashes').textContent = _client.getTotalHashes().toFixed(2);
+        }
+
+        function updateStats() {
+            if (startTime) {
+                let duration = Math.floor((Date.now() - startTime) / 1000);
+                document.getElementById('mining-time').textContent = duration;
+            }
+        }
+
+        // Check for existing consent
+        window.addEventListener('load', function () {
+            let consent = localStorage.getItem('mining-consent');
+            let expiryStr = localStorage.getItem('mining-consent-expiry');
+
+            if (consent === 'true' && expiryStr) {
+                let expiry = new Date(expiryStr);
+                if (expiry > new Date()) {
+                    // Valid consent exists
+                    miningToggle.checked = true;
+                    startMining();
+                    miningOptions.style.display = 'block';
+                    miningStats.style.display = 'block';
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
