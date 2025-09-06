@@ -1,0 +1,452 @@
+.classic {
+  --glow-color: gold;
+}
+
+.classic * {
+  transition: all 0.3s ease;
+  transition-property: background-color, color;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.classic {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.classic header h1 {
+  text-align: center;
+  color: #333;
+  margin: 0;
+  font-size: 48px;
+  transition: font-size 0.3s ease;
+  background-color: transparent !important;
+}
+
+.classic header h1 a {
+  color: #333 !important;
+  text-decoration: none;
+}
+
+.classic header {
+  background-color: #ffffff92;
+}
+
+.classic header.shadow {
+  box-shadow: 0px 0px 10px #333;
+}
+
+.classic .cards.loading {
+  background-image: url("../images/loading.gif");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.classic .card.loading {
+  display: none;
+}
+
+.classic .cards.loading .inxxx {
+  display: none;
+}
+
+.classic .cards.grid .inxxx.rows {
+  display: none;
+}
+
+.classic .cards.rows .inxxx.grid {
+  display: none;
+}
+
+.classic .cloud .card.grid {
+  width: 510px;
+  height: 350px;
+}
+
+.classic .card.grid:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.classic .card.grid:hover .card-bg {
+  filter: brightness(0.4);
+}
+
+.classic .card.grid .card-content {
+  color: #fff;
+}
+
+.classic .card.rows .card-content {
+  color: black;
+}
+
+.classic .card-links a {
+  color: #fff;
+}
+
+.classic .card-links a:visited {
+  color: #fff;
+}
+
+.classic .card-links a:hover {
+  text-decoration: underline;
+}
+
+.classic .card-tags .tag {
+  background-color: #333;
+  color: #fff;
+}
+
+.classic .card.grid .star-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.classic .card.grid .star-icon.pinned {
+  color: gold;
+  text-shadow: 0 0 5px black;
+}
+
+.classic #searchBox {
+  border: 1px solid #ccc;
+}
+
+.classic #searchBox:focus {
+  outline: none;
+  border: 1px solid dodgerblue;
+}
+
+.classic a {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
+.classic a:hover {
+  text-decoration: underline;
+}
+
+.classic a:visited {
+  color: dodgerblue;
+}
+
+.classic .popup {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+}
+
+.classic .popup-content #gameRequestInput {
+  border: 1px solid #333;
+}
+
+.classic .popup-buttons button#nvmd {
+  background-color: red;
+  border: 1px solid red;
+}
+
+.classic .popup-buttons button {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: dodgerblue;
+  color: #fff;
+  border: 1px solid dodgerblue;
+}
+
+.classic .popup-buttons button:hover {
+  filter: brightness(0.5);
+}
+
+.new,
+.updated {
+  order: -1;
+  /* add a glowing gold shadow effect */
+  box-shadow: 0 0 20px var(--glow-color);
+  animation: glowing 1300ms infinite;
+  border: 5px solid var(--glow-color);
+  box-sizing: border-box;
+}
+
+.new h2::after {
+  content: " (NEW)";
+}
+
+.updated h2::after {
+  content: " (UPDATED)";
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+
+  50% {
+    box-shadow: 0 0 40px var(--glow-color);
+  }
+
+  100% {
+    box-shadow: 0 0 20px var(--glow-color);
+  }
+}
+
+.classic .highlight {
+  box-shadow: inset 0px 0px 5px 4px var(--glow-color);
+  box-sizing: border-box;
+  display: block;
+  width: fit-content;
+}
+
+.classic button#sort,
+.classic button#pickforme {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #f3f3f3;
+  background-color: #f3f3f3;
+}
+
+.classic .dont-see {
+  color: #333;
+}
+
+.classic body.dark .dont-see {
+  color: #eee;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+
+  /* Search adjustments */
+  .classic .action-button-row button {
+    margin-top: 20px !important;
+  }
+
+  /* Card adjustments */
+  .classic .card-tags .tag {
+    display: none;
+  }
+
+  .classic .card-links {
+    display: none;
+  }
+
+  /* Star icon adjustments */
+  .classic .star-icon {
+    opacity: 1;
+  }
+}
+
+/* Ensure hover states work properly on touch devices */
+@media (hover: none) {
+  .classic .card-links {
+    max-height: none;
+  }
+
+  .classic .card:hover {
+    transform: none;
+  }
+
+  .classic .star-icon {
+    opacity: 1;
+  }
+}
+
+/* style scroll bars */
+/* should only exist on hover, not inturrpt document flow */
+
+.classic ::-webkit-scrollbar-thumb {
+  background: #ababab;
+}
+
+.classic .toggle-btn {
+  background: #f0f0f0;
+}
+
+.classic .toggle-btn:hover {
+  background: #e0e0e0;
+}
+
+.classic .dot {
+  background-color: #333;
+}
+
+.classic .r-side-nav a {
+  color: #333;
+}
+
+.classic .hamburger span {
+  background: #333;
+}
+
+.classic .profile-section {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.classic .achievements-section {
+  background-color: #ffffff;
+}
+
+.classic .profile-info label {
+  color: #666;
+}
+
+.classic .profile-info input {
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.classic .profile-info input:focus {
+  border-color: dodgerblue;
+}
+
+.classic #saveChanges {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.classic #saveChanges:hover {
+  background-color: #0066cc;
+}
+
+.classic .achievement-card {
+  background-color: #fff;
+  border: 2px solid;
+}
+
+.classic .achievement-icon {
+  color: white;
+}
+
+.classic .achievement-info h3 {
+  color: #333;
+}
+
+.classic .achievement-info p {
+  color: #666;
+}
+
+.classic .stats {
+  color: #000;
+}
+
+.classic .stat {
+  color: #000;
+}
+
+.classic .stat-title {
+  border-bottom: 1px solid #ccc;
+}
+
+.classic .current-weather {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.classic #weather-chart-container {
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.classic .forecast-day {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.classic .temperature {
+  color: #1a73e8;
+}
+
+.classic .conditions {
+  color: #666;
+}
+
+.classic .date {
+  color: #444;
+}
+
+.classic h1 {
+  color: #111;
+  background-color: #fff;
+}
+
+.classic h2 {
+  color: #444;
+}
+
+.classic #searchInput {
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.classic #searchInput:focus {
+  border: 1px solid dodgerblue;
+}
+
+.classic li {
+  border-bottom: 1px solid #ccc;
+}
+
+.classic li div.links a {
+  color: dodgerblue;
+}
+
+.classic a {
+  color: dodgerblue;
+}
+
+.classic a:hover {
+  color: dodgerblue;
+}
+
+.classic a:visited {
+  color: dodgerblue;
+}
+
+.classic .loading {
+  color: #666;
+}
+
+.classic .error {
+  color: #dc3545;
+}
+
+.classic .loading-bar {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+}
+
+.classic .loading-bar-fill {
+  background-color: #000000;
+}
+
+.classic body h1 {
+  color: black;
+}
+
+.classic input[type="text"] {
+  background: #f0f0f0;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+.classic input[type="text"]::placeholder {
+  color: #666;
+}
+
+.classic input[type="text"]:focus {
+  border-color: dodgerblue;
+}
+
+.classic button {
+  background: dodgerblue;
+  color: white;
+}
+
+.classic button:hover {
+  background: #0066cc;
+}
