@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isFramed() {
+            return window.self !== window.top;
+        }
+
+
+
+        if (isFramed()) {
+            document.writeln("This page is running inside an iframe.");
+            document.writeln("Watching for availability request...");
+            window.addEventListener("message", (event) => {
+                if (event.data === "CHECK_AVAILABILITY") {
+                    event.source.postMessage("===NOT_BLOCKED===", event.origin);
+                }
+            });
+            document.writeln("Message listener added.");
+            document.writeln("Sending message to top to show initialization is complete.");
+            window.top.postMessage("INITIALIZED", "*");
+        }
+    </script>
+</body>
+
+</html>

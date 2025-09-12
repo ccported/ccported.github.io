@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="./ccported_logo.webp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="./main.css" />
+	<!-- monetag verification -->
+	<meta name="monetag" content="d8b4782b70ad231400413e55fe7352fd">
+	<!-- exoclick verification -->
+	<meta name="6a97888e-site-verification" content="90256ef2817c47f4922d837cdf49fedc">
+
+	<title>CCPorted</title>
+	
+		<link href="./_app/immutable/assets/Locked.Dvz75NS2.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/4.NSGyzvSM.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.fGt7nZDO.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CNDjRsoi.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CsbkDJ3F.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Dja293Kx.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.BRCBhBLd.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/D9Z9MdNV.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DsnmJJEf.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/AbJhduV7.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BJCoAHH0.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.DheRNqQa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/bO23Cs3S.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/4.BQZFR_J2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CsgNkqBQ.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C46opScT.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DyNdvHQY.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CyAT02dz.js"><!--[--><meta name="use-ga4" content="false"/> <!--[!--><!--]--><!--]--><!--[--><!--]--><title>
+        Loading... | CCPorted
+    </title>
+
+	
+
+	<script>
+		console.log('[APP][head] Loaded app');
+		if ("serviceWorker" in navigator) {
+			console.log(`[APP][head][check-sw] Service worker supported, registering...`);
+			navigator.serviceWorker.register("./sw.js");
+
+			navigator.serviceWorker.ready.then((registration) => {
+				if (registration.active) {
+					registration.active.postMessage("Test message sent immediately after creation");
+				}
+
+				const version = localStorage.getItem("ccported-version");
+				fetch("./version.txt").then(async (res) => {
+					if (!res.ok) {
+						console.log(`[APP][head][check-version] Failed to fetch version.txt: ${res.status}`);
+						return;
+					}
+					const text = (await res.text()).trim();
+					console.log(`[APP][head][check-version] Fetched version.txt content: "${text}"`);
+					const newVersion = new Date(text);
+					const oldVersion = version ? new Date(version) : null;
+					console.log(`[APP][head][check-version] Fetched version: ${newVersion}, old version: ${oldVersion}`);
+					if (!oldVersion || newVersion > oldVersion) {
+						localStorage.setItem("ccported-version", newVersion.toISOString());
+						console.log(`[APP][head][check-version] New version available update sw, clearing cache -> reload...`);
+						registration.update();
+						registration.active?.postMessage({ action: "CLEAR_CACHE" });
+					}
+				});
+
+				navigator.serviceWorker.addEventListener("message", (event) => {
+					if (event.data && event.data.type === "CACHE_CLEARED") {
+						console.log(`[APP][head][check-version][sw-message] ${event.data.status}`);
+					}
+				});
+			});
+		} else {
+			console.log(`[APP][head][check-sw] Service worker not supported`);
+		}
+
+		console.log("[APP][head] Test message");
+	</script>
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div><!--[--><!--[--><!----><!----><!--[--><!--[!--><!--]--> <!--[!--><!--[!--><div class="container svelte-1hcx36q"><h2>Loading...</h2></div><!--]--><!--]--><!--]--><!----><!----><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_14ecl0 = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.fGt7nZDO.js"),
+						import("./_app/immutable/entry/app.BRCBhBLd.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+
+</html>
