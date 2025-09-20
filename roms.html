@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="./ccported_logo.webp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="./main.css" />
+	<!-- monetag verification -->
+	<meta name="monetag" content="d8b4782b70ad231400413e55fe7352fd">
+	<!-- exoclick verification -->
+	<meta name="6a97888e-site-verification" content="90256ef2817c47f4922d837cdf49fedc">
+
+	<title>CCPorted</title>
+	
+		<link href="./_app/immutable/assets/Navigation.9zZ3cM7W.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/5.DJwnT-_q.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.CiuZGdms.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CZxz7jUU.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/9iyfFM9-.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BqoRkx5S.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.BiG4RH5U.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/D9Z9MdNV.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DsnmJJEf.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/D2ds56Re.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C9hx2HfJ.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.DVdk2jSt.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/-ua00iTI.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/AJs67rg8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CcPVhKQm.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/bEE7xvTc.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/5.BwN0eiyk.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BKIUCcpU.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C2h5rTkg.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/oCWtuWGX.js"><!--[--><meta name="use-ga4" content="false"/><!--]--><!--[--><!--]--><title>ROMs | CCPorted</title>
+
+	
+
+	<script>
+		console.log('[APP][head] Loaded app');
+		if ("serviceWorker" in navigator) {
+			console.log(`[APP][head][check-sw] Service worker supported, registering...`);
+			navigator.serviceWorker.register("./sw.js");
+
+			navigator.serviceWorker.ready.then((registration) => {
+				if (registration.active) {
+					registration.active.postMessage("Test message sent immediately after creation");
+				}
+
+				const version = localStorage.getItem("ccported-version");
+				fetch("./version.txt").then(async (res) => {
+					if (!res.ok) {
+						console.log(`[APP][head][check-version] Failed to fetch version.txt: ${res.status}`);
+						return;
+					}
+					const text = (await res.text()).trim();
+					console.log(`[APP][head][check-version] Fetched version.txt content: "${text}"`);
+					const newVersion = new Date(text);
+					const oldVersion = version ? new Date(version) : null;
+					console.log(`[APP][head][check-version] Fetched version: ${newVersion}, old version: ${oldVersion}`);
+					if (!oldVersion || newVersion > oldVersion) {
+						localStorage.setItem("ccported-version", newVersion.toISOString());
+						console.log(`[APP][head][check-version] New version available update sw, clearing cache -> reload...`);
+						registration.update();
+						registration.active?.postMessage({ action: "CLEAR_CACHE" });
+					}
+				});
+
+				navigator.serviceWorker.addEventListener("message", (event) => {
+					if (event.data && event.data.type === "CACHE_CLEARED") {
+						console.log(`[APP][head][check-version][sw-message] ${event.data.status}`);
+					}
+				});
+			});
+		} else {
+			console.log(`[APP][head][check-sw] Service worker not supported`);
+		}
+
+		console.log("[APP][head] Test message");
+	</script>
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div><!--[--><!--[--><!----><!----><div><div class="n-container svelte-1ru5u4f"><nav class="svelte-1ru5u4f"><ul class="left svelte-1ru5u4f"><li class="svelte-1ru5u4f"><a href="/" class="svelte-1ru5u4f">CCPorted</a></li></ul> <ul class="right desktop-links svelte-1ru5u4f"><!--[--><li class="svelte-1ru5u4f"><a href="/tab-cloaker" target="_self" class="svelte-1ru5u4f">Tab Cloaker</a></li><li class="svelte-1ru5u4f"><a href="https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk" target="_blank" rel="noopener noreferrer" class="svelte-1ru5u4f">Master Doc</a></li><li class="svelte-1ru5u4f active"><a href="/roms" target="_self" class="svelte-1ru5u4f">ROM Library</a></li><li class="svelte-1ru5u4f"><a href="https://discord.gg/GDEFRBTT3Z" target="_blank" rel="noopener noreferrer" class="svelte-1ru5u4f">Discord</a></li><!--]--></ul> <button class="mobile-menu-button svelte-1ru5u4f" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button></nav></div> <!--[!--><!--]--> <div class="spacer svelte-1ru5u4f"></div><!----> <div class="container svelte-7wxcfx"><input type="text" placeholder="Search 0 ROMs..." value="" class="search svelte-7wxcfx"/> <!--[!--><!--]--> <!--[--><!--]--></div></div><!----><!----> <!--[!--><!--]--><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_2rnmzg = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.CiuZGdms.js"),
+						import("./_app/immutable/entry/app.BiG4RH5U.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+
+</html>
