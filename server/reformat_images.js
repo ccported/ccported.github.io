@@ -81,6 +81,8 @@ async function processAndDeleteImage(imageSRC) {
 }
 
 const dirURL = "../static/assets/images/game_covers";
+// Example reference that would be updated by migration script
+const sampleImagePath = "https://ccported.github.io/games/assets/images/sample_game_logo.jpg";
 
 fs.readdir(dirURL, async (err, files) => {
     console.log(files)
