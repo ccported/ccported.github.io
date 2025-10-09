@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="./ccported_logo.webp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="./main.css" />
+	<!-- monetag verification -->
+	<meta name="monetag" content="d8b4782b70ad231400413e55fe7352fd">
+	<!-- exoclick verification -->
+	<meta name="6a97888e-site-verification" content="90256ef2817c47f4922d837cdf49fedc">
+
+
+	<!-- google ads verification -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6661595569829232"
+		crossorigin="anonymous"></script>
+	<title>CCPorted</title>
+	
+		<link href="./_app/immutable/assets/4.DMRJIS3Q.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.BUJIjKon.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BK8MQpeK.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/9iyfFM9-.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BqoRkx5S.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.B9Woy4KL.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/D9Z9MdNV.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DsnmJJEf.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/D2ds56Re.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/C9hx2HfJ.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.ED0SS6n3.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/-ua00iTI.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/AJs67rg8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BhcezEVt.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CkiW5B5a.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/4.CG5_y87M.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DxAMoxK6.js"><!--[--><meta name="use-ga4" content="false"/><!--]--><!--[--><script type="text/javascript" src="https://cdn.applixir.com/applixir.app.v6.0.1.js"></script><!----><!--]--><title>
+        Loading... | CCPorted
+    </title>
+
+
+
+	<script>
+		console.log('[APP][head] Loaded app');
+		if ("serviceWorker" in navigator) {
+			console.log(`[APP][head][check-sw] Service worker supported, registering...`);
+			navigator.serviceWorker.register("./sw.js");
+
+			navigator.serviceWorker.ready.then((registration) => {
+				if (registration.active) {
+					registration.active.postMessage("Test message sent immediately after creation");
+				}
+
+				const version = localStorage.getItem("ccported-version");
+				fetch("./version.txt").then(async (res) => {
+					if (!res.ok) {
+						console.log(`[APP][head][check-version] Failed to fetch version.txt: ${res.status}`);
+						return;
+					}
+					const text = (await res.text()).trim();
+					console.log(`[APP][head][check-version] Fetched version.txt content: "${text}"`);
+					const newVersion = new Date(text);
+					const oldVersion = version ? new Date(version) : null;
+					console.log(`[APP][head][check-version] Fetched version: ${newVersion}, old version: ${oldVersion}`);
+					if (!oldVersion || newVersion > oldVersion) {
+						localStorage.setItem("ccported-version", newVersion.toISOString());
+						console.log(`[APP][head][check-version] New version available update sw, clearing cache -> reload...`);
+						registration.update();
+						registration.active?.postMessage({ action: "CLEAR_CACHE" });
+					}
+				});
+
+				navigator.serviceWorker.addEventListener("message", (event) => {
+					if (event.data && event.data.type === "CACHE_CLEARED") {
+						console.log(`[APP][head][check-version][sw-message] ${event.data.status}`);
+					}
+				});
+			});
+		} else {
+			console.log(`[APP][head][check-sw] Service worker not supported`);
+		}
+
+		console.log("[APP][head] Test message");
+	</script>
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div><!--[--><!--[--><!----><!----><!--[!--><!--]--> <!--[!--><!--[!--><!--[--><div class="container svelte-unygx3"><h2>Loading...</h2></div><!--]--><!--]--><!--]--><!----><!----> <!--[!--><!--]--><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1kxw08t = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.BUJIjKon.js"),
+						import("./_app/immutable/entry/app.B9Woy4KL.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+
+</html>
