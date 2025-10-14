@@ -5,7 +5,17 @@
 
     import type { Game } from "../types/game.ts";
 
-    const { game, i, tagClick, commitHash }: { game: Game; i: number, tagClick: (tag: string) => void, commitHash: string } = $props();
+    const {
+        game,
+        i,
+        tagClick,
+        commitHash,
+    }: {
+        game: Game;
+        i: number;
+        tagClick: (tag: string) => void;
+        commitHash: string;
+    } = $props();
     const {
         gameID,
         thumbPath,
@@ -17,13 +27,11 @@
         updatedTimestamp,
     } = game;
 
-
-    let normalThumbPath = `https://cdn.jsdelivr.net/gh/ccported/games@${commitHash}/${gameID}${thumbPath}`
+    let normalThumbPath = `https://cdn.jsdelivr.net/gh/ccported/games@${commitHash}/${gameID}${thumbPath}`;
     let starred = $state(State.pinnedGames.includes(gameID) ? true : false);
 
     let cardElement: HTMLDivElement;
-    let isHovered = $state(false);  
-
+    let isHovered = $state(false);
 
     function togglePin(e: MouseEvent | KeyboardEvent) {
         e.stopPropagation();
@@ -47,7 +55,6 @@
 
     let show: "" | " (Updated)" | " (New)" =
         isUpdated && !isNew ? " (Updated)" : isNew ? " (New)" : "";
-
 
     function handleMouseMove(e: MouseEvent) {
         if (!cardElement) return;
@@ -85,7 +92,7 @@
 
 <div
     class="card-wrapper"
-    style="position: relative; animation-delay: {(i < 25) ? i * 75 : 75 * 25}ms"
+    style="position: relative; animation-delay: {i < 25 ? i * 75 : 75 * 25}ms"
     class:new={isNew || isUpdated}
     class:starred
 >
@@ -106,7 +113,10 @@
         class:hovered={isHovered}
         id={gameID}
         aria-label="Open game"
-        onclick={() => {openGame(game)}}
+        onclick={() => {
+            // navigator.clipboard.writeText(gameID);
+            openGame(game);
+        }}
         onkeydown={(e) => {
             if (e.key === "Enter" || e.key === " ") openGame(game);
         }}
@@ -134,8 +144,8 @@
                             onclick={(e) => {
                                 e.stopPropagation();
                                 tagClick(tag as string);
-                            }}
-                        >{decamelize(tag as string)}</button>
+                            }}>{decamelize(tag as string)}</button
+                        >
                     {/each}
                 </div>
             </div>

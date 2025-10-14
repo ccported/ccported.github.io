@@ -37,12 +37,18 @@
     };
 
     // Sort options
-    type SortType = "default" | "az" | "za" | "clicksAsc" | "clicksDesc";
+    type SortType = "default" | "az" | "za" | "clicksAsc" | "clicksDesc" | "new" | "old";
     let sortType = $state<SortType>("default");
 
     function getSortedGames() {
         let sorted = [...games];
         switch (sortType) {
+            case "new":
+                sorted.sort((a, b) => b.uploadedTimestamp - a.uploadedTimestamp);
+                break;
+            case "old":
+                sorted.sort((a, b) => a.uploadedTimestamp - b.uploadedTimestamp);
+                break;
             case "az":
                 sorted.sort((a, b) => a.fName.localeCompare(b.fName));
                 break;
@@ -389,6 +395,9 @@
                 <option value="za">Z → A</option>
                 <option value="clicksAsc">Clicks ↑</option>
                 <option value="clicksDesc">Clicks ↓</option>
+                <option value="new">Newest</option>
+                <option value="old">Oldest</option>
+
             </select>
             <button
                 class="choose-for-me"
