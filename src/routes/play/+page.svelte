@@ -16,6 +16,7 @@
         trackClick,
     } from "$lib/helpers.js";
     import { browser } from "$app/environment";
+    import { ReplicaModificationsStatus } from "@aws-sdk/client-s3";
 
     let game: Game | null = $state(null);
     let adblock = $state(false);
@@ -329,6 +330,31 @@
         } else {
             adContinued = true;
         }
+
+        if (iframe) {
+            iframe.focus();
+            refocus();
+        } else {
+            setTimeout(() => {
+                iframe?.focus();
+                refocus();
+            }, 3000); // try to wait 3 seconds before focusing again
+        }
+
+        let tries = 0;
+        function refocus() {
+            setTimeout(() => {
+                if (iframe) {
+                    iframe.blur();
+                    iframe.focus();
+                } else {
+                    if (++tries < 4) {
+                        // Allow 12 seconds of DOM freeze
+                        refocus();
+                    }
+                }
+            }, 3000);
+        }
     }
 </script>
 
@@ -381,7 +407,9 @@
                         alt={`Cover art for ${game.fName}`}
                         src="https://cdn.jsdelivr.net/gh/ccported/games@{commitHash}/{game.gameID}{game.thumbPath}"
                     />
-                    <div style="color: #aaa;">Build: {commitHash.slice(0, 7)}...{commitHash.slice(-7)}</div>
+                    <div style="color: #aaa;">
+                        Build: {commitHash.slice(0, 7)}...{commitHash.slice(-7)}
+                    </div>
                 {:else}
                     <div class="img"></div>
                 {/if}
