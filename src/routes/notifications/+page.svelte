@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { ScanCommand } from "@aws-sdk/client-dynamodb";
+    import { ReturnValue, ScanCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
     import { initializeTooling, SessionState, State } from "$lib/state.js";
     import type { CNotification } from "$lib/types/notification.js";
     import { createModal } from "$lib/modal.js";
@@ -9,7 +9,7 @@
     let notifications: CNotification[] = $state([]);
     let loading = $state(true);
     let error: string | null = $state(null);
-    let filter: 'all' | 'active' | 'expired' = $state('all');
+    let filter: "all" | "active" | "expired" = $state("all");
 
     async function loadNotifications() {
         try {
@@ -22,27 +22,27 @@
 
             const table = "ccported_notifs";
             const params = {
-                TableName: table
+                TableName: table,
             };
 
             const command = new ScanCommand(params);
             const data = await SessionState.dynamoDBClient?.send(command);
 
             if (data && data.Items) {
-                notifications = data.Items.map(item => ({
+                notifications = data.Items.map((item) => ({
                     notification_id: item.id?.S || "",
                     title: item.title?.S || "",
                     body: item.body?.S || "",
                     expires: parseInt(item.expires?.N || "0"),
                     ctaText: item.cta_text?.S,
-                    ctaLink: item.cta_link?.S
+                    ctaLink: item.cta_link?.S,
                 }));
 
                 // Sort by expires descending (newest first)
                 notifications.sort((a, b) => b.expires - a.expires);
             }
         } catch (err) {
-            error = `Failed to load notifications: ${err instanceof Error ? err.message : 'Unknown error'}`;
+            error = `Failed to load notifications: ${err instanceof Error ? err.message : "Unknown error"}`;
         } finally {
             loading = false;
         }
@@ -50,9 +50,9 @@
 
     function getFilteredNotifications() {
         const now = Date.now();
-        return notifications.filter(notif => {
-            if (filter === 'active') return notif.expires > now;
-            if (filter === 'expired') return notif.expires <= now;
+        return notifications.filter((notif) => {
+            if (filter === "active") return notif.expires > now;
+            if (filter === "expired") return notif.expires <= now;
             return true; // 'all'
         });
     }
@@ -71,10 +71,13 @@
             content: notif.body,
             actions: [
                 ...(notif.ctaText && notif.ctaLink
-                    ? [{
-                        label: notif.ctaText,
-                        onClick: () => window.open(notif.ctaLink, "_blank")
-                    }]
+                    ? [
+                          {
+                              label: notif.ctaText,
+                              onClick: () =>
+                                  window.open(notif.ctaLink, "_blank"),
+                          },
+                      ]
                     : []),
                 { label: "Close", onClick: (modal) => modal.close() },
             ],
@@ -84,7 +87,23 @@
     function markAsSeen(notificationId: string) {
         if (!State.seenNotifications.includes(notificationId)) {
             State.seenNotifications.push(notificationId);
+            addImpression(notificationId);
         }
+    }
+    function addImpression(notification_id: string) {
+        const params = {
+            TableName: "ccported_notifs",
+            Key: {
+                notification_id: { S: notification_id },
+            },
+            UpdateExpression: "ADD impressions :inc",
+            ExpressionAttributeValues: {
+                ":inc": { N: "1" },
+            },
+            ReturnValues: ReturnValue.UPDATED_NEW,
+        };
+        const updateCommand = new UpdateItemCommand(params);
+        SessionState.dynamoDBClient?.send(updateCommand).catch(console.error);
     }
 
     onMount(() => {
@@ -94,7 +113,10 @@
 
 <svelte:head>
     <title>Notifications - CCPorted</title>
-    <meta name="description" content="View all notifications and announcements from CCPorted" />
+    <meta
+        name="description"
+        content="View all notifications and announcements from CCPorted"
+    />
 </svelte:head>
 
 <Navigation />
@@ -103,38 +125,52 @@
     <div class="container">
         <div class="header">
             <h1>🔔 Notifications</h1>
-            <p>Stay updated with the latest announcements and news from CCPorted</p>
+            <p>
+                Stay updated with the latest announcements and news from
+                CCPorted
+            </p>
         </div>
 
         <div class="controls">
             <div class="filter-tabs">
-                <button 
-                    class="tab" 
-                    class:active={filter === 'all'}
-                    onclick={() => filter = 'all'}
+                <button
+                    class="tab"
+                    class:active={filter === "all"}
+                    onclick={() => (filter = "all")}
                 >
                     All ({notifications.length})
                 </button>
-                <button 
-                    class="tab" 
-                    class:active={filter === 'active'}
-                    onclick={() => filter = 'active'}
+                <button
+                    class="tab"
+                    class:active={filter === "active"}
+                    onclick={() => (filter = "active")}
                 >
-                    Active ({notifications.filter(n => !isExpired(n.expires)).length})
+                    Active ({notifications.filter((n) => !isExpired(n.expires))
+                        .length})
                 </button>
-                <button 
-                    class="tab" 
-                    class:active={filter === 'expired'}
-                    onclick={() => filter = 'expired'}
+                <button
+                    class="tab"
+                    class:active={filter === "expired"}
+                    onclick={() => (filter = "expired")}
                 >
-                    Past ({notifications.filter(n => isExpired(n.expires)).length})
+                    Past ({notifications.filter((n) => isExpired(n.expires))
+                        .length})
                 </button>
             </div>
             <button class="refresh-btn" onclick={loadNotifications}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
                     <polyline points="23 4 23 10 17 10"></polyline>
                     <polyline points="1 20 1 14 7 14"></polyline>
-                    <path d="m20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+                    <path
+                        d="m20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"
+                    ></path>
                 </svg>
                 Refresh
             </button>
@@ -155,12 +191,14 @@
             <div class="notifications-list">
                 {#each getFilteredNotifications() as notif (notif.notification_id)}
                     {@const expired = isExpired(notif.expires)}
-                    {@const seen = State.seenNotifications.includes(notif.notification_id)}
+                    {@const seen = State.seenNotifications.includes(
+                        notif.notification_id,
+                    )}
                     <!-- svelte-ignore a11y_click_events_have_key_events -->
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <div 
-                        class="notification-card" 
-                        class:expired 
+                    <div
+                        class="notification-card"
+                        class:expired
                         class:unseen={!seen}
                         onclick={() => {
                             viewNotification(notif);
@@ -171,25 +209,29 @@
                             <h3>{notif.title}</h3>
                             <div class="notification-meta">
                                 <span class="status" class:expired>
-                                    {expired ? '📋 Past' : '🔴 Active'}
+                                    {expired ? "📋 Past" : "🔴 Active"}
                                 </span>
                                 {#if !seen && !expired}
                                     <span class="new-badge">NEW</span>
                                 {/if}
                             </div>
                         </div>
-                        
+
                         <div class="notification-body">
                             <p>{@html notif.body}</p>
                         </div>
-                        
+
                         <div class="notification-footer">
                             <div class="expires">
-                                {expired ? 'Expired' : 'Expires'}: {formatDate(notif.expires)}
+                                {expired ? "Expired" : "Expires"}: {formatDate(
+                                    notif.expires,
+                                )}
                             </div>
                             {#if notif.ctaText && notif.ctaLink}
                                 <div class="cta-info">
-                                    <span class="cta-label">Action: {notif.ctaText}</span>
+                                    <span class="cta-label"
+                                        >Action: {notif.ctaText}</span
+                                    >
                                 </div>
                             {/if}
                         </div>
@@ -201,9 +243,9 @@
                         <div class="empty-icon">📭</div>
                         <h3>No notifications found</h3>
                         <p>
-                            {#if filter === 'active'}
+                            {#if filter === "active"}
                                 There are no active notifications at the moment.
-                            {:else if filter === 'expired'}
+                            {:else if filter === "expired"}
                                 No past notifications to display.
                             {:else}
                                 No notifications available.
@@ -332,8 +374,12 @@
     }
 
     @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
     .error {
@@ -448,8 +494,13 @@
     }
 
     @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.7; }
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.7;
+        }
     }
 
     .notification-body p {

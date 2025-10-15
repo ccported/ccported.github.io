@@ -15,7 +15,7 @@
     onMount(async () => {
         await initializeTooling();
 
-        // Dont wait up on this one (it can load in the background)
+        // Don't wait up on this one (it can load in the background)
         checkNotifications();
         isAHost = State.isAHost();
 

@@ -1,7 +1,7 @@
-import { ScanCommand } from "@aws-sdk/client-dynamodb";
+import { ReturnConsumedCapacity, ReturnValue, ScanCommand, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { initializeTooling, SessionState, State } from "./state.js";
 import type { CNotification } from "./types/notification.js";
-import { createModal } from "./modal.js"; // Assume you have a modal utility
+import { createModal } from "./modal.js";
 
 export async function checkNotifications() {
 
@@ -31,7 +31,7 @@ export async function checkNotifications() {
     if (data && data.Items && data.Items.length > 0) {
         const notifications = data.Items.map(item => {
             return {
-                notification_id: item.id?.S || "",
+                notification_id: item.notification_id?.S || "",
                 title: item.title?.S || "",
                 body: item.body?.S || "",
                 expires: parseInt(item.expires?.N || "0"),
@@ -55,6 +55,7 @@ function handleNotifs(notifications: CNotification[]) {
             return; // Already seen
         }
         State.seenNotifications.push(notif.notification_id);
+        addImpression(notif.notification_id);
         createModal({
             title: notif.title,
             content: notif.body,
@@ -69,4 +70,20 @@ function handleNotifs(notifications: CNotification[]) {
             ],
         });
     });
+}
+
+function addImpression(notification_id: string) {
+    const params = {
+        TableName: "ccported_notifs",
+        Key: {
+            notification_id: { S: notification_id }
+        },
+        UpdateExpression: "ADD impressions :inc",
+        ExpressionAttributeValues: {
+            ":inc": { N: "1" }
+        },
+        ReturnValues: ReturnValue.UPDATED_NEW
+    }
+    const updateCommand = new UpdateItemCommand(params);
+    SessionState.dynamoDBClient?.send(updateCommand).catch(console.error);
 }
