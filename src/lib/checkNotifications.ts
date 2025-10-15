@@ -5,7 +5,7 @@ import { createModal } from "./modal.js"; // Assume you have a modal utility
 
 export async function checkNotifications() {
 
-    const table = "push_notifications";
+    const table = "ccported_notifs";
 
     const now = Date.now();
 
