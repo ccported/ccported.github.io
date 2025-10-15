@@ -1,6 +1,7 @@
 <script lang="ts">
     import { page } from "$app/state";
     let links = [
+        ["Notifications", "/notifications"],
         ["Tab Cloaker", "/tab-cloaker"],
         [
             "Master Doc",

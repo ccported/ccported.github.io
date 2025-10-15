@@ -1,0 +1,9 @@
+{
+    "expires": "1761937199000",
+    "title": "Notification Title",
+    "body": "<h2>Notification Body</h2><p>This is a sample notification body.</p>",
+    "cta": {
+        "text": "Click Here",
+        "url": "https://example.com"
+    }
+}

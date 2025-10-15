@@ -6,6 +6,7 @@
     import { initializeTooling, SessionState, State } from "$lib/state.js";
     import { onMount } from "svelte";
     import { loadGames } from "$lib/loadCards.js";
+    import { checkNotifications } from "$lib/checkNotifications.js";
 
     let isAHost = $state(State.isAHost());
     let devMode = $state(true);
@@ -13,6 +14,8 @@
     let adsEnabled = $state(SessionState.adsEnabled);
     onMount(async () => {
         await initializeTooling();
+
+        await checkNotifications();
         isAHost = State.isAHost();
 
         devMode = SessionState.devMode;

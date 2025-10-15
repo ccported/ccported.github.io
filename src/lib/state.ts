@@ -31,6 +31,7 @@ type StateType = {
     currentServer: Server;
     homeView: "grid" | "list";
     pinnedGames: string[];
+    seenNotifications: string[];
     games: Game[];
     isAHost: () => boolean;
     localPlays: number;
@@ -64,6 +65,7 @@ export const State = createState({
     homeView: "grid",
     pinnedGames: [],
     games: [],
+    seenNotifications: [],
     isAHost: () => (AHosts.some((h): boolean => browser && h.hostname === new URL(page.url).hostname)),
     localPlays: 0
 });
