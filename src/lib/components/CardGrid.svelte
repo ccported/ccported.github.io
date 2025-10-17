@@ -19,22 +19,12 @@
     import { browser } from "$app/environment";
     import { loadGames } from "$lib/loadCards.js";
     import { goto } from "$app/navigation";
+    import { adSlotConfig, initializeAds } from "$lib/adSlotConfig.js";
 
     let searchIsOpen = $state(false);
     let games = $state<Game[]>([]);
     let adsEnabled = $state(false);
-    let adSlots = $state<{ sidebar: string; grid: string } | null>(null);
-
-    const adSlotConfig = {
-        "ccported.github.io": {
-            sidebar: "69fd2258-841e-496e-b471-7fee303347da",
-            grid: "1327f13c-fb3f-45df-9616-2c76dacf8707",
-        },
-        "ccported.click": {
-            sidebar: "52cde221-3941-473c-afbc-5376c9ae5f76",
-            grid: "29d0156c-2d0c-4d77-b80c-6a3c21b13dd2",
-        },
-    };
+    let adSlots = $state<{ sidebar: string; grid: string; footer: string } | null>(null);
 
     // Sort options
     type SortType = "default" | "az" | "za" | "clicksAsc" | "clicksDesc" | "new" | "old";
@@ -254,47 +244,7 @@
 
         if (SessionState.ssr) return;
 
-        await detectAdBlockEnabled();
-        console.log(
-            "[R][CardGrid][Mount] AdBlock Enabled:",
-            SessionState.adBlockEnabled,
-        );
-        adBlock = SessionState.adBlockEnabled;
-        adsEnabled = SessionState.adsEnabled;
-        if (adsEnabled) {
-            const host = browser ? window.location.hostname : "<SSR_HOST>";
-            if (host in adSlotConfig) {
-                adSlots = adSlotConfig[host as keyof typeof adSlotConfig];
-            }
-            (async () => {
-                const aHosts = await findAHosts();
-                if (!aHosts) {
-                    adsEnabled = false;
-                    SessionState.adsEnabled = false;
-                    return;
-                }
-
-                const aHostData = aHosts.find((h) => h.hostname === host);
-                if (aHostData && aHostData.acode) {
-                    const scriptId = `ad-script-${aHostData.acode}`;
-                    if (document.getElementById(scriptId)) return;
-
-                    const script = document.createElement("script");
-                    script.id = scriptId;
-                    script.src = `//monu.delivery/site/${aHostData.acode}`;
-                    script.setAttribute("data-cfasync", "false");
-                    script.defer = true;
-                    document.head.appendChild(script);
-                } else {
-                    console.log(
-                        "[R][CardGrid][Mount] No valid AHost for this domain:",
-                        host,
-                    );
-                    adsEnabled = false;
-                    SessionState.adsEnabled = false;
-                }
-            })();
-        }
+        ({ adBlock, adsEnabled } = await initializeAds(adSlots));
     });
 
     $effect(() => {
@@ -495,6 +445,10 @@
             <div class="xxx r">
                 <Ad slotId={adSlots.sidebar} />
             </div>
+        </div>
+
+        <div class = "footer-ad">
+            <Ad slotId={adSlots.footer} />
         </div>
     {/if}
 </div>

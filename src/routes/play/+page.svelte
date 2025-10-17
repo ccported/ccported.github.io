@@ -17,6 +17,8 @@
     } from "$lib/helpers.js";
     import { browser } from "$app/environment";
     import { ReplicaModificationsStatus } from "@aws-sdk/client-s3";
+    import { adSlotConfig, initializeAds } from "$lib/adSlotConfig.js";
+    import Ad from "$lib/components/Ad.svelte";
 
     let game: Game | null = $state(null);
     let adblock = $state(false);
@@ -70,6 +72,13 @@
     let application: any = null;
     let adContinued = $state(false);
     let commitHash = $state("");
+
+    let adsEnabled = $state(false);
+    let adSlots = $state<{
+        sidebar: string;
+        grid: string;
+        footer: string;
+    } | null>(null);
     onMount(async () => {
         await initializeTooling();
         await fetchGameData();
@@ -97,6 +106,18 @@
                     clearInterval(interval);
                 }
             }, 1000);
+        } else {
+            (async () => {
+                if (!browser) return;
+
+                const hostname = window.location.hostname;
+                const { adBlock, adsEnabled: adsOn } =
+                    await initializeAds(
+                        adSlots
+                    );
+                adblock = adBlock;
+                adsEnabled = adsOn;
+            })();
         }
     });
 
@@ -434,6 +455,10 @@
     <div class="container">
         <h2>Loading...</h2>
     </div>
+{/if}
+
+{#if adsEnabled && adSlots}
+    <Ad slotId={adSlots.footer} />
 {/if}
 
 <style>
