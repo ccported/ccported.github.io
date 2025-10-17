@@ -19,7 +19,7 @@
     import { browser } from "$app/environment";
     import { loadGames } from "$lib/loadCards.js";
     import { goto } from "$app/navigation";
-    import { adSlotConfig, initializeAds } from "$lib/adSlotConfig.js";
+    import { initializeAds } from "$lib/adSlotConfig.js";
 
     let searchIsOpen = $state(false);
     let games = $state<Game[]>([]);
@@ -244,7 +244,7 @@
 
         if (SessionState.ssr) return;
 
-        ({ adBlock, adsEnabled } = await initializeAds(adSlots));
+        ({ adBlock, adsEnabled, adSlots } = await initializeAds());
     });
 
     $effect(() => {

@@ -16,13 +16,10 @@ export const adSlotConfig = {
     },
 };
 
-export async function initializeAds(adSlots: {
-    sidebar?: string;
-    grid?:  string;
-    footer?: string;
-} | null) {
+export async function initializeAds() {
     let adBlock = false;
     let adsEnabled = true;
+    let adSlots: { sidebar: string; grid: string; footer: string } | null = null;
     await detectAdBlockEnabled();
     console.log(
         "[R][CardGrid][Mount] AdBlock Enabled:",
@@ -65,5 +62,5 @@ export async function initializeAds(adSlots: {
         })();
     }
 
-    return { adBlock, adsEnabled };
+    return { adBlock, adsEnabled, adSlots };
 }

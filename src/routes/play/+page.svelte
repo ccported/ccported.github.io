@@ -74,6 +74,7 @@
     let commitHash = $state("");
 
     let adsEnabled = $state(false);
+    let adBlock = $state(false);
     let adSlots = $state<{
         sidebar: string;
         grid: string;
@@ -109,14 +110,7 @@
         } else {
             (async () => {
                 if (!browser) return;
-
-                const hostname = window.location.hostname;
-                const { adBlock, adsEnabled: adsOn } =
-                    await initializeAds(
-                        adSlots
-                    );
-                adblock = adBlock;
-                adsEnabled = adsOn;
+                ({ adBlock, adsEnabled, adSlots } = await initializeAds());
             })();
         }
     });
