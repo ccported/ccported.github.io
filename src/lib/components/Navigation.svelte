@@ -1,19 +1,8 @@
 <script lang="ts">
     import { page } from "$app/state";
-    let links = [
-        ["Notifications", "/notifications"],
-        ["Tab Cloaker", "/tab-cloaker"],
-        [
-            "Master Doc",
-            "https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk",
-        ],
-        ["ROM Library", "/roms"],
-        ["Discord", "https://discord.gg/GDEFRBTT3Z"],
-    ];
-
-    // Use dirty URLs if hosted on amazonaws
-    if (typeof window !== "undefined" && window.origin.includes("amazonaws")) {
-        links = [
+    const links = (typeof window !== "undefined" && window.origin.includes("amazonaws"))
+        ? [
+            ["Notifications", "/notifications"],
             ["Tab Cloaker", "/tab-cloaker.html"],
             [
                 "Master Doc",
@@ -21,8 +10,17 @@
             ],
             ["ROM Library", "/roms.html"],
             ["Discord", "https://discord.gg/GDEFRBTT3Z"],
+        ]
+        : [
+            ["Notifications", "/notifications"],
+            ["Tab Cloaker", "/tab-cloaker"],
+            [
+                "Master Doc",
+                "https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk",
+            ],
+            ["ROM Library", "/roms"],
+            ["Discord", "https://discord.gg/GDEFRBTT3Z"],
         ];
-    }
 
     const currentPath = page.url.pathname;
     let menuOpen = $state(false);
@@ -48,8 +46,22 @@
                 </li>
             {/each}
         </ul>
-        <button class="mobile-menu-button" onclick={() => menuOpen = !menuOpen} aria-label="Open menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button
+            class="mobile-menu-button"
+            onclick={() => (menuOpen = !menuOpen)}
+            aria-label="Open menu"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -61,9 +73,13 @@
 {#if menuOpen}
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="mobile-menu-overlay" onclick={() => menuOpen = false}>
+    <div class="mobile-menu-overlay" onclick={() => (menuOpen = false)}>
         <div class="mobile-menu" onclick={(e) => e.stopPropagation()}>
-            <button class="close-button" onclick={() => menuOpen = false} aria-label="Close menu">&times;</button>
+            <button
+                class="close-button"
+                onclick={() => (menuOpen = false)}
+                aria-label="Close menu">&times;</button
+            >
             <ul>
                 {#each links as [name, url]}
                     <li class:active={currentPath === url}>
@@ -73,7 +89,7 @@
                             rel={url.startsWith("http")
                                 ? "noopener noreferrer"
                                 : undefined}
-                            onclick={() => menuOpen = false}
+                            onclick={() => (menuOpen = false)}
                         >
                             {name}
                         </a>
@@ -225,7 +241,7 @@
         transition: background 0.2s;
     }
     .mobile-menu-button:hover {
-        background: rgba(0,0,0,0.1);
+        background: rgba(0, 0, 0, 0.1);
     }
 
     .mobile-menu-overlay {
@@ -234,7 +250,7 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0, 0, 0, 0.5);
         z-index: 1001;
         display: flex;
         justify-content: flex-end;
@@ -254,8 +270,12 @@
     }
 
     @keyframes slideIn {
-        from { transform: translateX(100%); }
-        to { transform: translateX(0); }
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
     }
 
     .mobile-menu .close-button {
