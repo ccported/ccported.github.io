@@ -1,29 +1,63 @@
 <script lang="ts">
     import { page } from "$app/state";
-    const links = (typeof window !== "undefined" && window.origin.includes("amazonaws"))
-        ? [
-            ["Notifications", "/notifications"],
-            ["Tab Cloaker", "/tab-cloaker.html"],
-            [
-                "Master Doc",
-                "https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk",
-            ],
-            ["ROM Library", "/roms.html"],
-            ["Discord", "https://discord.gg/GDEFRBTT3Z"],
-        ]
-        : [
-            ["Notifications", "/notifications"],
-            ["Tab Cloaker", "/tab-cloaker"],
-            [
-                "Master Doc",
-                "https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk",
-            ],
-            ["ROM Library", "/roms"],
-            ["Discord", "https://discord.gg/GDEFRBTT3Z"],
-        ];
+    import { initializeAds } from "$lib/adSlotConfig.js";
+    import { initializeTooling, SessionState } from "$lib/state.js";
+    import { onMount } from "svelte";
+
+    type Link = [string, string];
+    let links = $state<Link[]>([
+        ["Notifications", "/notifications"],
+        ["Tab Cloaker", "/tab-cloaker"],
+        [
+            "Master Doc",
+            "https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk",
+        ],
+        ["ROM Library", "/roms"],
+        ["Discord", "https://discord.gg/GDEFRBTT3Z"],
+        ["Login", "/auth/login"],
+    ]);
+
+    onMount(() => {
+        if (typeof window !== "undefined" && window.origin.includes("amazonaws")) {
+            links = [
+                ["Notifications", "/notifications"],
+                ["Tab Cloaker", "/tab-cloaker.html"],
+                [
+                    "Master Doc",
+                    "https://docs.google.com/document/d/11yw7n2F84XOkAwpM8tF-ZYHESuus1Gg7dmJ-WJum1fk",
+                ],
+                ["ROM Library", "/roms.html"],
+                ["Discord", "https://discord.gg/GDEFRBTT3Z"],
+            ]
+        }
+    });
+
+    // Optional helpers to update links at runtime
+    export function setLinks(newLinks: Link[]) {
+        links = newLinks;
+    }
+    export function addLink(name: string, url: string) {
+        links = [...links, [name, url]];
+    }
+    export function removeLinkByUrl(url: string) {
+        links = links.filter(([, u]) => u !== url);
+    }
 
     const currentPath = page.url.pathname;
     let menuOpen = $state(false);
+
+
+    onMount(async () => {
+        await initializeTooling();
+
+
+        const user = SessionState.user;
+
+        if (user) {
+            removeLinkByUrl("/auth/login");
+            // addLink("Profile", "/auth/profile");
+        }
+    })
 </script>
 
 <div class="n-container">

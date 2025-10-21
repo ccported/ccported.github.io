@@ -80,38 +80,41 @@
         grid: string;
         footer: string;
     } | null>(null);
+
+    // Manual src chooser for integration testing
+    let chosenSrc = $state<string | null>(null);
+    const TOKEN_STORAGE_KEY = 'ccported_tokens';
+    function getStoredTokens(): Tokens | null {
+        try {
+            const raw = localStorage.getItem(TOKEN_STORAGE_KEY);
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            return {
+                accessToken: parsed?.accessToken,
+                idToken: parsed?.idToken,
+                refreshToken: parsed?.refreshToken
+            } as Tokens;
+        } catch {
+            return null;
+        }
+    }
+    function getChosenOrigin(): string | null {
+        try {
+            return chosenSrc ? new URL(chosenSrc).origin : null;
+        } catch {
+            return null;
+        }
+    }
     onMount(async () => {
         await initializeTooling();
-        await fetchGameData();
-        if (error || !game) return;
-        const r = page.url.searchParams.get("r");
-        if (!r || r !== "t") {
-            // Track a click
-            try {
-                await trackClick(game.gameID);
-                // Remove r=t from url without reloading
-            } catch (err) {
-                console.error("Failed to track click:", err);
-            }
-        } else {
-            const url = new URL(page.url);
-            url.searchParams.delete("r");
-            window.history.replaceState({}, document.title, url.toString());
-        }
-        commitHash = await getCommitHash();
-        if (adblock) {
-            const interval = setInterval(() => {
-                if (withoutSupportingTimer > 0) {
-                    withoutSupportingTimer -= 1;
-                } else {
-                    clearInterval(interval);
-                }
-            }, 1000);
-        } else {
-            (async () => {
-                if (!browser) return;
-                ({ adBlock, adsEnabled, adSlots } = await initializeAds());
-            })();
+        // Prefer ?src=... from query string; if missing, prompt for a URL
+        const srcParam = page.url.searchParams.get('src');
+        if (srcParam && srcParam.trim().length > 0) {
+            chosenSrc = srcParam.trim();
+        } else if (browser) {
+            const fallback = 'http://localhost:8080/index.html';
+            const input = window.prompt('Enter iframe src URL to test (leave blank to use default)', fallback);
+            chosenSrc = input && input.trim().length > 0 ? input.trim() : fallback;
         }
     });
 
@@ -145,7 +148,7 @@
 
     // Setup iframe load and message handling after game is loaded
     $effect(() => {
-        if (game && !error) {
+        if (chosenSrc && !error) {
             // Wait for DOM to update
             setTimeout(() => {
                 if (!iframe) return;
@@ -156,20 +159,18 @@
                     if (!SessionState.awsReady) {
                         await waitForTooling();
                     }
-                    if (SessionState.loggedIn && SessionState.user) {
+                    const stored = getStoredTokens();
+                    if (stored && (stored.idToken || stored.accessToken)) {
                         console.log(
                             "[R][PLAY][updateIframe] Iframe loaded. User logged in: true",
                         );
                         try {
-                            const tokens: Tokens = {
-                                refreshToken: SessionState.user.tokens?.refreshToken,
-                                idToken: SessionState.user.tokens?.idToken,
-                                accessToken: SessionState.user.tokens?.accessToken
-                            };
+                            const tokens: Tokens = stored as Tokens;
+                            const targetOrigin = getChosenOrigin() || "*";
                             w.postMessage({
                                 action: "SET_TOKENS",
                                 content: tokens,
-                            });
+                            }, targetOrigin);
                         } catch (err) {
                             console.error("Error sending tokens:", err);
                         }
@@ -187,9 +188,11 @@
                 window.addEventListener("message", async (event) => {
                     try {
                         if (!event.data.fromInternal) return;
-                        const allowedOrigins = State.servers.map(
-                            (s) => `https://${s.hostname}`,
-                        );
+                        const allowedOrigins = [
+                            ...State.servers.map((s) => `https://${s.hostname}`),
+                        ];
+                        const chosenOrigin = getChosenOrigin();
+                        if (chosenOrigin) allowedOrigins.push(chosenOrigin);
                         if (
                             ![
                                 "http://localhost:5173",
@@ -210,16 +213,13 @@
                                 requestId: data.requestId,
                             };
 
-                            if (SessionState.loggedIn && SessionState.user) {
+                            const stored = getStoredTokens();
+                            if (stored && (stored.idToken || stored.accessToken)) {
                                 console.log(
                                     "[R][PLAY][updateIframe][message-GET_TOKENS] User logged in, sending tokens",
                                 );
                                 try {
-                                    const tokens: Tokens = {
-                                        refreshToken: SessionState.user.tokens?.refreshToken,
-                                        idToken: SessionState.user.tokens?.idToken,
-                                        accessToken: SessionState.user.tokens?.accessToken
-                                    }
+                                    const tokens: Tokens = stored as Tokens;
                                     response.action = "SET_TOKENS";
                                     response.content = tokens;
                                 } catch (error) {
@@ -234,16 +234,10 @@
                             } else {
                                 // Try waiting for tooling/user
                                 await initializeTooling();
-                                if (
-                                    SessionState.loggedIn &&
-                                    SessionState.user
-                                ) {
+                                const stored2 = getStoredTokens();
+                                if (stored2 && (stored2.idToken || stored2.accessToken)) {
                                     try {
-                                        const tokens: Tokens = {
-                                            refreshToken: SessionState.user.tokens?.refreshToken,
-                                            idToken: SessionState.user.tokens?.idToken,
-                                            accessToken: SessionState.user.tokens?.accessToken
-                                        }
+                                        const tokens: Tokens = stored2 as Tokens;
                                         response.action = "SET_TOKENS";
                                         response.content = tokens;
                                     } catch (error) {
@@ -270,7 +264,7 @@
                                 targetOrigin: event.origin,
                             });
                         } else if (data.action === "SWITCH_SERVER") {
-                            updateIframe(data.server);
+                            // Ignored in integration test mode
                         } else if (data.action === "CACHE_ENABLED") {
                             // Acknowledged (not an unknown action, but nothing to do)
                             // NOTE: FOR CACHE ACTIONS, ADD "TYPE": "CACHE_CONTROL" so that it is not confused with auth flow.
@@ -300,97 +294,11 @@
         }
     });
 
-    function play() {
-        console.log("[R][PLAY][play] Play button clicked");
-        console.log(
-            "[R][PLAY][play] Dev mode:",
-            localStorage.getItem("devMode"),
-        );
-        if (localStorage.getItem("devMode") == "true") {
-            const options = {
-                apiKey: "193de488-c5ba-461a-8ccf-8309cbc721a2", // Replace with your actual API key
-                injectionElementId: "ad-container", // This is the ID of the div from step 2.
-                adStatusCallbackFn: (
-                    status:
-                        | "allAdsCompleted" // finish reason
-                        | "click" // finish reason
-                        | "complete" // finish reason
-                        | "firstQuartile"
-                        | "loaded"
-                        | "midpoint"
-                        | "paused"
-                        | "started"
-                        | "thirdQuartile"
-                        | "skipped" // finish reason
-                        | "manuallyEnded" // finish reason
-                        | "thankYouModalClosed" // finish reason
-                        | "consentDeclined",
-                ) => {
-                    // This is how you can listen for ad statuses (more in Step 4)
-                    console.log("OUTSIDE Ad status: ", status);
-                    const finishReasons = [
-                        "allAdsCompleted",
-                        "click",
-                        "complete",
-                        "skipped",
-                        "manuallyEnded",
-                        "thankYouModalClosed",
-                    ];
-                    if (finishReasons.includes(status)) {
-                        adContinued = true;
-                    }
-                    if (status === "consentDeclined") {
-                        alert("Please consent to ads to play the game.");
-                        location.reload();
-                    }
-                },
-                adErrorCallbackFn: (error: any) => {
-                    // This is how you can listen for errors (more in Step 4)
-                    console.log("Error: ", error.getError().data);
-                    adContinued = true;
-                },
-            };
-
-            (window as any).initializeAndOpenPlayer(options);
-        } else {
-            adContinued = true;
-        }
-
-        if (iframe) {
-            iframe.focus();
-            refocus();
-        } else {
-            setTimeout(() => {
-                iframe?.focus();
-                refocus();
-            }, 3000); // try to wait 3 seconds before focusing again
-        }
-
-        let tries = 0;
-        function refocus() {
-            setTimeout(() => {
-                if (iframe) {
-                    iframe.blur();
-                    iframe.focus();
-                } else {
-                    if (++tries < 4) {
-                        // Allow 12 seconds of DOM freeze
-                        refocus();
-                    }
-                }
-            }, 3000);
-        }
-    }
+    // Play/ad logic removed for integration test
 </script>
 
 <svelte:head>
-    <title>
-        {game ? `Playing ${game.fName}` : "Loading..."} | CCPorted
-    </title>
-    <script
-        type="text/javascript"
-        src="https://cdn.applixir.com/applixir.app.v6.0.1.js"
-    ></script>
+    <title>{chosenSrc ? `Testing ${chosenSrc}` : "Integration Test"} | CCPorted</title>
 </svelte:head>
 
 {#if adblock && !continued && isAHost && adContinued}
@@ -420,44 +328,23 @@
         </div>
     </div>
 {/if}
-{#if game}
-    {#if !adContinued}
-        <div class="play">
-            {#if game}
-                <h2>{game.fName}</h2>
-                <p>{game.description}</p>
-                {#if commitHash.length > 0}
-                    <img
-                        class="img"
-                        alt={`Cover art for ${game.fName}`}
-                        src="https://cdn.jsdelivr.net/gh/ccported/games@{commitHash}/{game.gameID}{game.thumbPath}"
-                    />
-                    <div style="color: #aaa;">
-                        Build: {commitHash.slice(0, 7)}...{commitHash.slice(-7)}
-                    </div>
-                {:else}
-                    <div class="img"></div>
-                {/if}
-            {/if}
-            <button onclick={play}>Play Game</button>
-        </div>
-        <div id="ad-container"></div>
-    {/if}
+{#if chosenSrc}
     <iframe
-        src={`${State.currentServer.protocol}://${State.currentServer.hostname}${State.currentServer.path}${game.gameID}/index.html`}
+        src={chosenSrc}
         frameborder="0"
         allowfullscreen
         bind:this={iframe}
-        title={`Playing ${game.fName}`}
+        title="Integration Test Frame"
     ></iframe>
 {:else if error}
     <div class="container">
         <h2>Error</h2>
         <p>{error}</p>
     </div>
-{:else if loading}
+{:else}
     <div class="container">
-        <h2>Loading...</h2>
+        <h2>Awaiting src...</h2>
+        <p>Add ?src=YOUR_URL to the page URL, or refresh to re-prompt.</p>
     </div>
 {/if}
 
@@ -466,39 +353,6 @@
 {/if}
 
 <style>
-    .play {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-        background-color: #f9f9f9;
-        z-index: 1000;
-        position: relative;
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        top: 0;
-        left: 0;
-    }
-    .play .img {
-        width: 400px;
-        min-height: 250px;
-        margin: 20px 0;
-        border-radius: 8px;
-        background-color: linear-gradient(135deg, #e0e0e0, #f9f9f9);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .play h2 {
-        margin: 0;
-    }
-    .play p {
-        max-width: 600px;
-        text-align: center;
-        margin: 10px 0 20px 0;
-        color: #555;
-    }
     .container {
         position: fixed;
         top: 0;

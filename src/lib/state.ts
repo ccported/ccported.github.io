@@ -8,7 +8,57 @@ import { S3Client } from "@aws-sdk/client-s3";
 import { detectAdBlockEnabled } from "./helpers.js";
 import { page } from "$app/state";
 import { goto } from "$app/navigation";
+import type { User } from "oidc-client-ts";
+import { createModal } from "$lib/modal.js";
+import { signinRequest } from "$lib/authentication.js";
 
+
+interface Tokens {
+    idToken: string;
+    accessToken: string;
+    refreshToken: string;
+    expiresAt?: number; // epoch ms
+}
+const TOKEN_STORAGE_KEY = 'ccported_tokens';
+
+function readStoredTokens(): Tokens | null {
+    if (!browser) return null;
+    try {
+        const raw = localStorage.getItem(TOKEN_STORAGE_KEY);
+        if (!raw) return null;
+        return JSON.parse(raw);
+    } catch {
+        return null;
+    }
+}
+
+function clearStoredTokens() {
+    if (!browser) return;
+    try { localStorage.removeItem(TOKEN_STORAGE_KEY); } catch {}
+}
+
+function isExpired(expiresAt?: number, skewSec = 60): boolean {
+    if (!expiresAt) return true;
+    return Date.now() >= (expiresAt - skewSec * 1000);
+}
+
+function decodeJwt<T = any>(token?: string): T | null {
+    if (!token) return null;
+    try {
+        const parts = token.split('.');
+        if (parts.length !== 3) return null;
+        const payload = atob(parts[1].replace(/-/g, '+').replace(/_/g, '/'));
+        const json = decodeURIComponent(
+            payload
+                .split('')
+                .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+                .join('')
+        );
+        return JSON.parse(json);
+    } catch {
+        return null;
+    }
+}
 export const SessionState = {
     awsReady: false,
     ssr: !browser,
@@ -20,7 +70,10 @@ export const SessionState = {
     devMode: (browser && window.location.hostname === "localhost"),
     serverResponses: [] as { server: Server; success: boolean; time: number, reason: string }[],
     plays: 0,
-    user: null as null | { name: string; email: string; tokens: any } | undefined,
+    user: null as null | {
+        profile?: any;
+        tokens?: Tokens;
+    },
     loggedIn: false
 }
 
@@ -82,7 +135,7 @@ export async function initializeTooling() {
         return;
     }
     initializingTooling = true;
-    
+
     // Handle SetServer query parameter
     if (browser && window) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -108,8 +161,50 @@ export async function initializeTooling() {
             newUrl.search = urlParams.toString();
             window.history.replaceState(null, '', newUrl.toString());
         }
+
+        // Initialize auth state from persisted tokens (runs client-side only)
+        const storedTokens = readStoredTokens();
+        if (storedTokens) {
+            console.log("[initializeTooling] Found stored tokens.", storedTokens);
+            if (isExpired(storedTokens.expiresAt)) {
+                // Tokens expired: inform the user and offer to log in again or continue without login
+                createModal({
+                    title: 'Session expired',
+                    content: 'Your session has expired and you have been signed out. You can log in again or continue without logging in.',
+                    actions: [
+                        {
+                            label: 'Log in',
+                            onClick: () => {
+                                // Attempt a fresh sign-in redirect
+                                try { signinRequest(); } catch {}
+                            }
+                        },
+                        {
+                            label: 'Continue without login',
+                            onClick: (api) => {
+                                clearStoredTokens();
+                                SessionState.user = null as any;
+                                SessionState.loggedIn = false;
+                                api.close();
+                            }
+                        }
+                    ]
+                });
+            } else {
+                // Tokens valid: derive a user profile from the id token claims
+                const profile = decodeJwt(storedTokens.idToken);
+                if (!SessionState.user) {
+                    SessionState.user = {};
+                }
+                SessionState.user.tokens = storedTokens;
+                if (profile) {
+                    SessionState.user.profile = profile as any;
+                    SessionState.loggedIn = true;
+                }
+            }
+        }
     }
-    
+
     const server = await findServer();
     if (!server) {
         console.error("No available servers found.");
@@ -145,7 +240,7 @@ export async function initializeTooling() {
         });
     }
 
-    const credentials = await initializeUnathenticated();
+    const credentials = await initializeUnauthenticated();
     const dynamoDBClient = new DynamoDBClient({
         region: "us-west-2",
         credentials
@@ -562,7 +657,7 @@ export async function getAllAvailableServers(servers: Server[]): Promise<Server[
     return availableServers;
 }
 
-async function initializeUnathenticated() {
+async function initializeUnauthenticated() {
 
     const identityPoolId = "us-west-2:8ffe94a1-9042-4509-8e65-4efe16e61e3e";
     const credentials = fromCognitoIdentityPool({
@@ -573,4 +668,3 @@ async function initializeUnathenticated() {
     SessionState.awsReady = true;
     return credentials;
 }
-

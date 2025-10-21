@@ -968,7 +968,7 @@ window.ccPorted = window.ccPorted || {};
             }, timeout);
         });
     }
-    async function initializeUnathenticated() {
+    async function initializeUnauthenticated() {
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
             IdentityPoolId: 'us-west-2:8ffe94a1-9042-4509-8e65-4efe16e61e3e'
         });
@@ -986,7 +986,7 @@ window.ccPorted = window.ccPorted || {};
             const newTokens = await refreshTokens(refreshToken);
             if (!newTokens) {
                 console.error("Failed to refresh token. User must log in again.");
-                return initializeUnathenticated();
+                return initializeAuthenticated();
             }
             userData = parseJwt(newTokens.id_token);
         }
@@ -1045,7 +1045,7 @@ window.ccPorted = window.ccPorted || {};
                     const tokens = await exchangeAuthCodeForTokens(authCode);
                     if (!tokens) {
                         console.error("Failed to exchange auth code for tokens.");
-                        user = await initializeUnathenticated();
+                        user = await initializeAuthenticated();
                     } else {
                         idToken = tokens.id_token;
                         accessToken = tokens.access_token;
@@ -1055,7 +1055,7 @@ window.ccPorted = window.ccPorted || {};
                     }
                 } else {
                     console.warn("No auth code found in URL. User may need to log in.");
-                    user = await initializeUnathenticated();
+                    user = await initializeAuthenticated();
                 }
             } else {
                 log("Tokens found. Initializing user...");
@@ -1066,20 +1066,20 @@ window.ccPorted = window.ccPorted || {};
                 const tokens = await getTokensFromParent();
                 if (!tokens || tokens == null) {
                     console.warn("No tokens received from parent. Initializing unauthenticated.");
-                    user = await initializeUnathenticated();
+                    user = await initializeAuthenticated();
                 } else {
                     const { idToken, accessToken, refreshToken } = tokens;
 
                     if (!idToken || !accessToken) {
                         console.log("Invalid tokens received, initializing unauthenticated.");
-                        user = await initializeUnathenticated();
+                        user = await initializeAuthenticated();
                     } else {
                         user = await initializeAuthenticated(idToken, accessToken, refreshToken);
                     }
                 }
             } catch (error) {
                 console.error("Authentication error:", error.message);
-                user = await initializeUnathenticated();
+                user = await initializeAuthenticated();
             }
         }
         window.ccPorted["s3Client"] = new AWS.S3({
