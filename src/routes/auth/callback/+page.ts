@@ -3,8 +3,11 @@ import { redirect } from '@sveltejs/kit';
 export const ssr = false;
 export const csr = true;
 
-import { userManager } from '$lib/authentication.js';
+import { createUserManager } from '$lib/authentication.js';
 import { SessionState } from '$lib/state.js';
+import { create } from 'domain';
+import { page } from '$app/state';
+import { UserManager } from 'oidc-client-ts';
 
 const TOKEN_STORAGE_KEY = 'ccported_tokens';
 
@@ -17,9 +20,10 @@ type StoredTokens = {
 
 export async function load() {
 	// This runs in the browser only (ssr=false)
+	const usernManager = createUserManager(page.url.origin);
 	try {
 		// Complete the sign-in redirect flow and obtain the user
-		const user = await userManager.signinCallback(window.location.href);
+		const user = await usernManager.signinCallback(window.location.href);
 
 		const tokens: StoredTokens = {
 			accessToken: user?.access_token,
@@ -44,7 +48,7 @@ export async function load() {
 	} catch (err) {
 		console.error('[auth/callback] signinCallback failed, trying signinRedirectCallback()', err);
 		try {
-			const user = await (userManager as any).signinRedirectCallback?.(window.location.href);
+			const user = await (usernManager as any).signinRedirectCallback?.(window.location.href);
 			const tokens: StoredTokens = {
 				accessToken: user?.access_token,
 				idToken: user?.id_token,

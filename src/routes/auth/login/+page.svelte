@@ -2,8 +2,9 @@
     import Navigation from "$lib/components/Navigation.svelte";
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
-    import { userManager, signinRequest } from "$lib/authentication.js";
-    import { SessionState, State } from "$lib/state.js";
+    import { createUserManager, signinRequest } from "$lib/authentication.js";
+    import { SessionState } from "$lib/state.js";
+    import { page } from "$app/state";
 
     let user: any = null;
     let loading = false;
@@ -13,7 +14,7 @@
         if (!browser) return;
         try {
             loading = true;
-            await signinRequest();
+            await signinRequest(page.url);
         } catch (err) {
             error = err instanceof Error ? err.message : String(err);
         } finally {
@@ -24,7 +25,7 @@
     async function signOut() {
         if (!browser) return;
         try {
-            await userManager.removeUser();
+            await (createUserManager(window.location.origin)).removeUser();
             user = null;
             SessionState.user = null;
             SessionState.loggedIn = false;
@@ -36,7 +37,7 @@
     onMount(async () => {
         if (!browser) return;
         try {
-            const stored = await userManager.getUser();
+            const stored = await (createUserManager(window.location.origin)).getUser();
             if (stored) {
                 user = stored.profile || stored;
                 SessionState.user = user;

@@ -176,7 +176,7 @@ export async function initializeTooling() {
                             label: 'Log in',
                             onClick: () => {
                                 // Attempt a fresh sign-in redirect
-                                try { signinRequest(); } catch {}
+                                try { signinRequest(new URL(window.location.href)); } catch {}
                             }
                         },
                         {
