@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     import ServerSwitcher from "$lib/components/ServerSwitcher.svelte";
     import { initializeTooling, SessionState, State } from "$lib/state.js";
+    import Ad from "$lib/components/Ad.svelte";
 
     let { children } = $props();
 
@@ -56,7 +57,7 @@
             if (useGA4 && idToUse) {
                 injectGA4(idToUse);
             }
-            if ((!isAHost && adsEnabled) || SessionState.devMode) {
+            if ((!isAHost && !adblockEnabled) || SessionState.devMode) {
                 console.log("[R][LAYOUT][BASE] Bad Ads enabled");
                 injectBadAds();
             } else {
