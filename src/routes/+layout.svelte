@@ -58,6 +58,7 @@
             }
             if ((!isAHost && adsEnabled) || SessionState.devMode) {
                 console.log("[R][LAYOUT][BASE] Bad Ads enabled");
+                injectBadAds();
             } else {
                 if (isAHost && adsEnabled) {
                     console.log("[R][LAYOUT][BASE] Good ads enabled");
@@ -84,6 +85,15 @@
         `;
         document.head.appendChild(script2);
     }
+    function injectBadAds() {
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.async = true; // Dont wait up on script loading
+        script.defer = true; // Ensure the script is executed after the document has been parsed
+        script.src =
+            "//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.j";
+        document.body.appendChild(script);
+    }
 </script>
 
 <svelte:head>
@@ -96,13 +106,4 @@
 <!-- Server Switcher - only show in browser -->
 {#if browser}
     <ServerSwitcher />
-{/if}
-
-{#if (!isAHost && !adblockEnabled)}
-    <script
-        async
-        defer
-        type="text/javascript"
-        src="//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.js"
-    ></script>
 {/if}
