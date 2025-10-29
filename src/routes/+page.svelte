@@ -28,6 +28,8 @@
         function injectBadAds() {
             const script = document.createElement("script");
             script.type = "text/javascript";
+            script.async = true; // Dont wait up on script loading
+            script.defer = true; // Ensure the script is executed after the document has been parsed
             script.src =
                 "//pl27945791.effectivegatecpm.com/f9/0f/48/f90f487cd8f3cdf83690f6955c1b5655.js";
             document.body.appendChild(script);

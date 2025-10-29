@@ -100,6 +100,8 @@
 
 {#if (!isAHost && !adblockEnabled)}
     <script
+        async
+        defer
         type="text/javascript"
         src="//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.js"
     ></script>
