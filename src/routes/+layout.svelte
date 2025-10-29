@@ -17,6 +17,7 @@
     let useGA4 = $state(false);
     let mounted = $state(false);
     let adsEnabled = $state(false);
+    let adblockEnabled = $state(SessionState.adBlockEnabled);
     let isAHost = $state(false);
 
     onMount(() => {
@@ -24,6 +25,7 @@
         if (browser) {
             initializeTooling().then(() => {
                 adsEnabled = SessionState.adsEnabled;
+                adblockEnabled = SessionState.adBlockEnabled;
             });
             isAHost = State.isAHost();
             let hostname = window.location.hostname;
@@ -96,7 +98,7 @@
     <ServerSwitcher />
 {/if}
 
-{#if (!isAHost && adsEnabled)}
+{#if (!isAHost && !adblockEnabled)}
     <script
         type="text/javascript"
         src="//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.js"

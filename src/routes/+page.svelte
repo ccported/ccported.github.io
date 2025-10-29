@@ -32,7 +32,7 @@
                 "//pl27945791.effectivegatecpm.com/f9/0f/48/f90f487cd8f3cdf83690f6955c1b5655.js";
             document.body.appendChild(script);
         }
-        if ((!isAHost && adsEnabled)) {
+        if ((!isAHost && !adblockEnabled)) {
             console.log("[R][LAYOUT][BASE] Bad Ads enabled");
             injectBadAds();
         } else {
@@ -43,16 +43,16 @@
             }
         }
 
-        var chars = "~!@#$%^&*()_+{}|:'<>?`1234567890-=[]\\;/.,";
+        // var chars = "~!@#$%^&*()_+{}|:'<>?`1234567890-=[]\\;/.,";
 
-        if (browser && window.innerWidth > 800) {
-            setInterval(() => {
-                streamingContent +=
-                    chars.split("")[Math.floor(Math.random() * chars.length)];
+        // if (browser && window.innerWidth > 800) {
+        //     setInterval(() => {
+        //         streamingContent +=
+        //             chars.split("")[Math.floor(Math.random() * chars.length)];
 
-                streamingContent = streamingContent.slice(-75);
-            }, 50);
-        }
+        //         streamingContent = streamingContent.slice(-75);
+        //     }, 50);
+        // }
     });
 </script>
 
@@ -173,7 +173,7 @@
     </div>
 </footer>
 <div class="streaming-console">
-    <code>{streamingContent}</code>
+    <!-- <code>{streamingContent}</code> -->
 </div>
 
 <style>
