@@ -91,7 +91,7 @@
         script.async = true; // Dont wait up on script loading
         script.defer = true; // Ensure the script is executed after the document has been parsed
         script.src =
-            "//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.j";
+            "//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.js";
         document.body.appendChild(script);
     }
 </script>
