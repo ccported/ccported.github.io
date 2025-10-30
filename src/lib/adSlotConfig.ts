@@ -49,10 +49,11 @@ export async function initializeAds() {
 
                 const script = document.createElement("script");
                 script.id = scriptId;
-                script.src = `//fastly.mmt.delivery/site/${aHostData.acode}`;
+                // script.src = `//fastly.mmt.delivery/site/${aHostData.acode}`;
+                script.src = "//monu.delivery/site/" + aHostData.acode;
                 script.setAttribute("data-cfasync", "false");
                 script.defer = true;
-                script.async = true;
+                // script.async = true;
                 document.head.appendChild(script);
             } else {
                 console.log(
