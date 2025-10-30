@@ -8,7 +8,7 @@
     let { children } = $props();
 
     let ga4Codes = {
-        "ccported.click": "G-ER9VZ5QL8K",
+        "ccported.click": "G-YPK0M57SY4",
         "ccported.github.io": "G-NYC0Q0VKPP",
         localhost: null,
     };
