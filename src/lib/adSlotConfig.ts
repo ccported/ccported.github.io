@@ -3,15 +3,18 @@ import { detectAdBlockEnabled } from "./helpers.js";
 import { SessionState } from "./state.js";
 import { findAHosts } from "./types/servers.js";
 
+/**
+ * <div id="mmt-b9482d90-db02-4b5f-b8d9-d4b333965e74"></div><script type="text/javascript" data-cfasync="false">$MMT = window.$MMT || {}; $MMT.cmd = $MMT.cmd || [];$MMT.cmd.push(function(){ $MMT.display.slots.push(["b9482d90-db02-4b5f-b8d9-d4b333965e74"]); });</script>
+ */
 export const adSlotConfig = {
     "ccported.github.io": {
-        sidebar: "69fd2258-841e-496e-b471-7fee303347da",
+        sidebar: "b9482d90-db02-4b5f-b8d9-d4b333965e74", //"69fd2258-841e-496e-b471-7fee303347da",
         grid: "1327f13c-fb3f-45df-9616-2c76dacf8707",
         footer: "c2522ff2-7549-433b-a689-0cd63517722c",
         sidebarR: "b9482d90-db02-4b5f-b8d9-d4b333965e74"
     },
     "ccported.click": {
-        sidebar: "52cde221-3941-473c-afbc-5376c9ae5f76",
+        sidebar:"ea44e52d-5d55-4544-b5b3-ef6eb0f3b8d9", // "52cde221-3941-473c-afbc-5376c9ae5f76",
         grid: "29d0156c-2d0c-4d77-b80c-6a3c21b13dd2",
         footer: "b203fc61-1cc6-4a48-a13a-be6dbe61f3f0",
         sidebarR: "ea44e52d-5d55-4544-b5b3-ef6eb0f3b8d9"
