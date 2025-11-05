@@ -1,4 +1,4 @@
-# Ads.txt last updated on: 2025/10/31 01:07:17.128468 by MONUMETRIC/CCPorted
+# Ads.txt last updated on: 2025/11/05 01:09:41.280376 by MONUMETRIC/CCPorted
 OWNERDOMAIN=ccported.github.io
 MANAGERDOMAIN=monumetric.com
 CONTACT=support@monumetric.com
@@ -828,84 +828,5 @@ rubiconproject.com, 26192, RESELLER, 0bfd66d529a55807
 video.unrulymedia.com, 322585001, RESELLER
 adiiix.com, 3de5db9, RESELLER
 fromthetop.io, 65529, RESELLER
-# Applixir.com - last modified: 04/04/24# Exoclick
-
-demand.supply, yS5d897HTD6cqviqe, DIRECT
-relabe.com, yS5d897HTD6cqviqe, DIRECT
-google.com, pub-3831894559014614, RESELLER, f08c47fec0942fa0
-sulvo.com, yS5d897HTD6cqviqe, DIRECT
-surgeprice.com, yS5d897HTD6cqviqe, DIRECT
-aps.amazon.com, 66ef05f7-ad53-48f6-873a-ac7543370392, DIRECT
-rubiconproject.com, 19818, DIRECT, 0bfd66d529a55807
-sovrn.com, 326635, DIRECT, fafdf38b16bf6b2b
-lijit.com, 326635, DIRECT, fafdf38b16bf6b2b
-lijit.com, 326635-eb, DIRECT, fafdf38b16bf6b2b
-adingo.jp, 24359, DIRECT
-yahoo.com, 55774, DIRECT
-onetag.com, 769b9ae3d197a06, DIRECT
-onetag.com, 769b9ae3d197a06-OB, DIRECT
-rubiconproject.com, 23372, DIRECT, 0bfd66d529a55807
-rubiconproject.com, 19820, DIRECT, 0bfd66d529a55807
-themediagrid.com, JTQKMP, RESELLER, 35d5010d7789b49d
-media.net, 8CUZ1MK22, RESELLER
-risecodes.com, 63832beef8189a00015cb6d3, RESELLER
-appnexus.com, 13099, RESELLER
-appnexus.com, 1360, RESELLER, f5ab79cb980f11d1
-gumgum.com, 11645, RESELLER, ffdef49475d318a9
-openx.com, 538959099, RESELLER, 6a698e2ec38604c6
-openx.com, 539924617, RESELLER, 6a698e2ec38604c6
-pubmatic.com, 137711, RESELLER, 5d62403b186f2ace
-pubmatic.com, 156212, RESELLER, 5d62403b186f2ace
-pubmatic.com, 156700, RESELLER, 5d62403b186f2ace
-openx.com, 540191398, RESELLER, 6a698e2ec38604c6
-appnexus.com, 1908, RESELLER, f5ab79cb980f11d1
-smaato.com, 1100044650, RESELLER, 07bcf65f187117b4
-ad-generation.jp, 12474, RESELLER, 7f4ea9029ac04e53
-districtm.io, 100962, RESELLER, 3fd707be9c4527c3
-yieldmo.com, 2719019867620450718, RESELLER
-appnexus.com, 3663, RESELLER, f5ab79cb980f11d1
-rhythmone.com, 1654642120, RESELLER, a670c89d4a324e47
-yahoo.com, 55029, RESELLER, e1a5b5b6e3255540
-gumgum.com, 14141, RESELLER, ffdef49475d318a9
-admanmedia.com, 726, RESELLER
-pubmatic.com, 157150, RESELLER, 5d62403b186f2ace
-pubmatic.com, 160006, RESELLER, 5d62403b186f2ace
-sharethrough.com, 7144eb80, RESELLER
-adcolony.com, 801e49d1be83b5f9, RESELLER, 1ad675c9de6b5176
-admixer.net, 3bc509b2-6568-4bd8-a997-9859ba0c9118, RESELLER
-adtech.com, 12068, RESELLER, e1a5b5b6e3255540
-webeyemob.com, 70080, RESELLER
-contextweb.com,562541,RESELLER,89ff185a4c4e857c
-smartadserver.com,4125,RESELLER,060d053dcf45cbf3
-emxdgt.com,2009,RESELLER,1e1d41537f7cad7f
-yahoo.com, 58905, RESELLER, e1a5b5b6e3255540
-rubiconproject.com, 11006, RESELLER, 0bfd66d529a55807
-smartadserver.com, 4111, RESELLER
-beachfront.com,14804,RESELLER,e2541279e8e2ca4d
-appnexus.com,1356,RESELLER,f5ab79cb980f11d1
-improvedigital.com,2050,RESELLER
-mintegral.com,10043,RESELLER,0aeed750c80d6423
-sonobi.com,7f5fa520f8,RESELLER,d1a215d9eb5aee9e
-onetag.com,770a440e65869c2,RESELLER
-rubiconproject.com, 17960, RESELLER, 0bfd66d529a55807
-appnexus.com, 1019, RESELLER, f5ab79cb980f11d1
-indexexchange.com, 192410,RESELLER,50b1c356f2c5c8fc
-pubmatic.com, 160096,RESELLER,5d62403b186f2ace
-mediago.io, 045ac24b888bcf59a09731e7f0f2084f,RESELLER
-adyoulike.com, 7463c359225e043c111036d7a29affa5,RESELLER
-minutemedia.com, 01gya4708ddm,RESELLER
-visiblemeasures.com, 1052,RESELLER
-undertone.com, 4205,RESELLER,d954590d0cb265b9
-admedia.com, AM1601,RESELLER
-kargo.com, 8824, RESELLER
-opera.com, pub10665353929920,DIRECT, 55a0c5fd61378de3
-outbrain.com, 002d7f7ba0bd74452f2b155d0dfb5cd6c8, RESELLER
-vidoomy.com, 4930225, RESELLER
-sonobi.com, a85c5f6129,RESELLER, d1a215d9eb5aee9e
-axonix.com, 59089, RESELLER, bc385f2b4a87b721
-improvedigital.com, 2276, RESELLER
-rubiconproject.com, 17608, RESELLER, 0bfd66d529a55807
-lijit.com, 465542, RESELLER, fafdf38b16bf6b2b
-
-# Google Pub
+# Applixir.com - last modified: 04/04/24# Google Pub
 google.com, pub-6661595569829232, DIRECT, f08c47fec0942fa0
