@@ -26,10 +26,15 @@
         adsEnabled = SessionState.adsEnabled;
 
         function injectBadAds() {
-            // src='//pl27945791.effectivegatecpm.com/f9/0f/48/f90f487cd8f3cdf83690f6955c1b5655.js'
-            console.log("[R][LAYOUT][BASE] Bad ads not gonna inject cause this is popunder and annoying");
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.async = true; // Dont wait up on script loading
+            script.defer = true; // Ensure the script is executed after the document has been parsed
+            script.src =
+                "//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.js";
+            document.body.appendChild(script);
         }
-        if ((!isAHost && !adblockEnabled)) {
+        if ((!isAHost && !adblockEnabled) || SessionState.devMode) {
             console.log("[R][LAYOUT][BASE] Bad Ads enabled");
             injectBadAds();
         } else {
@@ -103,8 +108,23 @@
             > or through the discord (see link above and in the navigation).
         </p>
         <h3>CCPORTED</h3>
-        <p>CCPorted is the greatest place to play video games. The CCPorted team parses through hundreds of games and only adds the highest-quality games to our library, ensuring a high quality gaming experience for the users. Log in to get added to leaderboards and compete with your friends. Play all kinds of games from nostalgic classics to the latest hits. Our extensive ROM library also features over 300 titles from the late 90s and early 2000s. Join the Discord to get site updates and request games. New games are added each week, and games are updated regularly to ensure a bug-free experience.</p>
-        <p>Join the discord to request the <i>Underground Document</i>, a Google Doc with information on how to access other links for the site.</p>
+        <p>
+            CCPorted is the greatest place to play video games. The CCPorted
+            team parses through hundreds of games and only adds the
+            highest-quality games to our library, ensuring a high quality gaming
+            experience for the users. Log in to get added to leaderboards and
+            compete with your friends. Play all kinds of games from nostalgic
+            classics to the latest hits. Our extensive ROM library also features
+            over 300 titles from the late 90s and early 2000s. Join the Discord
+            to get site updates and request games. New games are added each
+            week, and games are updated regularly to ensure a bug-free
+            experience.
+        </p>
+        <p>
+            Join the discord to request the <i>Underground Document</i>, a
+            Google Doc with information on how to access other links for the
+            site.
+        </p>
         <p>To view old notifications, visit the notifications page.</p>
         <h3>Partners</h3>
         <p>To become a partner, please contact us through the discord.</p>

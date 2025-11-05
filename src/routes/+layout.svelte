@@ -57,16 +57,7 @@
             if (useGA4 && idToUse) {
                 injectGA4(idToUse);
             }
-            if ((!isAHost && !adblockEnabled) || SessionState.devMode) {
-                console.log("[R][LAYOUT][BASE] Bad Ads enabled");
-                injectBadAds();
-            } else {
-                if (isAHost && adsEnabled) {
-                    console.log("[R][LAYOUT][BASE] Good ads enabled");
-                } else {
-                    console.log("[R][LAYOUT][BASE] No ads");
-                }
-            }
+
         }
     });
     function injectGA4(trackingId: string) {
@@ -86,15 +77,7 @@
         `;
         document.head.appendChild(script2);
     }
-    function injectBadAds() {
-        const script = document.createElement("script");
-        script.type = "text/javascript";
-        script.async = true; // Dont wait up on script loading
-        script.defer = true; // Ensure the script is executed after the document has been parsed
-        script.src =
-            "//pl27945770.effectivegatecpm.com/b0/88/ed/b088ed7c9240db179822a126a078b258.js";
-        document.body.appendChild(script);
-    }
+
 </script>
 
 <svelte:head>

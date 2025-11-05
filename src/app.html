@@ -22,46 +22,57 @@
 
 
 	<script>
-		console.log('[APP][head] Loaded app');
+		// What if we didn't use a service worker at all?
+		// console.log('[APP][head] Loaded app');
+		// if ("serviceWorker" in navigator) {
+		// 	console.log(`[APP][head][check-sw] Service worker supported, registering...`);
+		// 	navigator.serviceWorker.register("%sveltekit.assets%/sw.js");
+
+		// 	navigator.serviceWorker.ready.then((registration) => {
+		// 		if (registration.active) {
+		// 			registration.active.postMessage("Test message sent immediately after creation");
+		// 		}
+
+		// 		const version = localStorage.getItem("ccported-version");
+		// 		fetch("%sveltekit.assets%/version.txt").then(async (res) => {
+		// 			if (!res.ok) {
+		// 				console.log(`[APP][head][check-version] Failed to fetch version.txt: ${res.status}`);
+		// 				return;
+		// 			}
+		// 			const text = (await res.text()).trim();
+		// 			console.log(`[APP][head][check-version] Fetched version.txt content: "${text}"`);
+		// 			const newVersion = new Date(text);
+		// 			const oldVersion = version ? new Date(version) : null;
+		// 			console.log(`[APP][head][check-version] Fetched version: ${newVersion}, old version: ${oldVersion}`);
+		// 			if (!oldVersion || newVersion > oldVersion) {
+		// 				localStorage.setItem("ccported-version", newVersion.toISOString());
+		// 				console.log(`[APP][head][check-version] New version available update sw, clearing cache -> reload...`);
+		// 				registration.update();
+		// 				registration.active?.postMessage({ action: "CLEAR_CACHE" });
+		// 			}
+		// 		});
+
+		// 		navigator.serviceWorker.addEventListener("message", (event) => {
+		// 			if (event.data && event.data.type === "CACHE_CLEARED") {
+		// 				console.log(`[APP][head][check-version][sw-message] ${event.data.status}`);
+		// 			}
+		// 		});
+		// 	});
+		// } else {
+		// 	console.log(`[APP][head][check-sw] Service worker not supported`);
+		// }
+
+		// console.log("[APP][head] Test message");
+
+		// Ensure that the service worker is not used
 		if ("serviceWorker" in navigator) {
-			console.log(`[APP][head][check-sw] Service worker supported, registering...`);
-			navigator.serviceWorker.register("%sveltekit.assets%/sw.js");
-
-			navigator.serviceWorker.ready.then((registration) => {
-				if (registration.active) {
-					registration.active.postMessage("Test message sent immediately after creation");
+			navigator.serviceWorker.getRegistrations().then((registrations) => {
+				for (let registration of registrations) {
+					console.log(`[APP][head] Unregistering service worker: ${registration.scope}`);
+					registration.unregister();
 				}
-
-				const version = localStorage.getItem("ccported-version");
-				fetch("%sveltekit.assets%/version.txt").then(async (res) => {
-					if (!res.ok) {
-						console.log(`[APP][head][check-version] Failed to fetch version.txt: ${res.status}`);
-						return;
-					}
-					const text = (await res.text()).trim();
-					console.log(`[APP][head][check-version] Fetched version.txt content: "${text}"`);
-					const newVersion = new Date(text);
-					const oldVersion = version ? new Date(version) : null;
-					console.log(`[APP][head][check-version] Fetched version: ${newVersion}, old version: ${oldVersion}`);
-					if (!oldVersion || newVersion > oldVersion) {
-						localStorage.setItem("ccported-version", newVersion.toISOString());
-						console.log(`[APP][head][check-version] New version available update sw, clearing cache -> reload...`);
-						registration.update();
-						registration.active?.postMessage({ action: "CLEAR_CACHE" });
-					}
-				});
-
-				navigator.serviceWorker.addEventListener("message", (event) => {
-					if (event.data && event.data.type === "CACHE_CLEARED") {
-						console.log(`[APP][head][check-version][sw-message] ${event.data.status}`);
-					}
-				});
 			});
-		} else {
-			console.log(`[APP][head][check-sw] Service worker not supported`);
 		}
-
-		console.log("[APP][head] Test message");
 	</script>
 </head>
 
