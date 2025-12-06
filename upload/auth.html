@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCPorted Game Dev Login</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.1.0/browser/oidc-client-ts.min.js"
+      integrity="sha512-J0UxiKspnGk7zI1BE1PWUIo3ramEimr1tnlsnyY9jSL9r0tiSRPscPuQmbBt7rNWrE8d6vNiJTsr4dVFJBYKcg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <button id="signIn">Sign In</button>
+    </div>
+
+    <script type="module">
+      import { userManager } from "./auth.js";
+
+      document.getElementById("signIn").addEventListener("click", async () => {
+        await userManager.signinRedirect();
+      });
+    </script>
+    <script type = "module" src="auth.js"></script>
+  </body>
+</html>
