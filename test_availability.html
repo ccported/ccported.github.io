@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=100, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Test Availability</title>
+    <style>
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: #f8fafc;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #222;
+            font-size: 12px;
+            min-height: 75px;
+            min-width: 100px;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 4px 2px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            color: #2563eb;
+            margin: 0 0 2px 0;
+            font-size: 13px;
+            letter-spacing: 0;
+            font-weight: 600;
+        }
+        p {
+            font-size: 11px;
+            margin: 0 0 4px 0;
+        }
+        .iframe-info {
+            margin: 2px 0 0 0;
+            padding: 2px 3px;
+            background: #f1f5fb;
+            border-left: 2px solid #2563eb;
+            border-radius: 4px;
+            color: #1e293b;
+            font-size: 10px;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test OK</h1>
+        <p>If you see this, iframe works.</p>
+        <div id="iframeStatus"></div>
+    </div>
+    <script>
+        function isFramed() {
+            return window.self !== window.top;
+        }
+
+        if (isFramed()) {
+            const statusDiv = document.getElementById('iframeStatus');
+            statusDiv.className = 'iframe-info';
+            statusDiv.innerHTML = `
+                <strong>In iframe.</strong>
+            `;
+            window.addEventListener("message", (event) => {
+                if (event.data === "CHECK_AVAILABILITY") {
+                    event.source.postMessage("===NOT_BLOCKED===", event.origin);
+                }
+            });
+            window.top.postMessage("INITIALIZED", "*");
+        }
+    </script>
+</body>
+</html>
