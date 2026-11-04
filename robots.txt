@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Primary sitemap
+Sitemap: https://ccported.github.io/sitemap.xml
+
+Host: ccported.github.io
